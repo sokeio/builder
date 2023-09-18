@@ -1,0 +1,32 @@
+{
+    "name": "byteplatform/builder",
+    "description": "",
+    "authors": [
+        {
+            "name": "Nguyen Van Hau",
+            "email": "nguyenvanhaudev@gmail.com"
+        }
+    ],
+    "license": "MIT",
+    "require": {
+      "php": "^8.1",
+      "byteplatform/byteplatform": "dev-main"
+    },
+    "extra": {
+        "laravel": {
+            "providers": ["BytePlatform\\Builder\\BuilderServiceProvider"],
+            "aliases": {}
+        }
+    },
+    "autoload": {
+        "files": [
+          "helpers/constraint.php",
+          "helpers/function.php"
+        ],
+        "psr-4": {
+            "BytePlatform\\Builder\\": "src",
+            "BytePlatform\\Builder\\Database\\Factories\\": "database/factories",
+            "BytePlatform\\Builder\\Database\\Seeders\\": "database/seeders"
+        }
+    }
+}
