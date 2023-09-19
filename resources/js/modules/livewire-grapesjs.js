@@ -7,9 +7,10 @@ export class LiveWireGrapesJSModule extends BytePlugin {
   booting() {
     if (window.Livewire) {
       let self = this;
+      let manager = self.getManager();
       window.Livewire.directive("grapesjs", ({ el, directive, component }) => {
         // Only fire this handler on the "root" directive.
-        if (directive.modifiers.length > 0 || el.livewire____tagify) {
+        if (directive.modifiers.length > 0 || el.livewire____grapesjs) {
           return;
         }
         let options = {};
@@ -25,29 +26,35 @@ export class LiveWireGrapesJSModule extends BytePlugin {
               // Indicate where to init the editor. You can also pass an HTMLElement
               container: el,
               storageManager: false,
-              pageManager: {
-                pages: [
-                  {
-                    id: "my-first-page",
-                    styles: ".my-page1-el { color: red }",
-                    component: '<div class="my-page1-el">Page 1</div>',
-                  },
-                  {
-                    id: "my-second-page",
-                    styles: ".my-page2-el { color: blue }",
-                    component: '<div class="my-page2-el">Page 2</div>',
-                  },
-                ],
-              },
+              style: manager.dataGet(component.$wire, "cssdata"),
+              // HTML string or a JSON of components
+              components: manager.dataGet(component.$wire, "htmldata"),
               ...options,
-              panels: {
-                myNewPanel: {
-                  id: "myNewButton",
-                  className: "someClass",
-                  command: "someCommand",
-                  attributes: { title: "Some title" },
-                  active: false,
+            });
+            el.livewire____grapesjs.Panels.addButton("options", [
+              {
+                id: "save-builder-html",
+                className: "fa fa-save",
+                command: "save-data",
+                attributes: {
+                  title: "Save Changes",
                 },
+              },
+            ]);
+            el.livewire____grapesjs.Commands.add("save-data", {
+              run: async function (editor, sender) {
+                sender && sender.set("active", 0); // turn off the button
+                manager.dataSet(
+                  component.$wire,
+                  "cssdata",
+                  el.livewire____grapesjs.getCss()
+                );
+                manager.dataSet(
+                  component.$wire,
+                  "htmldata",
+                  el.livewire____grapesjs.getHtml()
+                );
+                component.$wire.doSaveBuilder();
               },
             });
           }
