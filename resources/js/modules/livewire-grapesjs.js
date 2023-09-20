@@ -14,11 +14,14 @@ export class LiveWireGrapesJSModule extends BytePlugin {
           return;
         }
         let options = {};
-
         if (el.hasAttribute("wire:grapesjs.options")) {
           options = new Function(
             `return ${el.getAttribute("wire:grapesjs.options")};`
           )();
+        }
+        const pluginManager = options.pluginManager ?? [];
+        if (options?.pluginManager) {
+          options = { ...options, pluginManager: undefined };
         }
         const grapesjsCreate = () => {
           if (!el.livewire____grapesjs) {
@@ -30,6 +33,13 @@ export class LiveWireGrapesJSModule extends BytePlugin {
               // HTML string or a JSON of components
               components: manager.dataGet(component.$wire, "htmldata"),
               ...options,
+              plugins: pluginManager.map(function (item) {
+                return item.name;
+              }),
+              pluginsOpts: pluginManager.reduce(function (previous, current) {
+                previous[current.name] = current.options ?? {};
+                return previous;
+              }, {}),
             });
             el.livewire____grapesjs.Panels.addButton("options", [
               {
@@ -54,6 +64,11 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                   "htmldata",
                   el.livewire____grapesjs.getHtml()
                 );
+                manager.dataSet(
+                  component.$wire,
+                  "jsdata",
+                  el.livewire____grapesjs.getJs()
+                );
                 component.$wire.doSaveBuilder();
               },
             });
@@ -62,16 +77,22 @@ export class LiveWireGrapesJSModule extends BytePlugin {
         if (window.grapesjs) {
           grapesjsCreate();
         } else {
-          window.addStyleToWindow(
+          window.ByteLoadStyle(
             "https://cdn.jsdelivr.net/npm/grapesjs@0.21.6/dist/css/grapes.min.css",
-            function () {}
+            ...pluginManager.reduce(function (previous, current) {
+              return [...previous, ...(current.css ?? [])];
+            }, [])
           );
-          window.addScriptToWindow(
-            "https://cdn.jsdelivr.net/npm/grapesjs@0.21.6/dist/grapes.min.js",
-            function () {
+          window
+            .ByteLoadScript([
+              "https://cdn.jsdelivr.net/npm/grapesjs@0.21.6/dist/grapes.min.js",
+              ...pluginManager.reduce(function (previous, current) {
+                return [...previous, ...(current.js ?? [])];
+              }, []),
+            ])
+            .then(function () {
               grapesjsCreate();
-            }
-          );
+            });
         }
       });
     }
