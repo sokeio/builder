@@ -1,7 +1,7 @@
 export default (editor, opts = {}) => {
   const domc = editor.DomComponents;
 
-  domc.addType('MY-COMPONENT', {
+  domc.addType('SHORT-CODE-COMPONENT', {
     model: {
       defaults: {
         // Default props

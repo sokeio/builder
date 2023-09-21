@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-shortcode",
-  "version": "1.0.1",
+  "version": "1.0.7",
   "description": "Grapesjs Shortcode",
   "main": "dist/index.js",
   "repository": {

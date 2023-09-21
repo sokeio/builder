@@ -27,7 +27,7 @@ class BuilderManager extends ItemCallback
             'pluginManager' => $this->getPlugins(),
             'blockManager' => [
                 // 'appendTo' => '#blocks',
-                'blocks' => $this->getBlocks()
+                // 'blocks' => $this->getBlocks()
             ],
             'selectorManager' => [],
             'styleManager' => [],
@@ -70,11 +70,9 @@ class BuilderManager extends ItemCallback
         return apply_filters('BYTE_BUILDER_PLUGINS', [
             [
                 'name' => 'grapesjs-shortcode',
-                'js' => [url('platform/modules/Builder/grapesjs-shortcode/grapesjs-shortcode.js')],
+                'js' => [url('platform/modules/Builder/grapesjs-shortcode/dist/index.js')],
                 'css' => [],
-                'options' => [
-                    'flexGrid' => true
-                ]
+                'options' => []
             ],
             [
                 'name' => 'gjs-blocks-basic',
