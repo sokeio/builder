@@ -69,6 +69,14 @@ class BuilderManager extends ItemCallback
     {
         return apply_filters('BYTE_BUILDER_PLUGINS', [
             [
+                'name' => 'grapesjs-shortcode',
+                'js' => [url('platform/modules/Builder/grapesjs-shortcode/grapesjs-shortcode.js')],
+                'css' => [],
+                'options' => [
+                    'flexGrid' => true
+                ]
+            ],
+            [
                 'name' => 'gjs-blocks-basic',
                 'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
                 'css' => [],
