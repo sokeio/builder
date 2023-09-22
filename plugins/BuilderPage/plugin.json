@@ -1,0 +1,12 @@
+{
+    "id":"plugin-builderpage-9be06a23-1827-4150-aa92-eb3b8d68a1f04850072",
+    "name": "BuilderPage",
+    "version":"v1.0.0",
+    "alias": "builderpage",
+    "description": "",
+    "keywords": [],
+    "priority": 200,
+    "aliases": {},
+    "namespace":"BytePlugin\\BuilderPage",
+    "requires": []
+}
