@@ -19,6 +19,8 @@ return new class extends Migration
             $table->string('slug', 500);
             $table->string('description', 400)->nullable()->default('');
             $table->longText('content');
+            $table->text('js');
+            $table->text('css');
             $table->integer('author_id');
             $table->string('status', 60)->default('published');
             $table->string('image', 255)->nullable();

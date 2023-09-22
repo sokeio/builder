@@ -1,17 +1,18 @@
 <?php
 
 namespace BytePlugin\BuilderPage\Crud;
+
 use BytePlatform\Button;
-use BytePlatform\Cms\Models\Page;
 use BytePlatform\CrudManager;
 use BytePlatform\Item;
 use BytePlatform\ItemManager;
+use BytePlugin\BuilderPage\Models\PageBuilder;
 
 class PageCrud extends CrudManager
 {
     public function GetModel()
     {
-        return Page::class;
+        return PageBuilder::class;
     }
     public function GetFields()
     {
@@ -62,18 +63,18 @@ class PageCrud extends CrudManager
                 return [
                     Button::Create("Create Page")->ButtonType(function () {
                         return 'primary';
-                    })->ModalUrl(function ($button) {
-                        return route('admin.page-form');
-                    })->ModalTitle('Create Page')->ModalSize('modal-fullscreen-xl-down modal-xl')
+                    })->ButtonLink(function () {
+                        return route('admin.page-builder-new');
+                    })
                 ];
             })
             ->ButtonInTable(function () {
                 return [
                     Button::Create("Edit")->ButtonType(function () {
                         return 'info';
-                    })->ModalUrl(function ($button) {
-                        return route('admin.page-form', ['dataId' => $button->getData()->id]);
-                    })->ModalTitle('Edit Page')->ModalSize('modal-fullscreen-xl-down'),
+                    })->ButtonLink(function ($button) {
+                        return route('admin.page-builder-edit', ['dataId' => $button->getData()->id]);
+                    }),
                     Button::Create("Remove")->ButtonType(function () {
                         return 'warning';
                     })->ConfirmTitle("Remove Page")->Confirm("Sure you wanna delete?")->WireClick(function ($button) {

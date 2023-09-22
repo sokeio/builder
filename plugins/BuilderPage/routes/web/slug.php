@@ -2,6 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::get('{slug}', function ($slug) {
+Route::get('/p/{slug}', function ($slug) {
     return $slug;
 });

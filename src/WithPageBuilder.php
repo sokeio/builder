@@ -9,14 +9,15 @@ trait WithPageBuilder
     public $jsdata = '';
     public $cssdata = ".wellcome-page{color: red;width:100%;min-height:100px;}";
     public $htmldata = "<div class='wellcome-page'>Wellcome To Page Builder</div>";
-    public function getPageTitle()
+    protected function getPageTitle()
     {
         return 'Page Builder';
     }
-    public function getOptions()
+    protected function getOptions()
     {
         return BuilderManager::New()->getOptions();
     }
+
     public function doSaveBuilder()
     {
         $this->showMessage($this->cssdata);
