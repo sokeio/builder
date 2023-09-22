@@ -27,6 +27,16 @@ export default (editor, opts = {}) => {
       ...options.i18n,
     });
 
+  editor.on("component:selected", function (model) {
+    if (model.get("type") === "shortcode") {
+      editor.runCommand("open-shortcode-dialog", model);
+    }
+  });
+  editor.on("block:drag:stop", function (model) {
+    if (model.get("type") === "shortcode") {
+      editor.runCommand("open-shortcode-dialog", model);
+    }
+  });
   // TODO Remove
   // editor.on('load', () =>
   //   editor.addComponents(
