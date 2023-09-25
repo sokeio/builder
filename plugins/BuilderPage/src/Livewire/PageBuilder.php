@@ -16,25 +16,10 @@ class PageBuilder extends Component
     {
         return ItemManager::Form()->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
-            Item::Add('status')->Title('status')->DataOptionStatus()->DataText(function (Item $item) {
-                $button = $item->ConvertToButton()
-                    ->Title(function ($button) {
-                        $item = $button->getData();
-                        return $item->status ? 'Active' : 'Block';
-                    })->ButtonType(function ($button) {
-                        $item = $button->getData();
-                        return $item->status ? 'success' : 'danger';
-                    });
-                if ($button->getWhen()) {
-                    $button->WireClick(function ($button) {
-                        $item = $button->getData();
-                        return "callDoAction('changeStatus',{'id':" . $item->id . ",'status':" . ($item->status == 1 ? 0 : 1) . "})";
-                    });
-                }
-                return $button->render();
-            })->DisableEdit(function ($item, $manager) {
-                return !$manager->IsTable();
-            }),
+            Item::Add('slug')->Column(Item::Col12)->Title('Slug')->Required(),
+            Item::Add('description')->Column(Item::Col12)->Type('textarea')->Title('Description')->Required(),
+            Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->Title('Published At'),
+            Item::Add('status')->Title('Status')->DataOptionStatus()->Column(Item::Col12),
         ]);
     }
     public $dataId = null;

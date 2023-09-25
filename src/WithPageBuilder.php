@@ -8,7 +8,7 @@ use BytePlatform\Forms\WithFormData;
 trait WithPageBuilder
 {
     use WithFormData;
-    
+
     protected function getPageTitle()
     {
         return 'Page Builder';
@@ -29,7 +29,8 @@ trait WithPageBuilder
         Theme::setTitle($this->getPageTitle(), true);
         return view('builder::page', [
             'options' => $this->getOptions(),
-            'itemManager' => $this->getItemManager()
+            'itemManager' => $this->getItemManager(),
+            'templates' => TemplateBuilder::getTemplates()
         ]);
     }
 }

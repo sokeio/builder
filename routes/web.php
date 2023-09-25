@@ -11,3 +11,9 @@
 |
 */
 
+use BytePlatform\Builder\TemplateBuilder;
+use Illuminate\Support\Facades\Route;
+
+Route::get('test-builder', function () {
+    return TemplateBuilder::getTemplates();
+});

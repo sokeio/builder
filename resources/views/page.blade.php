@@ -86,12 +86,39 @@
                 <div x-show="controlTabIndex==1" class="byte-builder-control__content--item">
                     <h3>Template Manager</h3>
                     <div class="manager-body template-page-manager">
+                        @foreach ($templates as $item)
+                            <div class="item-box" draggable="true"
+                                data-template-content="{{ urlencode($item->content) }}"
+                                x-on:dragstart.self="
+                                event.dataTransfer.effectAllowed = 'move';
+                                console.log(decodeURIComponent(event.target.getAttribute('data-template-content')));
+                                event.dataTransfer.setData('text/html', decodeURIComponent(event.target.getAttribute('data-template-content').replace(/\+/g, ' ')));
+                              ">
+                                <h3> {{ $item->template_name }} </h3>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
+                                    viewBox="0 0 1300 1100" width="99%" height="180">
+                                    <foreignObject width="100%" height="100%" style="pointer-events:none">
+                                        <div xmlns="http://www.w3.org/1999/xhtml">
+                                            {{ $item->content }} <style scoped></style>
+                                        </div>
+                                    </foreignObject>
+                                </svg>
+                            </div>
+                        @endforeach
+
                     </div>
                 </div>
                 <div x-show="controlTabIndex==2" class="byte-builder-control__content--item">
-                    <h3>Setting Page</h3>
+                    <h4>Setting Page</h4>
                     <div class="manager-body setting-page-manager">
                         {!! form_render($itemManager, $form, $dataId) !!}
+                        <div class="mt-2 float-end">
+                            <button class="btn btn-primary" wire:click='doSaveBuilder()'>
+                                <span title="Publish" class=" fa fa-save"></span>
+                                <span style="margin-left: 5px;">Publish</span>
+                            </button>
+                        </div>
+
                     </div>
                 </div>
                 <div x-show="controlTabIndex==3" class="byte-builder-control__content--item">

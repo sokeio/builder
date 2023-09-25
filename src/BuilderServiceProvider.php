@@ -2,9 +2,11 @@
 
 namespace BytePlatform\Builder;
 
+use BytePlatform\DataInfo;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
 use BytePlatform\Traits\WithServiceProvider;
+use Illuminate\Support\Facades\File;
 
 class BuilderServiceProvider extends ServiceProvider
 {
@@ -30,6 +32,12 @@ class BuilderServiceProvider extends ServiceProvider
     }
     public function packageRegistered()
     {
+        DataInfo::macro('getTemplateBuilder', function () {
+            if (File::exists($this->getPath('resources/template-builders')) && $files =  glob($this->getPath('resources/template-builders') . '/*.*')) {
+                return $files;
+            }
+            return [];
+        });
         $this->extending();
     }
     private function bootGate()

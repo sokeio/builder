@@ -63,6 +63,18 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 component.$wire.doSaveBuilder();
               },
             });
+            // var canvas = el.querySelector(" .gjs-cv-canvas");
+            // canvas.addEventListener("drop", function (event) {
+            //   event.preventDefault();
+            //   var templateContent = decodeURIComponent(
+            //     decodeURIComponent(event.dataTransfer.getData("text/html"))
+            //   );
+            //   console.log(templateContent);
+            //   var component =
+            //     el.livewire____grapesjs.DomComponents.addComponent({
+            //       html: templateContent,
+            //     });
+            // });
             el.livewire____grapesjs.on("load", function () {
               // console.log(el.livewire____grapesjs);
               // const deviceManager = el.livewire____grapesjs.DeviceManager;
@@ -73,14 +85,14 @@ export class LiveWireGrapesJSModule extends BytePlugin {
             });
             el.livewire____grapesjs.on("stop:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              console.log('byte-builder-preview2');
+              console.log("byte-builder-preview2");
               el.closest(".byte-builder-manager").classList.remove(
                 "byte-builder-preview"
               );
             });
             el.livewire____grapesjs.on("run:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              console.log('byte-builder-preview1')
+              console.log("byte-builder-preview1");
               el.closest(".byte-builder-manager").classList.add(
                 "byte-builder-preview"
               );
