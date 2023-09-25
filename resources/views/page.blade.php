@@ -67,10 +67,14 @@
                 </div>
                 <div title="Plugin Manager" @click="controlChooseTab(3)" :class="controlTabIndex == 3 ? 'active' : ''"
                     class="byte-builder-control__list--item">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-puzzle" width="24"
+                        height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1"></path>
-                     </svg>
+                        <path
+                            d="M4 7h3a1 1 0 0 0 1 -1v-1a2 2 0 0 1 4 0v1a1 1 0 0 0 1 1h3a1 1 0 0 1 1 1v3a1 1 0 0 0 1 1h1a2 2 0 0 1 0 4h-1a1 1 0 0 0 -1 1v3a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-1a2 2 0 0 0 -4 0v1a1 1 0 0 1 -1 1h-3a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1h1a2 2 0 0 0 0 -4h-1a1 1 0 0 1 -1 -1v-3a1 1 0 0 1 1 -1">
+                        </path>
+                    </svg>
                 </div>
             </div>
             <div class="byte-builder-control__content">
@@ -87,6 +91,7 @@
                 <div x-show="controlTabIndex==2" class="byte-builder-control__content--item">
                     <h3>Setting Page</h3>
                     <div class="manager-body setting-page-manager">
+                        {!! form_render($itemManager, $form, $dataId) !!}
                     </div>
                 </div>
                 <div x-show="controlTabIndex==3" class="byte-builder-control__content--item">
@@ -110,7 +115,7 @@
                         @click="tabIndex=1">
                         Selector
                     </div>
-                    <div class="byte-builder-setting__component--tab" :class="tabIndex ==  2 ? 'active' : ''"
+                    <div class="byte-builder-setting__component--tab" :class="tabIndex == 2 ? 'active' : ''"
                         @click="tabIndex=2">
                         Setting
                     </div>
@@ -123,7 +128,7 @@
                     <div x-show="tabIndex==0" class="style-manager manager-container">
                     </div>
                     <div x-show="tabIndex==1" class="selector-manager manager-container">
-                    </div>  
+                    </div>
                     <div x-show="tabIndex==2" class="trait-manager manager-container">
                     </div>
                     <div x-show="tabIndex==3" class="layer-manager manager-container">

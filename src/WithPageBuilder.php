@@ -3,9 +3,11 @@
 namespace BytePlatform\Builder;
 
 use BytePlatform\Facades\Theme;
+use BytePlatform\Forms\WithFormData;
 
 trait WithPageBuilder
 {
+    use WithFormData;
     public $jsdata = '';
     public $cssdata = ".wellcome-page{color: red;width:100%;min-height:100px;}";
     public $htmldata = "<div class='wellcome-page'>Wellcome To Page Builder</div>";
@@ -28,7 +30,8 @@ trait WithPageBuilder
         Theme::setLayout('none');
         Theme::setTitle($this->getPageTitle(), true);
         return view('builder::page', [
-            'options' => $this->getOptions()
+            'options' => $this->getOptions(),
+            'itemManager' => $this->getItemManager()
         ]);
     }
 }
