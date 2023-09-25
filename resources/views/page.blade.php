@@ -91,7 +91,6 @@
                                 data-template-content="{{ urlencode($item->content) }}"
                                 x-on:dragstart.self="
                                 event.dataTransfer.effectAllowed = 'move';
-                                console.log(decodeURIComponent(event.target.getAttribute('data-template-content')));
                                 event.dataTransfer.setData('text/html', decodeURIComponent(event.target.getAttribute('data-template-content').replace(/\+/g, ' ')));
                               ">
                                 <h3> {{ $item->template_name }} </h3>

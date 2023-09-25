@@ -60,6 +60,10 @@ class BuilderManager extends ItemCallback
                     ]
                 ]
             ],
+            'canvas' => [
+                'scripts' => ['https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js'],
+                'styles' => ['https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css'],
+            ],
 
             'storageManager' => false
         ];
