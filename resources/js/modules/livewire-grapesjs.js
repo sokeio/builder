@@ -40,18 +40,9 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 previous[current.name] = current.options ?? {};
                 return previous;
               }, {}),
+              pages:false,
             });
-            el.livewire____grapesjs.Panels.addButton("options", [
-              {
-                id: "save-builder-html",
-                className: "fa fa-save",
-                command: "save-data",
-                attributes: {
-                  title: "Save Changes",
-                },
-              },
-            ]);
-            el.livewire____grapesjs.Commands.add("save-data", {
+            el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
                 manager.dataSet(
@@ -71,6 +62,14 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 );
                 component.$wire.doSaveBuilder();
               },
+            });
+            el.livewire____grapesjs.on("load", function () {
+              // console.log(el.livewire____grapesjs);
+              // const deviceManager = el.livewire____grapesjs.DeviceManager;
+              // const deviceManagerContainer = document.querySelector(
+              //   ".byte-builder-manager .device-manager"
+              // );
+              // deviceManagerContainer.appendChild(deviceManager.render());
             });
           }
         };

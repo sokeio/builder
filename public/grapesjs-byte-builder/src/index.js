@@ -10,6 +10,14 @@ export default (editor, opts = {}) => {
       i18n: {},
       // default options
     },
+    modalImportTitle: 'Import',
+    modalImportButton: 'Import',
+    modalImportLabel: '',
+    modalImportContent: '',
+    importViewerOptions: {},
+    textCleanCanvas: 'Are you sure you want to clear the canvas?',
+    showStylesOnChange: true,
+    useCustomTheme: true,
     ...opts,
   };
   // Add panels

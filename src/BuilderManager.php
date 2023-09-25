@@ -24,17 +24,43 @@ class BuilderManager extends ItemCallback
     public function getOptions()
     {
         return [
-            'pluginManager' => $this->getPlugins(),
+            'pluginManager' => [[
+                'name' => 'grapesjs-byte-builder',
+                'js' => [url('platform/modules/Builder/grapesjs-byte-builder/dist/index.js')],
+                'css' => [],
+                'options' => []
+            ], ...$this->getPlugins()],
             'blockManager' => [
-                // 'appendTo' => '#blocks',
+                'appendTo' => '.byte-builder-manager .block-manager',
                 // 'blocks' => $this->getBlocks()
             ],
-            'selectorManager' => [],
-            'styleManager' => [],
+            'selectorManager' => ['appendTo' => '.byte-builder-manager .selector-manager',],
+            'styleManager' => [
+                'appendTo' => '.byte-builder-manager .style-manager',
+            ],
+            'layerManager' => [
+                'appendTo' => '.byte-builder-manager .layer-manager',
+            ],
             'deviceManager' => [
                 // 'devices' => null
+                'appendTo' => '.byte-builder-manager .device-manager',
             ],
-            'panels' => [],
+            'traitManager' => [
+                'appendTo' => '.byte-builder-manager .trait-manager',
+            ],
+            'panels' => [
+                'defaults' => [
+                    [
+                        'id' => 'options',
+                        'el' => '.byte-builder-manager .options-panel-manager'
+                    ],
+                    [
+                        'id' => 'devices-c',
+                        'el' => '.byte-builder-manager .devices-panel-manager'
+                    ]
+                ]
+            ],
+
             'storageManager' => false
         ];
     }
@@ -68,12 +94,8 @@ class BuilderManager extends ItemCallback
     public function getPlugins()
     {
         return apply_filters('BYTE_BUILDER_PLUGINS', [
-            [
-                'name' => 'grapesjs-shortcode',
-                'js' => [url('platform/modules/Builder/grapesjs-shortcode/dist/index.js')],
-                'css' => [],
-                'options' => []
-            ],
+
+
             [
                 'name' => 'gjs-blocks-basic',
                 'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
@@ -82,13 +104,18 @@ class BuilderManager extends ItemCallback
                     'flexGrid' => true
                 ]
             ],
-
             [
                 'name' => 'grapesjs-plugin-forms',
                 'js' => ['https://unpkg.com/grapesjs-plugin-forms'],
                 'css' => [],
                 'options' => []
-            ]
-        ]);
+            ],
+            // [
+            //     'name' => 'grapesjs-project-manager',
+            //     'js' => ['https://unpkg.com/grapesjs-project-manager'],
+            //     'css' => ['https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'],
+            //     'options' => []
+            // ]
+        ]) ?? []; //
     }
 }

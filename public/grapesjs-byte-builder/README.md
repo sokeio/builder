@@ -9,7 +9,7 @@ To help you in this process here below you will find the necessary HTML/CSS/JS, 
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
 <script src="https://unpkg.com/grapesjs"></script>
-<script src="https://unpkg.com/grapesjs-shortcode"></script>
+<script src="https://unpkg.com/grapesjs-byte-builder"></script>
 
 <div id="gjs"></div>
 ```
@@ -21,7 +21,7 @@ const editor = grapesjs.init({
   height: '100%',
   fromElement: true,
   storageManager: false,
-  plugins: ['grapesjs-shortcode'],
+  plugins: ['grapesjs-byte-builder'],
 });
 ```
 
@@ -36,7 +36,7 @@ body, html {
 
 ## Summary
 
-* Plugin name: `grapesjs-shortcode`
+* Plugin name: `grapesjs-byte-builder`
 * Components
     * `component-id-1`
     * `component-id-2`
@@ -59,11 +59,11 @@ body, html {
 ## Download
 
 * CDN
-  * `https://unpkg.com/grapesjs-shortcode`
+  * `https://unpkg.com/grapesjs-byte-builder`
 * NPM
-  * `npm i grapesjs-shortcode`
+  * `npm i grapesjs-byte-builder`
 * GIT
-  * `git clone https://github.com/YOUR-USERNAME/grapesjs-shortcode.git`
+  * `git clone https://github.com/YOUR-USERNAME/grapesjs-byte-builder.git`
 
 
 
@@ -73,7 +73,7 @@ Directly in the browser
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/grapesjs"></script>
-<script src="path/to/grapesjs-shortcode.min.js"></script>
+<script src="path/to/grapesjs-byte-builder.min.js"></script>
 
 <div id="gjs"></div>
 
@@ -81,9 +81,9 @@ Directly in the browser
   var editor = grapesjs.init({
       container: '#gjs',
       // ...
-      plugins: ['grapesjs-shortcode'],
+      plugins: ['grapesjs-byte-builder'],
       pluginsOpts: {
-        'grapesjs-shortcode': { /* options */ }
+        'grapesjs-byte-builder': { /* options */ }
       }
   });
 </script>
@@ -92,7 +92,7 @@ Directly in the browser
 Modern javascript
 ```js
 import grapesjs from 'grapesjs';
-import plugin from 'grapesjs-shortcode';
+import plugin from 'grapesjs-byte-builder';
 import 'grapesjs/dist/css/grapes.min.css';
 
 const editor = grapesjs.init({
@@ -116,8 +116,8 @@ const editor = grapesjs.init({
 Clone the repository
 
 ```sh
-$ git clone https://github.com/YOUR-USERNAME/grapesjs-shortcode.git
-$ cd grapesjs-shortcode
+$ git clone https://github.com/YOUR-USERNAME/grapesjs-byte-builder.git
+$ cd grapesjs-byte-builder
 ```
 
 Install dependencies

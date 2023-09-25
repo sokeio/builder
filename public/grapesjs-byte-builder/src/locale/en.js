@@ -1,5 +1,5 @@
 export default {
-    'grapesjs-shortcode': {
+    'grapesjs-byte-builder': {
         // 'key': 'value',
     },
 };
