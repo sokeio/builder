@@ -179,4 +179,12 @@
 
     }
 
+    &.byte-builder-preview {
+
+        .byte-builder-header,
+        .byte-builder-setting,
+        .byte-builder-control {
+            display: none;
+        }
+    }
 }

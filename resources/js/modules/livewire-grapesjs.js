@@ -71,6 +71,20 @@ export class LiveWireGrapesJSModule extends BytePlugin {
               // );
               // deviceManagerContainer.appendChild(deviceManager.render());
             });
+            el.livewire____grapesjs.on("stop:preview", () => {
+              // Xử lý khi sự kiện design xảy ra
+              console.log('byte-builder-preview2');
+              el.closest(".byte-builder-manager").classList.remove(
+                "byte-builder-preview"
+              );
+            });
+            el.livewire____grapesjs.on("run:preview", () => {
+              // Xử lý khi sự kiện design xảy ra
+              console.log('byte-builder-preview1')
+              el.closest(".byte-builder-manager").classList.add(
+                "byte-builder-preview"
+              );
+            });
           }
         };
         if (window.grapesjs) {
