@@ -29,9 +29,9 @@ export class LiveWireGrapesJSModule extends BytePlugin {
               // Indicate where to init the editor. You can also pass an HTMLElement
               container: el,
               storageManager: false,
-              style: manager.dataGet(component.$wire, "cssdata"),
+              style: manager.dataGet(component.$wire, "form.css"),
               // HTML string or a JSON of components
-              components: manager.dataGet(component.$wire, "htmldata"),
+              components: manager.dataGet(component.$wire, "form.content"),
               ...options,
               plugins: pluginManager.map(function (item) {
                 return item.name;
@@ -40,24 +40,24 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 previous[current.name] = current.options ?? {};
                 return previous;
               }, {}),
-              pages:false,
+              pages: false,
             });
             el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
                 manager.dataSet(
                   component.$wire,
-                  "cssdata",
+                  "form.css",
                   el.livewire____grapesjs.getCss()
                 );
                 manager.dataSet(
                   component.$wire,
-                  "htmldata",
+                  "form.conent",
                   el.livewire____grapesjs.getHtml()
                 );
                 manager.dataSet(
                   component.$wire,
-                  "jsdata",
+                  "form.js",
                   el.livewire____grapesjs.getJs()
                 );
                 component.$wire.doSaveBuilder();

@@ -10,12 +10,12 @@ export default (editor, opts = {}) => {
       i18n: {},
       // default options
     },
-    modalImportTitle: 'Import',
-    modalImportButton: 'Import',
-    modalImportLabel: '',
-    modalImportContent: '',
+    modalImportTitle: "Import",
+    modalImportButton: "Import",
+    modalImportLabel: "",
+    modalImportContent: "",
     importViewerOptions: {},
-    textCleanCanvas: 'Are you sure you want to clear the canvas?',
+    textCleanCanvas: "Are you sure you want to clear the canvas?",
     showStylesOnChange: true,
     useCustomTheme: true,
     ...opts,
@@ -36,12 +36,12 @@ export default (editor, opts = {}) => {
     });
 
   editor.on("component:selected", function (model) {
-    if (model.get("type") === "shortcode") {
+    if (model && model.get("type") === "shortcode") {
       editor.runCommand("open-shortcode-dialog", model);
     }
   });
   editor.on("block:drag:stop", function (model) {
-    if (model.get("type") === "shortcode") {
+    if (model && model.get("type") === "shortcode") {
       editor.runCommand("open-shortcode-dialog", model);
     }
   });

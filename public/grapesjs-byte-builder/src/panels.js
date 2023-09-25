@@ -116,7 +116,7 @@ export default (editor, opts = {}) => {
         {
           id: "save-builder-html",
           className: "fa fa-save",
-          command: "save-data",
+          command: "byte-builder-save-data",
           label: "<span style='margin-left: 5px;'>Publish</span>",
           attributes: {
             title: "Publish",

@@ -8,9 +8,7 @@ use BytePlatform\Forms\WithFormData;
 trait WithPageBuilder
 {
     use WithFormData;
-    public $jsdata = '';
-    public $cssdata = ".wellcome-page{color: red;width:100%;min-height:100px;}";
-    public $htmldata = "<div class='wellcome-page'>Wellcome To Page Builder</div>";
+    
     protected function getPageTitle()
     {
         return 'Page Builder';
