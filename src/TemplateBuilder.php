@@ -14,7 +14,7 @@ class TemplateBuilder implements Arrayable
     public $author = '';
     public $topic = '';
     public $email = '';
-    public $screenshot = '';
+    public $thumbnail = '';
     public $description = '';
     public $content = '';
     private function __construct($path)
@@ -39,8 +39,11 @@ class TemplateBuilder implements Arrayable
             $this->author =  isset($metadataArray['anthor']) ? $metadataArray['anthor'] : '';
             $this->email =  isset($metadataArray['email']) ? $metadataArray['email'] : '';
             $this->topic =  isset($metadataArray['topic']) ? $metadataArray['topic'] : '';
-            $this->screenshot = isset($metadataArray['screenshot']) ? $metadataArray['screenshot'] : '';
+            $this->thumbnail = isset($metadataArray['thumbnail']) ? $metadataArray['thumbnail'] : '';
             $this->description = isset($metadataArray['description']) ? $metadataArray['description'] : '';
+            if ($this->thumbnail && !str_starts_with($this->thumbnail, 'http')) {
+                $this->thumbnail = url($this->thumbnail);
+            }
         }
         $pattern = '/<!--(.*?)-->/s';
         $this->content = preg_replace($pattern, '', $this->content);
@@ -53,7 +56,7 @@ class TemplateBuilder implements Arrayable
             'author' => $this->author,
             'topic' => $this->topic,
             'email' => $this->email,
-            'screenshot' => $this->screenshot,
+            'thumbnail' => $this->thumbnail,
             'description' => $this->description,
             'content' => $this->content,
         ];

@@ -65,6 +65,8 @@ class BuilderManager extends ItemCallback
                 'styles' => ['https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css'],
             ],
 
+            'assetManager' => false,
+
             'storageManager' => false
         ];
     }

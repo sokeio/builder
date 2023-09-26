@@ -41,6 +41,31 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 return previous;
               }, {}),
               pages: false,
+              assetManager: {
+                // ...
+                custom: {
+                  open(props) {
+                    window.showFileManager(function (file) {
+                      console.log(file[0]["url"]);
+                      props.select(file[0]["url"]);
+                      props.close();
+                    });
+                    console.log(props);
+                    // `props` are the same used in `asset:custom` event
+                    // ...
+                    // Init and open your external Asset Manager
+                    // ...
+                    // IMPORTANT:
+                    // When the external library is closed you have to comunicate
+                    // this state back to the editor, otherwise GrapesJS will think
+                    // the Asset Manager is still open.
+                    // example: myAssetManager.on('close', () => props.close())
+                  },
+                  close(props) {
+                    // Close the external Asset Manager
+                  },
+                },
+              },
             });
             el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
               run: async function (editor, sender) {

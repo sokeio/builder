@@ -3,7 +3,7 @@
     topic: boostrap 5
     anthor: nguyen van nah
     email:nguyenvanhaudev@gmail.com
-    screenshot:platform/plugins/builders/template/demo.png
+    thumbnail:platform/modules/builder/template/hero1.jpg
     description:dfàà
     ádfadsfà
     ádfádfá

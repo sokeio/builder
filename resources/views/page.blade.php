@@ -93,15 +93,23 @@
                                 event.dataTransfer.effectAllowed = 'move';
                                 event.dataTransfer.setData('text/html', decodeURIComponent(event.target.getAttribute('data-template-content').replace(/\+/g, ' ')));
                               ">
-                                <h3> {{ $item->template_name }} </h3>
-                                <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
-                                    viewBox="0 0 1300 1100" width="99%" height="180">
-                                    <foreignObject width="100%" height="100%" style="pointer-events:none">
-                                        <div xmlns="http://www.w3.org/1999/xhtml">
-                                            {{ $item->content }} <style scoped></style>
-                                        </div>
-                                    </foreignObject>
-                                </svg>
+                                @if ($item->thumbnail)
+                                    <div style="background-image: url({{ $item->thumbnail }});    background-repeat: no-repeat;
+                                        background-size: cover;
+                                        height: 180px;
+                                        background-position: center;
+                                        width: 99%;"
+                                        class="template-preview"></div>
+                                @else
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
+                                        viewBox="0 0 1300 1100" width="99%" height="180">
+                                        <foreignObject width="100%" height="100%" style="pointer-events:none">
+                                            <div xmlns="http://www.w3.org/1999/xhtml">
+                                                {{ $item->content }} <style scoped></style>
+                                            </div>
+                                        </foreignObject>
+                                    </svg>
+                                @endif
                             </div>
                         @endforeach
 
