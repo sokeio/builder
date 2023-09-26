@@ -13,6 +13,10 @@ trait WithPageBuilder
     {
         return 'Page Builder';
     }
+    protected function getPageList()
+    {
+        return '';
+    }
     protected function getOptions()
     {
         return BuilderManager::New()->getOptions();
@@ -20,7 +24,6 @@ trait WithPageBuilder
 
     public function doSaveBuilder()
     {
-        $this->showMessage($this->cssdata);
         $this->skipRender();
     }
     public function render()
@@ -30,7 +33,8 @@ trait WithPageBuilder
         return view('builder::page', [
             'options' => $this->getOptions(),
             'itemManager' => $this->getItemManager(),
-            'templates' => TemplateBuilder::getTemplates()
+            'templates' => TemplateBuilder::getTemplates(),
+            'linkPageList' => $this->getPageList()
         ]);
     }
 }

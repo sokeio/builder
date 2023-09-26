@@ -70,22 +70,25 @@ export class LiveWireGrapesJSModule extends BytePlugin {
             el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
-                manager.dataSet(
+                 manager.dataSet(
                   component.$wire,
                   "form.css",
                   el.livewire____grapesjs.getCss()
                 );
-                manager.dataSet(
+                 manager.dataSet(
                   component.$wire,
-                  "form.conent",
+                  "form.content",
                   el.livewire____grapesjs.getHtml()
                 );
-                manager.dataSet(
+                 manager.dataSet(
                   component.$wire,
                   "form.js",
                   el.livewire____grapesjs.getJs()
                 );
-                component.$wire.doSaveBuilder();
+               setTimeout(function(){
+                 component.$wire.doSaveBuilder();
+               },700);
+                console.log(component);
               },
             });
             // var canvas = el.querySelector(" .gjs-cv-canvas");

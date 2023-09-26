@@ -1,13 +1,17 @@
 <div class="byte-builder-manager">
     <div class="byte-builder-header">
         <div class="byte-builder-header__left">
-            <div class="byte-builder-logo">BYTE BUILDER <span>v1.0.0</span></div>
+            <div class="byte-builder-logo">BYTE BUILDER <span>v1.0.0</span>
+                <a href="{{ $linkPageList }}" class="  text-white ms-4">Go Back</a>
+            </div>
+
         </div>
         <div class="byte-builder-header__center">
-            <div class="devices-panel-manager"></div>
+
+            <div wire:ignore class="devices-panel-manager"></div>
         </div>
         <div class="byte-builder-header__right">
-            <div class="options-panel-manager"></div>
+            <div wire:ignore class="options-panel-manager"></div>
         </div>
     </div>
     <div class="byte-builder-body">
@@ -80,7 +84,7 @@
             <div class="byte-builder-control__content">
                 <div x-show="controlTabIndex==0" class="byte-builder-control__content--item">
                     <h3>Block Manager</h3>
-                    <div class="manager-body block-manager">
+                    <div wire:ignore class="manager-body block-manager">
                     </div>
                 </div>
                 <div x-show="controlTabIndex==1" class="byte-builder-control__content--item">
@@ -116,7 +120,7 @@
                     </div>
                 </div>
                 <div x-show="controlTabIndex==2" class="byte-builder-control__content--item">
-                    <h4>Setting Page</h4>
+                    <h3>Setting Page</h3>
                     <div class="manager-body setting-page-manager">
                         {!! form_render($itemManager, $form, $dataId) !!}
                         <div class="mt-2 float-end">
@@ -138,7 +142,7 @@
         <div class="byte-builder-content">
             <div wire:ignore wire:grapesjs wire:grapesjs.options='@json($options)'></div>
         </div>
-        <div class="byte-builder-setting">
+        <div class="byte-builder-setting" wire:ignore>
             <div class="byte-builder-setting__component" x-data="{ tabIndex: 0 }">
                 <div class="byte-builder-setting__component--tabs">
                     <div class="byte-builder-setting__component--tab" :class="tabIndex == 0 ? 'active' : ''"

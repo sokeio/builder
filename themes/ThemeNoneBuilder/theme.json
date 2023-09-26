@@ -1,0 +1,14 @@
+{
+    "id":"theme-themenonebuilder-16fc9bee-faa0-41f8-9bd9-a0a47ffa79106469236",
+    "name": "ThemeNoneBuilder",
+    "version":"v1.0.0",
+    "alias": "themenonebuilder",
+    "description": "",
+    "keywords": [],
+    "priority": 200,
+    "aliases": {},
+    "namespace":"ByteTheme\\ThemeNoneBuilder",
+    "locations": [],
+    "layout":"",
+    "requires": []
+}

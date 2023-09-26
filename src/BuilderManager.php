@@ -100,8 +100,6 @@ class BuilderManager extends ItemCallback
     public function getPlugins()
     {
         return apply_filters('BYTE_BUILDER_PLUGINS', [
-
-
             [
                 'name' => 'gjs-blocks-basic',
                 'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
