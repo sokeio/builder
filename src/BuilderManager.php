@@ -28,7 +28,9 @@ class BuilderManager extends ItemCallback
                 'name' => 'grapesjs-byte-builder',
                 'js' => [url('platform/modules/Builder/grapesjs-byte-builder/dist/index.js')],
                 'css' => [],
-                'options' => []
+                'options' => [
+                    'urlTemplateManager' => route('admin.builder.template-manager')
+                ]
             ], ...$this->getPlugins()],
             'blockManager' => [
                 'appendTo' => '.byte-builder-manager .block-manager',
@@ -79,7 +81,8 @@ class BuilderManager extends ItemCallback
 
             'assetManager' => false,
 
-            'storageManager' => false
+            'storageManager' => false,
+
         ];
     }
     public function getBlocks()

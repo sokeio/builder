@@ -2,6 +2,9 @@
 
 namespace BytePlugin\BuilderPage\Models;
 
-class PageBuilder extends \BytePlatform\Model  {
+use BytePlatform\Traits\WithSlug;
 
+class PageBuilder extends \BytePlatform\Model
+{
+    use WithSlug;
 }

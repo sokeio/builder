@@ -67,7 +67,7 @@
             "dist": {
                 "type": "path",
                 "url": "./..",
-                "reference": "199a01758ecec267639f9c18b98c65da741dd4f2"
+                "reference": "5fcebb3ba6e48f355f581b4152c1f87a37009551"
             },
             "require": {
                 "byteplatform/byteplatform": "dev-main",
@@ -113,12 +113,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BytePlatform/BytePlatform.git",
-                "reference": "ee3222152a8ae0e71a2e5e13af341f3a6f32e7f1"
+                "reference": "f0a7c94dd6e5f6b3c3ef3b0940b080129ccefe56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/ee3222152a8ae0e71a2e5e13af341f3a6f32e7f1",
-                "reference": "ee3222152a8ae0e71a2e5e13af341f3a6f32e7f1",
+                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/f0a7c94dd6e5f6b3c3ef3b0940b080129ccefe56",
+                "reference": "f0a7c94dd6e5f6b3c3ef3b0940b080129ccefe56",
                 "shasum": ""
             },
             "require": {
@@ -176,7 +176,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-09-27T07:06:16+00:00"
+            "time": "2023-09-27T11:19:39+00:00"
         },
         {
             "name": "byteplatform/laravel",
