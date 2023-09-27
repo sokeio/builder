@@ -64,6 +64,15 @@ export default (editor, opts = {}) => {
         window[callback] = function (template) {
           console.log(template);
           modal.hide();
+          console.log(model);
+          var newComponent = editor.DomComponents.addComponent(template);
+
+          // Append the new component as a child of the selected component
+          model.components().add(newComponent);
+
+          // Render the changes
+          // editor.render();
+          // model.addComponents(template);
         };
       });
   });

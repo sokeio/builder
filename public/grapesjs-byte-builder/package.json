@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-byte-builder",
-  "version": "1.0.89",
+  "version": "1.0.94",
   "description": "Grapesjs Shortcode",
   "main": "dist/index.js",
   "repository": {

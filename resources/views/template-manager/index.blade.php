@@ -1,6 +1,6 @@
 <div class="modal-body p-0" x-data='{
     async getTemplateHtml(){
-    return "demo";
+    return "<h1>xin chaof</h1>";
 }
 }'>
     <div class="p-2">

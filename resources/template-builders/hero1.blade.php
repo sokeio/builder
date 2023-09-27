@@ -1,6 +1,7 @@
 <!--
     template name:Vertically centered hero sign-up form
     topic: boostrap 5
+    category: boostrap 5
     anthor: nguyen van nah
     email:nguyenvanhaudev@gmail.com
     thumbnail:platform/modules/builder/template/hero1.jpg

@@ -1,6 +1,7 @@
 <!--
     template name:Responsive left-aligned hero with image
     topic: boostrap 5
+    category: boostrap 5
     anthor: nguyen van nah
     email:nguyenvanhaudev@gmail.com
     thumbnail:platform/modules/builder/template/hero2.jpg
