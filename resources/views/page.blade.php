@@ -2,7 +2,9 @@
     <div class="byte-builder-header">
         <div class="byte-builder-header__left">
             <div class="byte-builder-logo">BYTE BUILDER <span>v1.0.0</span>
-                <a href="{{ $linkPageList }}" class="  text-white ms-4">Go Back</a>
+                <a href="{{ $linkPageList }}" class="text-white ms-4">Go Back</a>
+                <a href="{{ url($form->slug) }}" class="text-white ms-4" target="_blank">Go
+                    View</a>
             </div>
 
         </div>

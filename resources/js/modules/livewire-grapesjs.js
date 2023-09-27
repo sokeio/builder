@@ -85,10 +85,7 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                   "form.js",
                   el.livewire____grapesjs.getJs()
                 );
-               setTimeout(function(){
-                 component.$wire.doSaveBuilder();
-               },700);
-                console.log(component);
+                component.$wire.doSaveBuilder();
               },
             });
             // var canvas = el.querySelector(" .gjs-cv-canvas");

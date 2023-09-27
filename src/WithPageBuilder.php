@@ -13,7 +13,7 @@ trait WithPageBuilder
     {
         return 'Page Builder';
     }
-    protected function getPageList()
+    protected function getLinkPageList()
     {
         return '';
     }
@@ -34,7 +34,7 @@ trait WithPageBuilder
             'options' => $this->getOptions(),
             'itemManager' => $this->getItemManager(),
             'templates' => TemplateBuilder::getTemplates(),
-            'linkPageList' => $this->getPageList()
+            'linkPageList' => $this->getLinkPageList()
         ]);
     }
 }

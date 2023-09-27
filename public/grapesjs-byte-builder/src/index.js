@@ -40,6 +40,11 @@ export default (editor, opts = {}) => {
       editor.runCommand("open-shortcode-dialog", model);
     }
   });
+  editor.on("component:dblclick", function (model) {
+    if (model && model.get("type") === "shortcode") {
+      editor.runCommand("open-shortcode-dialog", model);
+    }
+  });
   editor.on("block:drag:stop", function (model) {
     if (model && model.get("type") === "shortcode") {
       editor.runCommand("open-shortcode-dialog", model);

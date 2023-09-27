@@ -12,6 +12,10 @@ use Carbon\Carbon;
 class PageBuilder extends Component
 {
     use WithPageBuilder;
+    protected function getLinkPageList()
+    {
+        return route('admin.page-builder-list');
+    }
     protected function ItemManager()
     {
         return ItemManager::Form()->Model(PageBuilderModel::class)->Item([

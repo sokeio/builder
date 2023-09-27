@@ -63,6 +63,18 @@ class BuilderManager extends ItemCallback
             'canvas' => [
                 'scripts' => ['https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js'],
                 'styles' => ['https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css'],
+                'frameStyle' => `
+
+                body { background-color: #fff }
+                * ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1) }
+                * ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2) }
+                * ::-webkit-scrollbar { width: 10px }
+                *[data-gjs-type="shortcode"] {
+                    min-height: 50px;
+                    padding: 10px;
+                    border: 1px dashed #ccc;
+                }
+              `
             ],
 
             'assetManager' => false,
