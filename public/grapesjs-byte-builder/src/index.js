@@ -43,7 +43,7 @@ export default (editor, opts = {}) => {
     }
     let button = document.createElement("div");
     button.style = "text-align: center;";
-    button.classList.add("div-component-plus");
+    button.classList.add("div-builder-component-plus");
     button.innerHTML =
       "<button class='button-component-plus btn btn-sm btn-primary'>+</button>";
     model.view.el.append(button);
@@ -57,28 +57,21 @@ export default (editor, opts = {}) => {
           {
             $url: options.urlTemplateManager,
             $title: options.titleTemplateManager,
-            $size: "modal-xl modal-fullscreen-xxl-down",
+            $size: "modal-xl modal-fullscreen-lg-down",
           },
           { callbackEvent: callback }
         );
         window[callback] = function (template) {
-          console.log(template);
-          modal.hide();
-          console.log(model);
           var newComponent = editor.DomComponents.addComponent(template);
-
           // Append the new component as a child of the selected component
           model.components().add(newComponent);
-
-          // Render the changes
-          // editor.render();
-          // model.addComponents(template);
+          modal.hide();
         };
       });
   });
 
   editor.on("component:deselected", function (model) {
-    model.view.el.querySelector(".div-component-plus")?.remove();
+    model.view.el.querySelector(".div-builder-component-plus")?.remove();
   });
   editor.on("component:dblclick", function (model) {
     if (model && model.get("type") === "shortcode") {

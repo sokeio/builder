@@ -8,7 +8,10 @@ use BytePlatform\Forms\WithFormData;
 trait WithPageBuilder
 {
     use WithFormData;
-
+    public $tabIndex = 0;
+    protected $queryString = [
+        'tabIndex' => ['except' => 0],
+    ];
     protected function getPageTitle()
     {
         return 'Page Builder';

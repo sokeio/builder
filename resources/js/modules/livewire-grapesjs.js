@@ -70,21 +70,6 @@ export class LiveWireGrapesJSModule extends BytePlugin {
             el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
-                 manager.dataSet(
-                  component.$wire,
-                  "form.css",
-                  el.livewire____grapesjs.getCss()
-                );
-                 manager.dataSet(
-                  component.$wire,
-                  "form.content",
-                  el.livewire____grapesjs.getHtml()
-                );
-                 manager.dataSet(
-                  component.$wire,
-                  "form.js",
-                  el.livewire____grapesjs.getJs()
-                );
                 component.$wire.doSaveBuilder();
               },
             });
@@ -100,6 +85,24 @@ export class LiveWireGrapesJSModule extends BytePlugin {
             //       html: templateContent,
             //     });
             // });
+            el.livewire____grapesjs.on("change", function () {
+              console.log('1223333');
+              manager.dataSet(
+                component.$wire,
+                "form.css",
+                el.livewire____grapesjs.getCss()
+              );
+               manager.dataSet(
+                component.$wire,
+                "form.content",
+                el.livewire____grapesjs.getHtml()
+              );
+               manager.dataSet(
+                component.$wire,
+                "form.js",
+                el.livewire____grapesjs.getJs()
+              );
+            });
             el.livewire____grapesjs.on("load", function () {
               // console.log(el.livewire____grapesjs);
               // const deviceManager = el.livewire____grapesjs.DeviceManager;

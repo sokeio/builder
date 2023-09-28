@@ -38,13 +38,17 @@ class PageBuilder extends Component
     }
     public function doSaveBuilder()
     {
-       
-        $model = $this->form->DataFromForm();
-        if(!$this->dataId){
-            $this->showMessage('Save Data Successfull');
-         return redirect(route('admin.page-builder-edit', ['dataId' => $model->id]));
-        }else{
-            $this->showMessage('Save Data Successfull');
+        try {
+            $model = $this->form->DataFromForm();
+            if (!$this->dataId) {
+                $this->showMessage('Save Data Successfull');
+                return redirect(route('admin.page-builder-edit', ['dataId' => $model->id]));
+            } else {
+                $this->showMessage('Save Data Successfull');
+            }
+        } catch (\Exception $ex) {
+            $this->tabIndex = 2;
+            throw $ex;
         }
     }
 }

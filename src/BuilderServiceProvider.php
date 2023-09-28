@@ -33,7 +33,9 @@ class BuilderServiceProvider extends ServiceProvider
     public function packageRegistered()
     {
         DataInfo::macro('getTemplateBuilder', function () {
-            if (File::exists($this->getPath('resources/template-builders')) && $files =  glob($this->getPath('resources/template-builders') . '/*.*')) {
+            if (File::exists($this->getPath('resources/template-builders')) && $files =  collect(File::allFiles($this->getPath('resources/template-builders')))->map(function ($item) {
+                return $item->getPathname();
+            })) {
                 return $files;
             }
             return [];

@@ -7,7 +7,6 @@
                     <a href="{{ url($form->slug) }}" class="text-white ms-4" target="_blank">View</a>
                 @endif
             </div>
-
         </div>
         <div class="byte-builder-header__center">
 
@@ -19,7 +18,7 @@
     </div>
     <div class="byte-builder-body">
         <div class="byte-builder-control" x-data="{
-            controlTabIndex: 0,
+            controlTabIndex: @entangle('tabIndex').live,
             controlChooseTab: function(tab) {
                 if (tab == this.controlTabIndex) {
                     this.controlTabIndex = -1;
@@ -92,33 +91,51 @@
                 </div>
                 <div x-show="controlTabIndex==1" class="byte-builder-control__content--item">
                     <h3>Template Manager</h3>
-                    <div class="manager-body template-page-manager">
-                        @foreach ($templates as $item)
-                            <div class="item-box" draggable="true"
-                                data-template-content="{{ urlencode($item->content) }}"
-                                x-on:dragstart.self="
-                                event.dataTransfer.effectAllowed = 'move';
-                                event.dataTransfer.setData('text/html', decodeURIComponent(event.target.getAttribute('data-template-content').replace(/\+/g, ' ')));
-                              ">
-                                @if ($item->thumbnail)
-                                    <div style="background-image: url({{ $item->thumbnail }});    background-repeat: no-repeat;
-                                        background-size: cover;
-                                        height: 180px;
-                                        background-position: center;
-                                        width: 99%;"
-                                        class="template-preview"></div>
-                                @else
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
-                                        viewBox="0 0 1300 1100" width="99%" height="180">
-                                        <foreignObject width="100%" height="100%" style="pointer-events:none">
-                                            <div xmlns="http://www.w3.org/1999/xhtml">
-                                                {{ $item->content }} <style scoped></style>
-                                            </div>
-                                        </foreignObject>
-                                    </svg>
-                                @endif
-                            </div>
-                        @endforeach
+                    <div class="manager-body template-page-manager"
+                        x-data='{
+                        templates: @json($templates),
+                        searchText:"",
+                        getTemplates() {
+                            let self=this;
+                            return this.templates.filter((item, index) => {
+                                return (
+                                    self.searchText==""||
+                                    item.category?.indexOf(self.searchText)>-1||
+                                    item.author?.indexOf(self.searchText)>-1||
+                                    item.topic?.indexOf(self.searchText)>-1||
+                                    item.email?.indexOf(self.searchText)>-1||
+                                    item.description?.indexOf(self.searchText)>-1||
+                                    item.template_name?.indexOf(self.searchText)>-1
+                
+                                );
+                              });
+                        }
+                    }'>
+                        <input class=" form-control" x-model="searchText" />
+                        <div class="mt-2">
+                            <template x-for="item in getTemplates()">
+                                <div class="item-box" draggable="true"
+                                    x-on:dragstart.self="
+                                    event.dataTransfer.effectAllowed = 'move';
+                                    event.dataTransfer.setData('text/html', decodeURIComponent(item.content.replace(/\+/g, ' ')));
+                                  ">
+                                    <template x-if="item.thumbnail!=''">
+                                        <div :style='"background-repeat: no-repeat; background-size: cover;height: 180px;background-position: center;width: 99%; background-image: url(" +
+                                        item.thumbnail + "); "'
+                                            class="template-preview"></div>
+                                    </template>
+                                    <template x-if="item.thumbnail==''">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
+                                            viewBox="0 0 1300 1100" width="99%" height="180">
+                                            <foreignObject width="100%" height="100%" style="pointer-events:none">
+                                                <div xmlns="http://www.w3.org/1999/xhtml" x-html="item.content">
+                                                </div>
+                                            </foreignObject>
+                                        </svg>
+                                    </template>
+                                </div>
+                            </template>
+                        </div>
 
                     </div>
                 </div>

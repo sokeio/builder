@@ -78,7 +78,7 @@ class BuilderManager extends ItemCallback
                 }
               `
             ],
-
+            'height' => '100%',
             'assetManager' => false,
 
             'storageManager' => false,

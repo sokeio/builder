@@ -2,6 +2,7 @@
 
 namespace BytePlatform\Builder\Livewire\TemplateManager;
 
+use BytePlatform\Builder\TemplateBuilder;
 use BytePlatform\Component;
 
 class Index extends Component
@@ -13,6 +14,8 @@ class Index extends Component
     }
     public function render()
     {
-        return view('builder::template-manager.index');
+        return view('builder::template-manager.index', [
+            'templates' => TemplateBuilder::getTemplates()
+        ]);
     }
 }

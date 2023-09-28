@@ -1,7 +1,7 @@
 <!--
     template name:Centered hero
     topic: boostrap 5
-    category: boostrap 5
+    category: hero
     anthor: nguyen van nah
     email:nguyenvanhaudev@gmail.com
     thumbnail:platform/modules/builder/template/hero0.jpg

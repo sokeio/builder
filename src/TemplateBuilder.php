@@ -39,7 +39,7 @@ class TemplateBuilder implements Arrayable
             }
             $this->template_name = isset($metadataArray['template name']) ? $metadataArray['template name'] : '';
             $this->author =  isset($metadataArray['anthor']) ? $metadataArray['anthor'] : '';
-            $this->author =  isset($metadataArray['category']) ? $metadataArray['category'] : '';
+            $this->category =  isset($metadataArray['category']) ? $metadataArray['category'] : '';
             $this->email =  isset($metadataArray['email']) ? $metadataArray['email'] : '';
             $this->topic =  isset($metadataArray['topic']) ? $metadataArray['topic'] : '';
             $this->thumbnail = isset($metadataArray['thumbnail']) ? $metadataArray['thumbnail'] : '';
@@ -57,6 +57,7 @@ class TemplateBuilder implements Arrayable
             'path' => $this->path,
             'template_name' => $this->template_name,
             'author' => $this->author,
+            'category' => $this->category,
             'topic' => $this->topic,
             'email' => $this->email,
             'thumbnail' => $this->thumbnail,
