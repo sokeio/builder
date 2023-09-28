@@ -26,7 +26,7 @@ class BuilderManager extends ItemCallback
         return [
             'pluginManager' => [[
                 'name' => 'grapesjs-byte-builder',
-                'js' => [url('platform/modules/Builder/grapesjs-byte-builder/dist/index.js')],
+                'js' => [url('platform/modules/builder/grapesjs-byte-builder/dist/index.js')],
                 'css' => [],
                 'options' => [
                     'urlTemplateManager' => route('admin.builder.template-manager')
