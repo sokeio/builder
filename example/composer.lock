@@ -67,10 +67,10 @@
             "dist": {
                 "type": "path",
                 "url": "./..",
-                "reference": "844f99deb42b0c01ae890d31daaaf18d6e468ff2"
+                "reference": "819d3058bc76ac8a7596e5e4967de3c9f136c019"
             },
             "require": {
-                "byteplatform/byteplatform": "dev-main",
+                "byteplatform/byteplatform": "^1.0.2",
                 "php": "^8.1"
             },
             "type": "library",
@@ -109,16 +109,16 @@
         },
         {
             "name": "byteplatform/byteplatform",
-            "version": "dev-main",
+            "version": "v1.0.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/BytePlatform/BytePlatform.git",
-                "reference": "09aefc1871e938f736bee6b4a17996065d2b10bf"
+                "reference": "c6fe737929c37aa374320ae88303bfc314f8ee00"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/09aefc1871e938f736bee6b4a17996065d2b10bf",
-                "reference": "09aefc1871e938f736bee6b4a17996065d2b10bf",
+                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/c6fe737929c37aa374320ae88303bfc314f8ee00",
+                "reference": "c6fe737929c37aa374320ae88303bfc314f8ee00",
                 "shasum": ""
             },
             "require": {
@@ -128,7 +128,6 @@
                 "symfony/filesystem": "^6.3.1",
                 "unisharp/laravel-filemanager": "^2.6.0"
             },
-            "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
@@ -164,7 +163,7 @@
             "homepage": "https://github.com/byteplatform/byteplatform",
             "support": {
                 "issues": "https://github.com/BytePlatform/BytePlatform/issues",
-                "source": "https://github.com/BytePlatform/BytePlatform/tree/main"
+                "source": "https://github.com/BytePlatform/BytePlatform/tree/v1.0.2"
             },
             "funding": [
                 {
@@ -176,7 +175,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-09-28T08:57:18+00:00"
+            "time": "2023-09-28T09:45:54+00:00"
         },
         {
             "name": "byteplatform/laravel",

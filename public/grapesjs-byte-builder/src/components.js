@@ -4,7 +4,9 @@ export default (editor, opts = {}) => {
 
   domc.addType("shortcode", {
     isComponent: (el) =>
-      el.tagName === "DIV" && shortcodeRegex.test(el.innerHTML),
+      el.tagName === "DIV" &&
+      el.childElementCount == 0 &&
+      shortcodeRegex.test(el.innerHTML),
     model: {
       defaults: {
         tagName: "",
