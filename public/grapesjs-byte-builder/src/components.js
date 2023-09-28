@@ -1,11 +1,10 @@
 export default (editor, opts = {}) => {
   const domc = editor.DomComponents;
-  var shortcodeRegex = /\[([a-zA-Z0-9_-]+)\](.*?)\[\/\1\]/;
+  var shortcodeRegex = /\[([\w-:]+)((?:\s+\w+\s*=\s*"[^"]*")*)\](.*?)\[\/\1\]/s;
+
   domc.addType("shortcode", {
-    isComponent: (el) => {
-      //   console.log(el);
-      return el.tagName === "DIV" && shortcodeRegex.test(el.innerHTML);
-    },
+    isComponent: (el) =>
+      el.tagName === "DIV" && shortcodeRegex.test(el.innerHTML),
     model: {
       defaults: {
         tagName: "",

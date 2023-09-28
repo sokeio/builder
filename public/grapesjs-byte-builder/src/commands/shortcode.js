@@ -1,6 +1,6 @@
 export default (editor, opts = {}) => {
   const command = editor.Commands;
-  const openDialog = function (model, sender) {
+  const openDialog = function (editor, sender, model) {
     if (window.openShortcodeSetting) {
       let div = document.createElement("div");
       div.innerHTML = model.view.el.innerHTML;
@@ -17,6 +17,8 @@ export default (editor, opts = {}) => {
             '<div data-gjs-type="shortcode">' + $content + "</div>"
           );
           model.trigger("change:content");
+          // Render the changes
+          editor.render();
         },
         function () {
           sender.stop();
@@ -26,10 +28,7 @@ export default (editor, opts = {}) => {
   };
   command.add("open-shortcode-dialog", {
     run: function (editor, sender, model) {
-      console.log(model);
-      const modelId = model.getId();
-      console.log("ID của model là:", modelId);
-      openDialog(model, sender);
+      openDialog(editor, sender, model);
     },
   });
 };

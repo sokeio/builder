@@ -40,6 +40,7 @@ export default (editor, opts = {}) => {
   editor.on("component:selected", function (model) {
     if (model && model.get("type") === "shortcode") {
       editor.runCommand("open-shortcode-dialog", model);
+      return;
     }
     let button = document.createElement("div");
     button.style = "text-align: center;";
@@ -47,7 +48,6 @@ export default (editor, opts = {}) => {
     button.innerHTML =
       "<button class='button-component-plus btn btn-sm btn-primary'>+</button>";
     model.view.el.append(button);
-    console.log(options);
     model.view.el
       .querySelector(".button-component-plus")
       .addEventListener("click", () => {
@@ -66,6 +66,8 @@ export default (editor, opts = {}) => {
           // Append the new component as a child of the selected component
           model.components().add(newComponent);
           modal.hide();
+          // Render the changes
+          editor.render();
         };
       });
   });
