@@ -86,6 +86,12 @@ class BuilderPageServiceProvider extends ServiceProvider
                     ]
                 ];
             }
+            return [
+                'view' => 'builderpage::homepage',
+                'params' => [
+                    'content' => "<div class='p-4'>Not Setting HomePages</div>",
+                ]
+            ];
         });
         SettingForm::Register(function (\BytePlatform\ItemManager $form) {
             $form->Item([
