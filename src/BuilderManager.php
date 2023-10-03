@@ -130,6 +130,12 @@ class BuilderManager extends ItemCallback
                 'options' => []
             ],
             // [
+            //     'name' => 'grapesjs-bootstrap',
+            //     'js' => ['https://unpkg.com/grapesjs-bootstrap'],
+            //     'css' => [],
+            //     'options' => []
+            // ]
+            // [
             //     'name' => 'grapesjs-project-manager',
             //     'js' => ['https://unpkg.com/grapesjs-project-manager'],
             //     'css' => ['https://unpkg.com/grapesjs-project-manager/dist/grapesjs-project-manager.min.css'],
