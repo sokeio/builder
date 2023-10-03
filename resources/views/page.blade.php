@@ -1,7 +1,7 @@
 <div class="byte-builder-manager">
     <div class="byte-builder-header">
         <div class="byte-builder-header__left">
-            <div class="byte-builder-logo">BYTE BUILDER <span>v1.0.0</span>
+            <div class="byte-builder-logo">BYTE BUILDER <span>{{$builder_version}}</span>
                 <a href="{{ $linkPageList }}" class="text-white ms-4">Back</a>
                 @if ($form->slug)
                     <a href="{{ url($form->slug) }}" class="text-white ms-4" target="_blank">View</a>

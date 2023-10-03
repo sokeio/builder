@@ -9,6 +9,7 @@ trait WithPageBuilder
 {
     use WithFormData;
     public $tabIndex = 0;
+    public $builder_version = 'v1.0.0';
     protected $queryString = [
         'tabIndex' => ['except' => 0],
     ];
@@ -42,7 +43,7 @@ trait WithPageBuilder
             'options' => $this->getOptions(),
             'itemManager' => $this->getItemManager(),
             'templates' => [],
-            'linkPageList' => $this->getLinkPageList()
+            'linkPageList' => $this->getLinkPageList(),
         ]);
     }
 }
