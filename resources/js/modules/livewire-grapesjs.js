@@ -8,6 +8,20 @@ export class LiveWireGrapesJSModule extends BytePlugin {
     if (window.Livewire) {
       let self = this;
       let manager = self.getManager();
+      const removeDivBuilderComponentPlus = (text) => {
+        // Tạo một phần tử tạm thời để chứa chuỗi văn bản
+        var tempElement = document.createElement("div");
+        tempElement.innerHTML = text;
+
+        // Lấy phần tử có class "div-builder-component-plus"
+        var element = tempElement.querySelector(".div-builder-component-plus");
+
+        // Kiểm tra xem phần tử có tồn tại không và loại bỏ nếu có
+        if (element) {
+          element.parentNode.removeChild(element);
+        }
+        return tempElement.innerHTML;
+      };
       window.Livewire.directive("grapesjs", ({ el, directive, component }) => {
         // Only fire this handler on the "root" directive.
         if (directive.modifiers.length > 0 || el.livewire____grapesjs) {
@@ -23,6 +37,7 @@ export class LiveWireGrapesJSModule extends BytePlugin {
         if (options?.pluginManager) {
           options = { ...options, pluginManager: undefined };
         }
+
         const grapesjsCreate = () => {
           if (!el.livewire____grapesjs) {
             el.livewire____grapesjs = grapesjs.init({
@@ -69,12 +84,12 @@ export class LiveWireGrapesJSModule extends BytePlugin {
                 "form.css",
                 el.livewire____grapesjs.getCss()
               );
-               manager.dataSet(
+              manager.dataSet(
                 component.$wire,
                 "form.content",
-                el.livewire____grapesjs.getHtml()
+                removeDivBuilderComponentPlus(el.livewire____grapesjs.getHtml())
               );
-               manager.dataSet(
+              manager.dataSet(
                 component.$wire,
                 "form.js",
                 el.livewire____grapesjs.getJs()
@@ -90,14 +105,12 @@ export class LiveWireGrapesJSModule extends BytePlugin {
             });
             el.livewire____grapesjs.on("stop:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              console.log("byte-builder-preview2");
               el.closest(".byte-builder-manager").classList.remove(
                 "byte-builder-preview"
               );
             });
             el.livewire____grapesjs.on("run:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              console.log("byte-builder-preview1");
               el.closest(".byte-builder-manager").classList.add(
                 "byte-builder-preview"
               );

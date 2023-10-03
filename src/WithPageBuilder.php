@@ -29,6 +29,11 @@ trait WithPageBuilder
     {
         $this->skipRender();
     }
+    public function getTemplates()
+    {
+        $this->skipRender();
+        return TemplateBuilder::getTemplates();
+    }
     public function render()
     {
         Theme::setLayout('none');
@@ -36,7 +41,7 @@ trait WithPageBuilder
         return view('builder::page', [
             'options' => $this->getOptions(),
             'itemManager' => $this->getItemManager(),
-            'templates' => TemplateBuilder::getTemplates(),
+            'templates' => [],
             'linkPageList' => $this->getLinkPageList()
         ]);
     }

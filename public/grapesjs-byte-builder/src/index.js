@@ -67,7 +67,7 @@ export default (editor, opts = {}) => {
           model.components().add(newComponent);
           modal.hide();
           // Render the changes
-          editor.render();
+          // editor.render();
         };
       });
   });

@@ -12,10 +12,14 @@ class Index extends Component
     {
         $this->callbackEvent = request('callbackEvent');
     }
+    public function getTemplates()
+    {
+        $this->skipRender();
+        return TemplateBuilder::getTemplates();
+
+    }
     public function render()
     {
-        return view('builder::template-manager.index', [
-            'templates' => TemplateBuilder::getTemplates()
-        ]);
+        return view('builder::template-manager.index', []);
     }
 }

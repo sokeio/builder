@@ -3,9 +3,13 @@
         templateCurrent:null,
         catagoryCurrent:"",
         searchText:"",
+        templates:[],
+        async loadTemplate(){
+            this.templates= await this.$wire.getTemplates();
+        },
         async getTemplateHtml(){
             return this.templateCurrent?.content??"";
-        },templates:@json($templates),
+        },
         getTemplates(){
             let self=this;
             return this.templates.filter((item, index) => {
@@ -35,49 +39,42 @@
                 return self.indexOf(value) === index;
               });
         }
-}'>
-    <div class="p-2">
-        <div class="row">
+}'
+    x-init="loadTemplate()">
+    <div>
+        <div class="row g-0">
             <div class="col">
-            </div>
-            <div class="col-auto">
-                <input class=" form-control" x-model="searchText" />
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link  text-uppercase text-center"
+                            :class="catagoryCurrent == '' ? 'text-bg-primary ' : ''"
+                            @click="catagoryCurrent='';templateCurrent=null;" aria-current="page" href="#">All</a>
+                    </li>
+                    <template x-for="item in getCatagorys()">
+                        <li class="nav-item">
+                            <a class="nav-link   text-uppercase text-center"
+                                :class="catagoryCurrent == item ? ' text-bg-primary' : ''"
+                                @click="catagoryCurrent=item;templateCurrent=null;" href="#"
+                                x-text="item">Link</a>
+                        </li>
+                    </template>
+                    <li class="nav-item p-1 w-auto">
+                       
+                            <input class=" form-control form-control-sm p-1" x-model="searchText"
+                            placeholder="Search Template..." />
+                      
+                    </li>
+                </ul>
             </div>
         </div>
-    </div>
-    <div class="border-top-wide">
-        <ul class="nav nav-tabs">
-            <li class="nav-item">
-                <a class="nav-link" :class="catagoryCurrent == '' ? 'active' : ''"
-                    @click="catagoryCurrent='';templateCurrent=null;" aria-current="page" href="#">All</a>
-            </li>
-            <template x-for="item in getCatagorys()">
-                <li class="nav-item">
-                    <a class="nav-link" :class="catagoryCurrent == item ? 'active' : ''"
-                        @click="catagoryCurrent=item;templateCurrent=null;" href="#" x-text="item">Link</a>
-                </li>
-            </template>
-        </ul>
-        <div style="min-height: 400px">
-            <div class="row g-1">
+
+        <div style="min-height: 400px;max-height:70vh; overflow:auto;">
+            <div class="row g-0">
                 <template x-for="item in getTemplates()">
                     <div class="col-3  p-1">
                         <div class="border border-pink rounded-1" :class="item == templateCurrent ? 'border-2' : ''"
                             @click="chooseTemplate(item)">
-                            <template x-if="item.thumbnail">
-                                <div :style='"background-repeat: no-repeat; background-size: cover;height: 180px;background-position: center;width: 99%; background-image: url(" +
-                                item.thumbnail + "); "'
-                                    class="template-preview"></div>
-                            </template>
-                            <template  x-if="item.thumbnail==''">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="template-preview" viewBox="0 0 1300 1100"
-                                    width="99%" height="180">
-                                    <foreignObject width="100%" height="100%" style="pointer-events:none">
-                                        <div xmlns="http://www.w3.org/1999/xhtml" x-html="item.content">
-                                        </div>
-                                    </foreignObject>
-                                </svg>
-                            </template>
+                            @include('builder::template-manager.item')
                         </div>
                     </div>
                 </template>

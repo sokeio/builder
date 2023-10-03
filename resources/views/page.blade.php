@@ -9,7 +9,6 @@
             </div>
         </div>
         <div class="byte-builder-header__center">
-
             <div wire:ignore class="devices-panel-manager"></div>
         </div>
         <div class="byte-builder-header__right">
@@ -93,46 +92,54 @@
                     <h3>Template Manager</h3>
                     <div class="manager-body template-page-manager"
                         x-data='{
-                        templates: @json($templates),
+                        templates: [],
                         searchText:"",
-                        getTemplates() {
+                        async loadTemplate(){
+                            this.templates= await this.$wire.getTemplates();
+                        },
+                        getTemplates(itemCata="") {
                             let self=this;
-                            return this.templates.filter((item, index) => {
-                                return (
-                                    self.searchText==""||
+                            let rs= this.templates.filter((item, index) => {
+                                return (itemCata==""||itemCata==item.category)  && (
+                                    self.searchText===""||
                                     item.category?.indexOf(self.searchText)>-1||
                                     item.author?.indexOf(self.searchText)>-1||
                                     item.topic?.indexOf(self.searchText)>-1||
                                     item.email?.indexOf(self.searchText)>-1||
                                     item.description?.indexOf(self.searchText)>-1||
                                     item.template_name?.indexOf(self.searchText)>-1
-                
                                 );
                               });
+                            return rs;
+                        },
+                        getCatagorys(){
+                            return this.getTemplates("").map((item)=>{
+                                return item.category;
+                            }).filter((value, index, self) => {
+                                return self.indexOf(value) === index;
+                              });
                         }
-                    }'>
-                        <input class=" form-control" x-model="searchText" />
+                    }'
+                        x-init="loadTemplate()">
+                        <input class=" form-control" x-model="searchText" placeholder="Search Template..." />
                         <div class="mt-2">
-                            <template x-for="item in getTemplates()">
-                                <div class="item-box" draggable="true"
-                                    x-on:dragstart.self="
-                                    event.dataTransfer.effectAllowed = 'move';
-                                    event.dataTransfer.setData('text/html', decodeURIComponent(item.content.replace(/\+/g, ' ')));
-                                  ">
-                                    <template x-if="item.thumbnail!=''">
-                                        <div :style='"background-repeat: no-repeat; background-size: cover;height: 180px;background-position: center;width: 99%; background-image: url(" +
-                                        item.thumbnail + "); "'
-                                            class="template-preview"></div>
-                                    </template>
-                                    <template x-if="item.thumbnail==''">
-                                        <svg xmlns="http://www.w3.org/2000/svg" class="template-preview"
-                                            viewBox="0 0 1300 1100" width="99%" height="180">
-                                            <foreignObject width="100%" height="100%" style="pointer-events:none">
-                                                <div xmlns="http://www.w3.org/1999/xhtml" x-html="item.content">
-                                                </div>
-                                            </foreignObject>
-                                        </svg>
-                                    </template>
+                            <template x-for="(itemCata,index) in getCatagorys()">
+                                <div class="card rounded-1 mb-2 p-0 border-blue">
+                                    <h4 class="card-title m-0 rounded-0 p-1 text-bg-primary text-uppercase text-center"
+                                        x-html="itemCata">
+                                        Featured
+                                    </h4>
+                                    <div class="card-body p-1">
+                                        <template x-for="item in getTemplates(itemCata)">
+                                            <div class="item-box mb-1 border" draggable="true"
+                                                x-on:dragstart.self="
+                            event.dataTransfer.effectAllowed = 'move';
+                            event.dataTransfer.setData('text/html', item.content);
+                          ">
+                                                @include('builder::template-manager.item')
+                                            </div>
+                                        </template>
+                                    </div>
                                 </div>
                             </template>
                         </div>
@@ -179,7 +186,7 @@
                     </div>
                     <div class="byte-builder-setting__component--tab" :class="tabIndex == 3 ? 'active' : ''"
                         @click="tabIndex=3">
-                        Layer
+                        Outline
                     </div>
                 </div>
                 <div class="byte-builder-setting__component--content">

@@ -1,13 +1,11 @@
 <!--
     template name:Centered hero
-    topic: boostrap 5
+    topic: boostrap 5,hero
     category: hero
-    anthor: nguyen van nah
+    anthor: nguyen van hau
     email:nguyenvanhaudev@gmail.com
     thumbnail:platform/modules/builder/template/hero0.jpg
-    description:dfàà
-    ádfadsfà
-    ádfádfá
+    description:
 -->
 <div class="px-4 py-5 my-5 text-center">
     <img class="d-block mx-auto mb-4" src="https://getbootstrap.com/docs/5.3/assets/brand/bootstrap-logo.svg" alt="" width="72"

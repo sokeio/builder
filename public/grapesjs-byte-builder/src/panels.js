@@ -17,7 +17,7 @@ export default (editor, opts = {}) => {
   const ful = "fullscreen";
   const prv = "preview";
   const iconStyle = 'style="display: block; max-width:22px"';
-
+  console.log("grapesjs-byte-builder");
   panels.getPanels().reset([
     {
       id: "commands",

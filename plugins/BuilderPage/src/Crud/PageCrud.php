@@ -23,7 +23,24 @@ class PageCrud extends CrudManager
             Item::Add('name')->Column(Item::Col12)->Title('Name')->Required(),
             Item::Add('slug')->Title('Slug')->When(function ($item, $manager) {
                 return $manager->IsTable();
-            })->DisableEdit(),
+            })->DisableEdit()->DataText(function ($item) {
+                $button = $item->ConvertToButton()
+                    ->Title(function ($button) {
+                        $item = $button->getData();
+                        return  ($item->slug);
+                    })
+                    ->ButtonType(function ($button) {
+                        $item = $button->getData();
+                        return 'link';
+                    });
+                if ($button->getWhen()) {
+                    $button->ButtonLink(function ($button) {
+                        $item = $button->getData();
+                        return  url($item->slug);
+                    });
+                }
+                return $button->render();
+            }),
             Item::Add('content')->Title('content')->Type('tinymce')->Column(Item::Col12)->Required()->When(function ($item, $manager) {
                 return !$manager->IsTable();
             }),

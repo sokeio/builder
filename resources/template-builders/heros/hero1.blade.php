@@ -1,13 +1,11 @@
 <!--
     template name:Vertically centered hero sign-up form
-    topic: boostrap 5
-    category: boostrap 5
-    anthor: nguyen van nah
+    topic: boostrap 5,hero
+    category:hero
+    anthor: nguyen van hau
     email:nguyenvanhaudev@gmail.com
     thumbnail:platform/modules/builder/template/hero1.jpg
-    description:dfàà
-    ádfadsfà
-    ádfádfá
+    description:
 -->
 <div class="container col-xl-10 col-xxl-8 px-4 py-5">
     <div class="row align-items-center g-lg-5 py-5">
