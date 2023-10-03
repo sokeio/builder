@@ -14,7 +14,10 @@
         </svg>
     </template>
 
-    <template x-if="item.template_type">
+    <template x-if="item.template_type&&item.template_type=='free'">
+        <div class="ribbon  bg-muted text-muted-fg" x-html="item.template_type">Pro</div>
+    </template>
+    <template x-if="item.template_type&&item.template_type=='pro'">
         <div class="ribbon bg-warning" x-html="item.template_type">Pro</div>
     </template>
 </div>
