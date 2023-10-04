@@ -14,7 +14,7 @@
         </svg>
     </template>
 
-    <template x-if="item.template_type&&item.template_type=='free'">
+    <template x-if="item.template_type&&item.template_type==='free'">
         <div class="ribbon  bg-muted text-muted-fg" x-html="item.template_type">Pro</div>
     </template>
     <template x-if="item.template_type&&item.template_type=='pro'">
