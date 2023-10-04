@@ -64,7 +64,10 @@ class BuilderManager extends ItemCallback
             ],
             'canvas' => [
                 'scripts' => ['https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js'],
-                'styles' => ['https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css'],
+                'styles' => [
+                    'https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css',
+                    'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css'
+                ],
                 'frameStyle' => `
 
                 body { background-color: #fff }

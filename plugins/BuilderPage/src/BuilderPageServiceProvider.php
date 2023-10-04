@@ -47,6 +47,8 @@ class BuilderPageServiceProvider extends ServiceProvider
                 Shortcode::enable();
                 Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
                 Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
+                Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+
                 $data = PageBuilder::query()->where('slug', $slug)->first();
                 if ($data && $data->status) {
                     if ($data->id == setting('page_homepage_id')) {
@@ -74,6 +76,7 @@ class BuilderPageServiceProvider extends ServiceProvider
             Shortcode::enable();
             Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
             Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
+            Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
             $data = PageBuilder::query()->where('id', setting('page_homepage_id'))->first();
             if ($data) {
                 Assets::AddScript($data->js);
@@ -89,7 +92,7 @@ class BuilderPageServiceProvider extends ServiceProvider
             return [
                 'view' => 'builderpage::homepage',
                 'params' => [
-                    'content' => "<div class='p-4'>Not Setting HomePages</div>",
+                    'content' => "<div class='p-4'>HomePage is not setting</div>",
                 ]
             ];
         });
