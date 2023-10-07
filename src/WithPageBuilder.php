@@ -26,6 +26,11 @@ trait WithPageBuilder
         return BuilderManager::New()->getOptions();
     }
 
+    public function ConvertShortcodeToHtml($content)
+    {
+        $this->skipRender();
+        return shortcode_render($content);
+    }
     public function doSaveBuilder()
     {
         $this->skipRender();

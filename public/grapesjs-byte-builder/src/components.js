@@ -10,21 +10,41 @@ export default (editor, opts = {}) => {
     model: {
       defaults: {
         tagName: "",
-        name: "Shortcode",
+        name: "shortcode",
         draggable: true,
         droppable: false,
         removed: false,
         content: '<div data-gjs-type="shortcode"></div>',
-        components: "",
       },
     },
-    // toHTML: function () {
-    //   // Xử lý việc render HTML cho thành phần shortcode
-    //   var content = this.get("content");
-    //   var name = content.substring(6, content.length - 8);
-    //   return "Test thử";
-    // },
-    view: {},
+
+    view: {
+      async onRender({ model }) {
+        let html = this.el.innerHTML;
+        if (shortcodeRegex.test(html) || shortcodeRegex.test(model.content)) {
+          let $wireId = Alpine.closestRoot(
+            editor.editorView.$el[0]
+          )?.getAttribute("wire:id");
+          if ($wireId) {
+            console.log(this);
+            let shortcode = this.el.innerHTML;
+            if (shortcodeRegex.test(model.content)) {
+              shortcode = model.content;
+            }
+            let content = await Livewire.find($wireId).ConvertShortcodeToHtml(
+              shortcode
+            );
+            this.el.innerHTML = `<div data-gjs-type="shortcode">${content}</div>`;
+            this.el.setAttribute(
+              "data-shortcode",
+              encodeURIComponent(
+                '<div data-gjs-type="shortcode">' + html + "</div>"
+              )
+            );
+          }
+        }
+      },
+    },
   });
   editor.on("component:styleUpdate", function (model) {
     if (model && model.get("type") === "shortcode") {
@@ -32,7 +52,7 @@ export default (editor, opts = {}) => {
       model.set({
         style: {
           "min-height": "50px",
-          padding: "10px",
+          padding: "20px",
           border: "1px dashed #ccc",
           // Các thuộc tính style khác tùy ý
         },
