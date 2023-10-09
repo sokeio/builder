@@ -26,7 +26,6 @@ export default (editor, opts = {}) => {
             editor.editorView.$el[0]
           )?.getAttribute("wire:id");
           if ($wireId) {
-            console.log(this);
             let shortcode = this.el.innerHTML;
             if (shortcodeRegex.test(model.content)) {
               shortcode = model.content;
