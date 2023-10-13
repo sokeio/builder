@@ -43,27 +43,29 @@ class BuilderPageServiceProvider extends ServiceProvider
     private function bootGate()
     {
         $this->app->booted(function () {
-            Route::get('/{slug}', function ($slug) {
-                Shortcode::enable();
-                Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
-                Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
-                Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+            Route::group(['middleware' => 'web'], function () {
+                Route::get('/{slug}', function ($slug) {
+                    Shortcode::enable();
+                    Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
+                    Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
+                    Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
 
-                $data = PageBuilder::query()->where('slug', $slug)->first();
-                if ($data && $data->status) {
-                    if ($data->id == setting('page_homepage_id')) {
-                        return redirect('/');
+                    $data = PageBuilder::query()->where('slug', $slug)->first();
+                    if ($data && $data->status) {
+                        if ($data->id == setting('page_homepage_id')) {
+                            return redirect('/');
+                        }
+                        page_title($data->name, true);
+                        Assets::AddScript($data->js);
+                        Assets::AddStyle(trim($data->css));
+
+                        return view('builderpage::homepage', [
+                            'content' => $data->content,
+                        ]);
                     }
-                    page_title($data->name, true);
-                    Assets::AddScript($data->js);
-                    Assets::AddStyle(trim($data->css));
-
-                    return view('builderpage::homepage', [
-                        'content' => $data->content,
-                    ]);
-                }
-                return abort(404);
-            })->name('page-builder.slug');
+                    return abort(404);
+                })->name('page-builder.slug');
+            });
         });
         if (!$this->app->runningInConsole()) {
             add_filter(PLATFORM_PERMISSION_CUSTOME, function ($prev) {
