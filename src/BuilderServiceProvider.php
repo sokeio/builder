@@ -5,7 +5,7 @@ namespace BytePlatform\Builder;
 use BytePlatform\DataInfo;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
-use BytePlatform\Traits\WithServiceProvider;
+use BytePlatform\Concerns\WithServiceProvider;
 use Illuminate\Support\Facades\File;
 
 class BuilderServiceProvider extends ServiceProvider

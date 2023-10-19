@@ -10,7 +10,7 @@ use BytePlatform\Facades\Theme;
 use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
-use BytePlatform\Traits\WithServiceProvider;
+use BytePlatform\Concerns\WithServiceProvider;
 use BytePlugin\BuilderPage\Models\PageBuilder;
 use Illuminate\Support\Facades\Route;
 
