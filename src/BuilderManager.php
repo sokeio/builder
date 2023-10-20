@@ -2,8 +2,6 @@
 
 namespace BytePlatform\Builder;
 
-use BytePlatform\Builder\Blocks\Bootstrap\BootstrapCollectionBlock;
-use BytePlatform\Builder\Blocks\Common\CommonCollectionBlock;
 use BytePlatform\ItemCallback;
 
 class BuilderManager extends ItemCallback
@@ -11,9 +9,6 @@ class BuilderManager extends ItemCallback
     private $callbackBlocks = [];
     public function __construct()
     {
-        $this->Manager($this)
-            ->addBlocks(BootstrapCollectionBlock::getBlockArray())
-            ->addBlocks(CommonCollectionBlock::getBlockArray());
     }
     public function addBlocks($blocks)
     {
@@ -34,7 +29,6 @@ class BuilderManager extends ItemCallback
             ], ...$this->getPlugins()],
             'blockManager' => [
                 'appendTo' => '.byte-builder-manager .block-manager',
-                // 'blocks' => $this->getBlocks()
             ],
             'selectorManager' => ['appendTo' => '.byte-builder-manager .selector-manager',],
             'styleManager' => [
