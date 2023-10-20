@@ -6,6 +6,7 @@ use BytePlatform\Facades\Module;
 use BytePlatform\Facades\Plugin;
 use BytePlatform\Facades\Theme;
 use Illuminate\Contracts\Support\Arrayable;
+use Illuminate\Support\Facades\File;
 
 class TemplateBuilder implements Arrayable
 {
@@ -94,6 +95,13 @@ class TemplateBuilder implements Arrayable
                     return TemplateBuilder::Create($path);
                 })];
             }
+        }
+        $templatePath = base_path('resources/template-builders');
+        if (File::exists($templatePath)) {
+            $files =  collect(File::allFiles($templatePath))->map(function ($item) {
+                return $item->getPathname();
+            });
+            $arr = [...$arr, ...$files];
         }
         return $arr;
     }
