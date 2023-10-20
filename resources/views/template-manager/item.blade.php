@@ -13,7 +13,9 @@
             </foreignObject>
         </svg>
     </template>
-
+    <template x-if="item.template_type&&item.template_type==='community'">
+        <div class="ribbon bg-success text-success" x-html="item.template_type">Community</div>
+    </template>
     <template x-if="item.template_type&&item.template_type==='free'">
         <div class="ribbon  bg-muted text-muted-fg" x-html="item.template_type">Pro</div>
     </template>

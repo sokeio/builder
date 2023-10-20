@@ -130,7 +130,7 @@
                                         Featured
                                     </h4>
                                     <div class="card-body p-1">
-                                        <template x-for="item in getTemplates(itemCata)">
+                                        <template x-for="item in getTemplates(itemCata)" x-if="item?.template_name">
                                             <div class="item-box mb-1 border" draggable="true"
                                                 x-on:dragstart.self="
                             event.dataTransfer.effectAllowed = 'move';
