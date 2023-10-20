@@ -1,7 +1,7 @@
 <div class="byte-builder-manager">
     <div class="byte-builder-header">
         <div class="byte-builder-header__left">
-            <div class="byte-builder-logo">BYTE BUILDER <span>{{$builder_version}}</span>
+            <div class="byte-builder-logo">BYTE BUILDER <span>{{ $builder_version }}</span>
                 <a href="{{ $linkPageList }}" class="text-white ms-4">Back</a>
                 @if ($form->slug)
                     <a href="{{ url($form->slug) }}" class="text-white ms-4" target="_blank">View</a>
@@ -88,10 +88,11 @@
                     <div wire:ignore class="manager-body block-manager">
                     </div>
                 </div>
-                <div x-show="controlTabIndex==1" class="byte-builder-control__content--item">
-                    <h3>Template Manager</h3>
-                    <div class="manager-body template-page-manager"
-                        x-data='{
+                <template x-if="controlTabIndex==1">
+                    <div class="byte-builder-control__content--item">
+                        <h3>Template Manager</h3>
+                        <div class="manager-body template-page-manager"
+                            x-data='{
                         templates: [],
                         searchText:"",
                         async loadTemplate(){
@@ -120,32 +121,33 @@
                               });
                         }
                     }'
-                        x-init="loadTemplate()">
-                        <input class=" form-control" x-model="searchText" placeholder="Search Template..." />
-                        <div class="mt-2">
-                            <template x-for="(itemCata,index) in getCatagorys()">
-                                <div class="card rounded-1 mb-2 p-0 border-blue">
-                                    <h4 class="card-title m-0 rounded-0 p-1 text-bg-primary text-uppercase text-center"
-                                        x-html="itemCata">
-                                        Featured
-                                    </h4>
-                                    <div class="card-body p-1">
-                                        <template x-for="item in getTemplates(itemCata)" x-if="item?.template_name">
-                                            <div class="item-box mb-1 border" draggable="true"
-                                                x-on:dragstart.self="
+                            x-init="loadTemplate()">
+                            <input class=" form-control" x-model="searchText" placeholder="Search Template..." />
+                            <div class="mt-2">
+                                <template x-for="(itemCata,index) in getCatagorys()">
+                                    <div class="card rounded-1 mb-2 p-0 border-blue">
+                                        <h4 class="card-title m-0 rounded-0 p-1 text-bg-primary text-uppercase text-center"
+                                            x-html="itemCata">
+                                            Featured
+                                        </h4>
+                                        <div class="card-body p-1">
+                                            <template x-for="item in getTemplates(itemCata)" x-if="item?.template_name">
+                                                <div class="item-box mb-1 border" draggable="true"
+                                                    x-on:dragstart.self="
                             event.dataTransfer.effectAllowed = 'move';
                             event.dataTransfer.setData('text/html', item.content);
                           ">
-                                                @include('builder::template-manager.item')
-                                            </div>
-                                        </template>
+                                                    @include('builder::template-manager.item')
+                                                </div>
+                                            </template>
+                                        </div>
                                     </div>
-                                </div>
-                            </template>
-                        </div>
+                                </template>
+                            </div>
 
+                        </div>
                     </div>
-                </div>
+                </template>
                 <div x-show="controlTabIndex==2" class="byte-builder-control__content--item">
                     <h3>Setting Page</h3>
                     <div class="manager-body setting-page-manager">
