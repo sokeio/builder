@@ -4,7 +4,8 @@
             <div class="byte-builder-logo">BYTE BUILDER <span>{{ $builder_version }}</span>
                 <a href="{{ $linkPageList }}" class="text-white ms-4">Back</a>
                 @if ($form->slug)
-                    <a href="{{ url($form->slug) }}" class="text-white ms-4" target="_blank">View</a>
+                    <a href="{{ route('page-builder.slug', ['slug' => $form->slug]) }}" class="text-white ms-4"
+                        target="_blank">View</a>
                 @endif
             </div>
         </div>
