@@ -50,12 +50,13 @@ class BuilderPageServiceProvider extends ServiceProvider
                             Shortcode::enable();
                             Assets::Theme('tabler');
                             Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
-                            do_action('BYTE_BUILDER_SLUG');
+
                             $data = PageBuilder::query()->where('slug', $slug)->first();
                             if ($data && $data->status) {
-                                if ($data->id == setting('page_homepage_id')) {
-                                    return redirect('/');
-                                }
+                                // if ($data->id == setting('page_homepage_id')) {
+                                //     return redirect('/');
+                                // }
+                                do_action('BYTE_BUILDER_SLUG', $data);
                                 page_title($data->name, true);
                                 Assets::AddScript($data->js);
                                 Assets::AddStyle(trim($data->css));
@@ -72,12 +73,12 @@ class BuilderPageServiceProvider extends ServiceProvider
                         Shortcode::enable();
                         Assets::Theme('tabler');
                         Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
-                        do_action('BYTE_BUILDER_SLUG');
                         $data = PageBuilder::query()->where('slug', $slug)->first();
                         if ($data && $data->status) {
                             if ($data->id == setting('page_homepage_id')) {
                                 return redirect('/');
                             }
+                            do_action('BYTE_BUILDER_SLUG', $data);
                             page_title($data->name, true);
                             Assets::AddScript($data->js);
                             Assets::AddStyle(trim($data->css));
@@ -102,9 +103,9 @@ class BuilderPageServiceProvider extends ServiceProvider
             Shortcode::enable();
             Assets::Theme('tabler');
             Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
-            do_action('BYTE_BUILDER_SLUG');
             $data = PageBuilder::query()->where('id', setting('page_homepage_id'))->first();
             if ($data) {
+                do_action('BYTE_BUILDER_SLUG', $data);
                 Assets::AddScript($data->js);
                 Assets::AddStyle(trim($data->css));
                 page_title(setting('page_site_title'), true);
