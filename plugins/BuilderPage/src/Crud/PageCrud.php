@@ -32,7 +32,7 @@ class PageCrud extends CrudManager
                     ->ButtonType(function ($button) {
                         $item = $button->getData();
                         return 'link';
-                    });
+                    })->Target('_blank');
                 if ($button->getWhen()) {
                     $button->ButtonLink(function ($button) {
                         $item = $button->getData();
