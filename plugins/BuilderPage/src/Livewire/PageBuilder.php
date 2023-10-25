@@ -22,13 +22,12 @@ class PageBuilder extends Component
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
             Item::Add('slug')->Column(Item::Col12)->Title('Slug'),
             Item::Add('description')->Column(Item::Col12)->Type('textarea')->Title('Description'),
-
+            Item::Add('css')->Title('Css')->Type('textarea')->Column(Item::Col12),
+            Item::Add('js')->Title('Js')->Type('textarea')->Column(Item::Col12),
             Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->ValueDefault(function () {
                 return Carbon::now();
             })->Title('Published At'),
             Item::Add('status')->Title('Status')->DataOptionStatus()->Column(Item::Col12),
-            Item::Add('css')->Column(Item::Col12)->InputHidden(),
-            Item::Add('js')->Column(Item::Col12)->InputHidden(),
             Item::Add('content')->Column(Item::Col12)->InputHidden(),
             Item::Add('author_id')->Column(Item::Col12)->InputHidden()->ValueDefault(function () {
                 return auth()->user()->id;

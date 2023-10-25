@@ -46,10 +46,9 @@ class BuilderPageServiceProvider extends ServiceProvider
             Route::group(['middleware' => 'web'], function () {
                 Route::get('/{slug}', function ($slug) {
                     Shortcode::enable();
-                    Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
-                    Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
+                    Assets::Theme('tabler');
                     Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
-
+                    do_action('BYTE_BUILDER_SLUG');
                     $data = PageBuilder::query()->where('slug', $slug)->first();
                     if ($data && $data->status) {
                         if ($data->id == setting('page_homepage_id')) {
@@ -76,9 +75,9 @@ class BuilderPageServiceProvider extends ServiceProvider
         }
         add_filter(PLATFORM_HOMEPAGE, function () {
             Shortcode::enable();
-            Assets::AddJs('https://getbootstrap.com/docs/5.3/dist/js/bootstrap.bundle.min.js');
-            Assets::AddCss('https://getbootstrap.com/docs/5.3/dist/css/bootstrap.min.css');
+            Assets::Theme('tabler');
             Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+            do_action('BYTE_BUILDER_SLUG');
             $data = PageBuilder::query()->where('id', setting('page_homepage_id'))->first();
             if ($data) {
                 Assets::AddScript($data->js);
