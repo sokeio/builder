@@ -44,26 +44,51 @@ class BuilderPageServiceProvider extends ServiceProvider
     {
         $this->app->booted(function () {
             Route::group(['middleware' => 'web'], function () {
-                Route::get('/{slug}', function ($slug) {
-                    Shortcode::enable();
-                    Assets::Theme('tabler');
-                    Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
-                    do_action('BYTE_BUILDER_SLUG');
-                    $data = PageBuilder::query()->where('slug', $slug)->first();
-                    if ($data && $data->status) {
-                        if ($data->id == setting('page_homepage_id')) {
-                            return redirect('/');
-                        }
-                        page_title($data->name, true);
-                        Assets::AddScript($data->js);
-                        Assets::AddStyle(trim($data->css));
+                if ($subdomain = env('BYTE_SUB_DOMAIN')) {
+                    Route::group(['domain' => '{slug}.' . $subdomain], function () {
+                        Route::get('/', function ($slug) {
+                            Shortcode::enable();
+                            Assets::Theme('tabler');
+                            Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+                            do_action('BYTE_BUILDER_SLUG');
+                            $data = PageBuilder::query()->where('slug', $slug)->first();
+                            if ($data && $data->status) {
+                                if ($data->id == setting('page_homepage_id')) {
+                                    return redirect('/');
+                                }
+                                page_title($data->name, true);
+                                Assets::AddScript($data->js);
+                                Assets::AddStyle(trim($data->css));
 
-                        return view('builderpage::homepage', [
-                            'content' => $data->content,
-                        ]);
-                    }
-                    return abort(404);
-                })->name('page-builder.slug');
+                                return view('builderpage::homepage', [
+                                    'content' => $data->content,
+                                ]);
+                            }
+                            return abort(404);
+                        })->name('page-builder.slug');
+                    });
+                } else {
+                    Route::get('/{slug}', function ($slug) {
+                        Shortcode::enable();
+                        Assets::Theme('tabler');
+                        Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
+                        do_action('BYTE_BUILDER_SLUG');
+                        $data = PageBuilder::query()->where('slug', $slug)->first();
+                        if ($data && $data->status) {
+                            if ($data->id == setting('page_homepage_id')) {
+                                return redirect('/');
+                            }
+                            page_title($data->name, true);
+                            Assets::AddScript($data->js);
+                            Assets::AddStyle(trim($data->css));
+
+                            return view('builderpage::homepage', [
+                                'content' => $data->content,
+                            ]);
+                        }
+                        return abort(404);
+                    })->name('page-builder.slug');
+                }
             });
         });
         if (!$this->app->runningInConsole()) {

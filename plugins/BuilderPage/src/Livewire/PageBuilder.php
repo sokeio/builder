@@ -20,7 +20,7 @@ class PageBuilder extends Component
     {
         return ItemManager::Form()->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
-            Item::Add('slug')->Column(Item::Col12)->Title('Slug'),
+            Item::Add('slug')->Column(Item::Col12)->Title('Subdomain')->Type('subdomain'),
             Item::Add('description')->Column(Item::Col12)->Type('textarea')->Title('Description'),
             Item::Add('css')->Title('Css')->Type('textarea')->Column(Item::Col12),
             Item::Add('js')->Title('Js')->Type('textarea')->Column(Item::Col12),
