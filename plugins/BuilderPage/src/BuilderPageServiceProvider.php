@@ -42,7 +42,7 @@ class BuilderPageServiceProvider extends ServiceProvider
     }
     private function bootGate()
     {
-        $this->app->booted(function () {
+        $this->booted(function () {
             Route::group(['middleware' => 'web'], function () {
                 if ($subdomain = env('BYTE_SUB_DOMAIN')) {
                     Route::group(['domain' => '{slug}.' . $subdomain], function () {
