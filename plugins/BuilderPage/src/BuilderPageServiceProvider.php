@@ -6,7 +6,6 @@ use BytePlatform\Facades\Assets;
 use BytePlatform\Facades\Menu;
 use BytePlatform\Facades\SettingForm;
 use BytePlatform\Facades\Shortcode;
-use BytePlatform\Facades\Theme;
 use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
@@ -38,11 +37,7 @@ class BuilderPageServiceProvider extends ServiceProvider
     }
     public function packageRegistered()
     {
-        $this->extending();
-    }
-    private function bootGate()
-    {
-        $this->booted(function () {
+        $this->app->booted(function () {
             Route::group(['middleware' => 'web'], function () {
                 if ($subdomain = env('BYTE_SUB_DOMAIN')) {
                     Route::group(['domain' => '{slug}.' . $subdomain], function () {
@@ -92,6 +87,11 @@ class BuilderPageServiceProvider extends ServiceProvider
                 }
             });
         });
+        $this->extending();
+    }
+    private function bootGate()
+    {
+        
         if (!$this->app->runningInConsole()) {
             add_filter(PLATFORM_PERMISSION_CUSTOME, function ($prev) {
                 return [
@@ -139,10 +139,6 @@ class BuilderPageServiceProvider extends ServiceProvider
             ]);
             return $form;
         });
-    }
-    public function packageBooted()
-    {
-        $this->bootGate();
         Menu::Register(function () {
             if (byte_is_admin()) {
                 menu::route(['name' => 'admin.page-builder-list', 'params' => []], 'Pages', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-pagekit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -151,5 +147,10 @@ class BuilderPageServiceProvider extends ServiceProvider
              </svg>', [], 'admin.page-builder-list');
             }
         });
+    }
+    public function packageBooted()
+    {
+        $this->bootGate();
+        
     }
 }
