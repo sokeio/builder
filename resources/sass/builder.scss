@@ -121,9 +121,23 @@
                         overflow: auto;
                     }
 
-                    .setting-page-manager {
+                    .page-manager {
                         background-color: #eee;
                         padding: 10px;
+
+                        .card {
+                            margin: 0;
+                            background-color: unset;
+
+                            .card-body {
+                                padding: 0;
+                            }
+
+                            .card-footer {
+                                background-color: unset;
+                                text-align: right !important;
+                            }
+                        }
                     }
 
                     .template-page-manager {

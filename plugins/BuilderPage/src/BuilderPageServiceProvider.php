@@ -131,7 +131,9 @@ class BuilderPageServiceProvider extends ServiceProvider
             Sitemap::addSitemap(route('sitemap_page', ['sitemap' => 'page-builder', 'page' => 1]));
         });
         add_action('SEO_SITEMAP_PAGE_PAGE-BUILDER', function ($page) {
-            Sitemap::addItem(route('sitemap_page', ['sitemap' => 'page-builder', 'page' => 1]));
+            foreach(PageBuilder::all() as $item){
+                Sitemap::addItem($item->getUrl());
+            }
         });
         SettingForm::Register(function (\BytePlatform\ItemManager $form) {
             $form->Item([

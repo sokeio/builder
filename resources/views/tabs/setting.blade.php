@@ -1,6 +1,6 @@
 <div class="byte-builder-control__content--item">
     <h3> Page Setting</h3>
-    <div class="manager-body setting-page-manager">
+    <div class="manager-body page-manager">
         {!! form_render($itemManager, $form, $dataId) !!}
         <div class="mt-2 float-end">
             <button class="btn btn-primary" wire:click='doSaveBuilder()'>

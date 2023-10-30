@@ -18,9 +18,16 @@ class PageBuilder extends Component
     }
     protected function ItemManager()
     {
-        return ItemManager::Form()->Model(PageBuilderModel::class)->Item([
+        return ItemManager::Form()->BeforeQuery(function ($query) {
+            return $query->with('seo');
+        })->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
-            Item::Add('slug')->Column(Item::Col12)->Title('Subdomain')->Type('subdomain'),
+            Item::Add('slug')->Column(Item::Col12)->Title(function () {
+                if (env('BYTE_SUB_DOMAIN')) {
+                    return 'Subdomain';
+                }
+                return 'Slug';
+            })->Type('subdomain'),
             Item::Add('description')->Column(Item::Col12)->Type('textarea')->Title('Description'),
             Item::Add('image')->Column(Item::Col12)->Type('images')->Title('Featured image'),
             Item::Add('css')->Title('Css')->Type('textarea')->Column(Item::Col12),

@@ -85,21 +85,13 @@ trait WithPageBuilder
                 'view' => 'builder::tabs.setting'
             ],
             [
-                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-table-options"
-                width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
-                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-seo" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                <path d="M12 21h-7a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v7"></path>
-                <path d="M3 10h18"></path>
-                <path d="M10 3v18"></path>
-                <path d="M19.001 19m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
-                <path d="M19.001 15.5v1.5"></path>
-                <path d="M19.001 21v1.5"></path>
-                <path d="M22.032 17.25l-1.299 .75"></path>
-                <path d="M17.27 20l-1.3 .75"></path>
-                <path d="M15.97 17.25l1.3 .75"></path>
-                <path d="M20.733 20l1.3 .75"></path>
-            </svg>',
+                <path d="M7 8h-3a1 1 0 0 0 -1 1v2a1 1 0 0 0 1 1h2a1 1 0 0 1 1 1v2a1 1 0 0 1 -1 1h-3"></path>
+                <path d="M14 16h-4v-8h4"></path>
+                <path d="M11 12h2"></path>
+                <path d="M17 8m0 1a1 1 0 0 1 1 -1h2a1 1 0 0 1 1 1v6a1 1 0 0 1 -1 1h-2a1 1 0 0 1 -1 -1z"></path>
+             </svg>',
                 'title' => 'SEO Setting',
                 'view' => 'builder::tabs.seo'
             ]

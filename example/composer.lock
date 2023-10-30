@@ -67,7 +67,7 @@
             "dist": {
                 "type": "path",
                 "url": "./..",
-                "reference": "fd372a9f49bda133283d3c78a95d96cfb7f96c37"
+                "reference": "b50f6a58ecd4502233b1dd1094db57f8d1e92873"
             },
             "require": {
                 "byteplatform/byteplatform": "dev-main",
@@ -114,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BytePlatform/BytePlatform.git",
-                "reference": "f201824ee04eb506c5960f5dd5e64e78837b3a40"
+                "reference": "5ccbbf105e7e48cb3a3a5782e925be5b532276b0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/f201824ee04eb506c5960f5dd5e64e78837b3a40",
-                "reference": "f201824ee04eb506c5960f5dd5e64e78837b3a40",
+                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/5ccbbf105e7e48cb3a3a5782e925be5b532276b0",
+                "reference": "5ccbbf105e7e48cb3a3a5782e925be5b532276b0",
                 "shasum": ""
             },
             "require": {
@@ -181,7 +181,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-10-30T04:57:57+00:00"
+            "time": "2023-10-30T09:03:24+00:00"
         },
         {
             "name": "byteplatform/laravel",
