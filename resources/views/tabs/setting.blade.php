@@ -1,5 +1,5 @@
 <div class="byte-builder-control__content--item">
-    <h3>Setting Page</h3>
+    <h3> Page Setting</h3>
     <div class="manager-body setting-page-manager">
         {!! form_render($itemManager, $form, $dataId) !!}
         <div class="mt-2 float-end">

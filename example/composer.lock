@@ -67,7 +67,7 @@
             "dist": {
                 "type": "path",
                 "url": "./..",
-                "reference": "d89dc034fa6e2813fa6b7e1e59bb0d3ddd47bbc3"
+                "reference": "fd372a9f49bda133283d3c78a95d96cfb7f96c37"
             },
             "require": {
                 "byteplatform/byteplatform": "dev-main",
@@ -114,12 +114,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BytePlatform/BytePlatform.git",
-                "reference": "367eac15c0e97fa01174357a7dd39d0f5eec5cbe"
+                "reference": "f201824ee04eb506c5960f5dd5e64e78837b3a40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/367eac15c0e97fa01174357a7dd39d0f5eec5cbe",
-                "reference": "367eac15c0e97fa01174357a7dd39d0f5eec5cbe",
+                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/f201824ee04eb506c5960f5dd5e64e78837b3a40",
+                "reference": "f201824ee04eb506c5960f5dd5e64e78837b3a40",
                 "shasum": ""
             },
             "require": {
@@ -181,7 +181,7 @@
                     "type": "patreon"
                 }
             ],
-            "time": "2023-10-30T03:16:44+00:00"
+            "time": "2023-10-30T04:57:57+00:00"
         },
         {
             "name": "byteplatform/laravel",
@@ -246,12 +246,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/BytePlatform/seo.git",
-                "reference": "b9ef72c247e590a88403be69402a892ef196dee9"
+                "reference": "319f1ad2732f37491113bc10792d02c4147d73b3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/seo/zipball/b9ef72c247e590a88403be69402a892ef196dee9",
-                "reference": "b9ef72c247e590a88403be69402a892ef196dee9",
+                "url": "https://api.github.com/repos/BytePlatform/seo/zipball/319f1ad2732f37491113bc10792d02c4147d73b3",
+                "reference": "319f1ad2732f37491113bc10792d02c4147d73b3",
                 "shasum": ""
             },
             "require": {
@@ -289,7 +289,7 @@
                 "issues": "https://github.com/BytePlatform/seo/issues",
                 "source": "https://github.com/BytePlatform/seo/tree/main"
             },
-            "time": "2023-10-30T03:51:11+00:00"
+            "time": "2023-10-30T04:19:44+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
