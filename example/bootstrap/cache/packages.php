@@ -28,6 +28,16 @@
     array (
     ),
   ),
+  'byteplatform/seo' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BytePlatform\\Seo\\SeoServiceProvider',
+    ),
+    'aliases' => 
+    array (
+    ),
+  ),
   'intervention/image' => 
   array (
     'providers' => 

@@ -10,6 +10,7 @@ use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
 use BytePlatform\Concerns\WithServiceProvider;
+use BytePlatform\Seo\Facades\Sitemap;
 use BytePlugin\BuilderPage\Models\PageBuilder;
 use Illuminate\Support\Facades\Route;
 
@@ -91,7 +92,7 @@ class BuilderPageServiceProvider extends ServiceProvider
     }
     private function bootGate()
     {
-        
+
         if (!$this->app->runningInConsole()) {
             add_filter(PLATFORM_PERMISSION_CUSTOME, function ($prev) {
                 return [
@@ -123,6 +124,15 @@ class BuilderPageServiceProvider extends ServiceProvider
                 ]
             ];
         });
+        add_action('SEO_SITEMAP_INDEX', function () {
+            Sitemap::addSitemap(route('sitemap_type', ['sitemap' => 'page-builder']));
+        });
+        add_action('SEO_SITEMAP_PAGE-BUILDER', function () {
+            Sitemap::addSitemap(route('sitemap_page', ['sitemap' => 'page-builder', 'page' => 1]));
+        });
+        add_action('SEO_SITEMAP_PAGE_PAGE-BUILDER', function ($page) {
+            Sitemap::addItem(route('sitemap_page', ['sitemap' => 'page-builder', 'page' => 1]));
+        });
         SettingForm::Register(function (\BytePlatform\ItemManager $form) {
             $form->Item([
                 Item::Add('page_homepage_id')->Type('select')->Title('Homepage')->Attribute(function () {
@@ -151,6 +161,5 @@ class BuilderPageServiceProvider extends ServiceProvider
     public function packageBooted()
     {
         $this->bootGate();
-        
     }
 }
