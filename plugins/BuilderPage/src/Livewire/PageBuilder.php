@@ -4,6 +4,7 @@ namespace BytePlugin\BuilderPage\Livewire;
 
 use BytePlatform\Builder\WithPageBuilder;
 use BytePlatform\Component;
+use BytePlatform\Facades\Platform;
 use BytePlatform\Item;
 use BytePlatform\ItemManager;
 use BytePlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
@@ -19,6 +20,9 @@ class PageBuilder extends Component
     protected function ItemManager()
     {
         return ItemManager::Form()->BeforeQuery(function ($query) {
+            if (checkRole('builder_demo')) {
+                $query->where('author_id', auth()->user()->id);
+            }
             return $query->with('seo');
         })->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
