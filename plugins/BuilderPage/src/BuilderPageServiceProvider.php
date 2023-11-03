@@ -2,10 +2,8 @@
 
 namespace BytePlugin\BuilderPage;
 
-use BytePlatform\Facades\Assets;
 use BytePlatform\Facades\Menu;
 use BytePlatform\Facades\SettingForm;
-use BytePlatform\Facades\Shortcode;
 use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
@@ -43,22 +41,15 @@ class BuilderPageServiceProvider extends ServiceProvider
                 if ($subdomain = env('BYTE_SUB_DOMAIN')) {
                     Route::group(['domain' => '{slug}.' . $subdomain], function () {
                         Route::get('/', function ($slug) {
-                            Shortcode::enable();
-                            Assets::Theme('tabler');
-                            Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
 
                             $data = PageBuilder::query()->where('slug', $slug)->first();
                             if ($data && $data->status) {
                                 // if ($data->id == setting('page_homepage_id')) {
                                 //     return redirect('/');
                                 // }
-                                do_action('BYTE_BUILDER_SLUG', $data);
                                 page_title($data->name, true);
-                                Assets::AddScript($data->js);
-                                Assets::AddStyle(trim($data->css));
-
                                 return view('builderpage::homepage', [
-                                    'content' => $data->content,
+                                    'content' => pagebuilder_render($data),
                                 ]);
                             }
                             return abort(404);
@@ -66,9 +57,6 @@ class BuilderPageServiceProvider extends ServiceProvider
                     });
                 } else {
                     Route::get('/{slug}', function ($slug) {
-                        Shortcode::enable();
-                        Assets::Theme('tabler');
-                        Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
                         $data = PageBuilder::query()->where('slug', $slug)->first();
                         if ($data && $data->status) {
                             if ($data->id == setting('page_homepage_id')) {
@@ -76,11 +64,8 @@ class BuilderPageServiceProvider extends ServiceProvider
                             }
                             do_action('BYTE_BUILDER_SLUG', $data);
                             page_title($data->name, true);
-                            Assets::AddScript($data->js);
-                            Assets::AddStyle(trim($data->css));
-
                             return view('builderpage::homepage', [
-                                'content' => $data->content,
+                                'content' => pagebuilder_render($data),
                             ]);
                         }
                         return abort(404);
@@ -101,26 +86,17 @@ class BuilderPageServiceProvider extends ServiceProvider
             });
         }
         add_filter(PLATFORM_HOMEPAGE, function () {
-            Shortcode::enable();
-            Assets::Theme('tabler');
-            Assets::AddCss('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css');
             $data = PageBuilder::query()->where('id', setting('page_homepage_id'))->first();
             if ($data) {
-                do_action('BYTE_BUILDER_SLUG', $data);
-                Assets::AddScript($data->js);
-                Assets::AddStyle(trim($data->css));
-                page_title(setting('page_site_title'), true);
-                return [
-                    'view' => 'builderpage::homepage',
-                    'params' => [
-                        'content' => $data->content,
-                    ]
-                ];
+                page_title($data->name, true);
+                return view('builderpage::homepage', [
+                    'content' => pagebuilder_render($data),
+                ]);
             }
             return [
                 'view' => 'builderpage::homepage',
                 'params' => [
-                    'content' => "<div class='p-4'>HomePage is not setting</div>",
+                    'content' => "<div>HomePage is not setting</div>",
                 ]
             ];
         });
@@ -131,7 +107,7 @@ class BuilderPageServiceProvider extends ServiceProvider
             Sitemap::addSitemap(route('sitemap_page', ['sitemap' => 'page-builder', 'page' => 1]));
         });
         add_action('SEO_SITEMAP_PAGE_PAGE-BUILDER', function ($page) {
-            foreach(PageBuilder::all() as $item){
+            foreach (PageBuilder::all() as $item) {
                 Sitemap::addItem($item->getUrl());
             }
         });
