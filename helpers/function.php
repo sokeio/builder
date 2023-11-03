@@ -7,9 +7,10 @@ use BytePlatform\Seo\SchemaCollection;
 use BytePlatform\Seo\Schemas\ArticleSchema;
 use BytePlatform\Seo\Schemas\BreadcrumbListSchema;
 use BytePlatform\Seo\SEOData;
+use Illuminate\Database\Eloquent\Model;
 
 if (!function_exists('pagebuilder_render')) {
-    function pagebuilder_render($data)
+    function pagebuilder_render(Model $data)
     {
         Shortcode::enable();
         Assets::Theme('tabler');
@@ -25,7 +26,7 @@ if (!function_exists('pagebuilder_render')) {
                 $breadcrumbListSchema->appendBreadcrumbs([]);
             });
             return $data;
-        });
+        })->for($data);
         return $data->content;
     }
 }
