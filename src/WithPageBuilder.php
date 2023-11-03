@@ -35,6 +35,10 @@ trait WithPageBuilder
     {
         $this->skipRender();
     }
+    public function getLinkView()
+    {
+        return route('page-builder.slug', ['slug' => $this->form->slug]);
+    }
     protected function getTabs()
     {
         return apply_filters('BYTE_BUILDER_TABS', [
@@ -111,7 +115,8 @@ trait WithPageBuilder
             'itemManager' =>  apply_filters('BYTE_BUILDER_ITEMS', $this->getItemManager()),
             'templates' => [],
             'linkPageList' => $this->getLinkPageList(),
-            'tabs' => $this->getTabs()
+            'tabs' => $this->getTabs(),
+            'linkView' => $this->getLinkView()
         ]);
     }
 }
