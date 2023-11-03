@@ -34,8 +34,10 @@ class PageBuilder extends Component
             })->Type('subdomain'),
             Item::Add('description')->Column(Item::Col12)->Type('textarea')->Title('Description'),
             Item::Add('image')->Column(Item::Col12)->Type('images')->Title('Featured image'),
-            Item::Add('css')->Title('Css')->Type('textarea')->Column(Item::Col12),
-            Item::Add('js')->Title('Js')->Type('textarea')->Column(Item::Col12),
+            Item::Add('custom_css')->Title('Css')->Type('textarea')->Column(Item::Col12),
+            Item::Add('custom_js')->Title('Js')->Type('textarea')->Column(Item::Col12),
+            Item::Add('css')->InputHidden(),
+            Item::Add('js')->InputHidden(),
             Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->ValueDefault(function () {
                 return Carbon::now();
             })->Title('Published At'),

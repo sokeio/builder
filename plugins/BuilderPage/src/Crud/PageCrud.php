@@ -21,13 +21,18 @@ class PageCrud extends CrudManager
                 return $manager->IsTable();
             })->DisableEdit(),
             Item::Add('name')->Column(Item::Col12)->Title('Name')->Required(),
-            Item::Add('slug')->Title('Slug')->When(function ($item, $manager) {
+            Item::Add('slug')->Title(function () {
+                if (env('BYTE_SUB_DOMAIN')) {
+                    return 'Subdomain';
+                }
+                return 'Slug';
+            })->When(function ($item, $manager) {
                 return $manager->IsTable();
             })->DisableEdit()->DataText(function ($item) {
                 $button = $item->ConvertToButton()
                     ->Title(function ($button) {
                         $item = $button->getData();
-                        return  ($item->slug);
+                        return route('page-builder.slug', ['slug' => $item->slug]);
                     })
                     ->ButtonType(function ($button) {
                         $item = $button->getData();
@@ -36,7 +41,7 @@ class PageCrud extends CrudManager
                 if ($button->getWhen()) {
                     $button->ButtonLink(function ($button) {
                         $item = $button->getData();
-                        return  url($item->slug);
+                        return  route('page-builder.slug', ['slug' => $item->slug]);
                     });
                 }
                 return $button->render();
