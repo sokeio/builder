@@ -22,9 +22,12 @@ if (!function_exists('pagebuilder_render')) {
         Assets::AddScript($data->custom_js);
         Assets::AddStyle(trim($data->custom_css));
         SEO::SEODataTransformer(function (SEOData $dataSeo) use ($data) {
+            $dataSeo->title = page_title();
+            $dataSeo->description = $data->ddescriptione;
+            $dataSeo->image = $data->image ? url($data->image) : null;
             $dataSeo->datePublished = $data->published_at;
-            $dataSeo->modified_time = $data->updated_at;
-            $dataSeo->schema = SchemaCollection::initialize()->addArticle(function (ArticleSchema $articleSchema) {
+            $dataSeo->dateModified = $data->updated_at;
+            $dataSeo->schema = SchemaCollection::initialize()->addArticle(function (ArticleSchema $articleSchema) use ($data) {
             })->addBreadcrumbs(function (BreadcrumbListSchema $breadcrumbListSchema) {
                 $breadcrumbListSchema->appendBreadcrumbs([]);
             });
