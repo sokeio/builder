@@ -7,6 +7,7 @@ use BytePlatform\Seo\SchemaCollection;
 use BytePlatform\Seo\Schemas\ArticleSchema;
 use BytePlatform\Seo\Schemas\BreadcrumbListSchema;
 use BytePlatform\Seo\SEOData;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 if (!function_exists('pagebuilder_render')) {
@@ -20,8 +21,10 @@ if (!function_exists('pagebuilder_render')) {
         Assets::AddStyle(trim($data->css));
         Assets::AddScript($data->custom_js);
         Assets::AddStyle(trim($data->custom_css));
-        SEO::SEODataTransformer(function (SEOData $data) {
-            $data->schema = SchemaCollection::initialize()->addArticle(function (ArticleSchema $articleSchema) {
+        SEO::SEODataTransformer(function (SEOData $dataSeo) use ($data) {
+            $dataSeo->datePublished = $data->published_at;
+            $dataSeo->modified_time = $data->updated_at;
+            $dataSeo->schema = SchemaCollection::initialize()->addArticle(function (ArticleSchema $articleSchema) {
             })->addBreadcrumbs(function (BreadcrumbListSchema $breadcrumbListSchema) {
                 $breadcrumbListSchema->appendBreadcrumbs([]);
             });
