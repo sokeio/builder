@@ -80,6 +80,7 @@ class BuilderPageServiceProvider extends ServiceProvider
         if (!$this->app->runningInConsole()) {
             add_filter(PLATFORM_PERMISSION_CUSTOME, function ($prev) {
                 return [
+                    'page-builder.slug',
                     ...$prev
                 ];
             });
