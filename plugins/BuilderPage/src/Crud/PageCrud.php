@@ -76,9 +76,11 @@ class PageCrud extends CrudManager
         return ItemManager::Table()
             ->Model($this->GetModel())
             ->BeforeQuery(function ($query) {
+                echo '12345----';
                 if (checkPermission('admin.use_only_author')) {
                     $query->where('author_id', auth()->user()->id);
                 }
+                return $query;
             })
             // ->EditInTable()
             ->Title('Page Manager')
@@ -124,7 +126,7 @@ class PageCrud extends CrudManager
     {
         return ItemManager::Form()
             ->Model($this->GetModel())
-         
+
             ->Title('Page Form')
             ->Message(function ($manager) {
                 if ($manager->getData()->getDataId() > 0) {
