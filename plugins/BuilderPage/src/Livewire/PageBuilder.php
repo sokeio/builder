@@ -33,7 +33,7 @@ class PageBuilder extends Component
             Item::Add('custom_js')->Title('Js')->Type('textarea')->Column(Item::Col12),
             Item::Add('css')->InputHidden(),
             Item::Add('js')->InputHidden(),
-            Item::Add('seo')->InputHidden(),
+            Item::Add('seo')->InputHidden()->NoBindData(),
             Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->ValueDefault(function () {
                 return Carbon::now();
             })->Title('Published At'),
