@@ -9,7 +9,7 @@
     },
     getTemplates(itemCata="") {
         let self=this;
-        let rs= this.templates.filter((item, index) => {
+        let rs= this.templates?.filter((item, index) => {
             return (itemCata==""||itemCata==item.category)  && (
                 self.searchText===""||
                 item.category?.indexOf(self.searchText)>-1||
@@ -20,14 +20,14 @@
                 item.template_name?.indexOf(self.searchText)>-1
             );
           });
-        return rs;
+        return rs??[];
     },
     getCatagorys(){
-        return this.getTemplates("").map((item)=>{
+        return (this.getTemplates("")?.map((item)=>{
             return item.category;
-        }).filter((value, index, self) => {
+        })?.filter((value, index, self) => {
             return self.indexOf(value) === index;
-          });
+          }))??[];
     }
 }'
         x-init="loadTemplate()">
