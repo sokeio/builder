@@ -33,6 +33,7 @@ class PageBuilder extends Component
             Item::Add('custom_js')->Title('Js')->Type('textarea')->Column(Item::Col12),
             Item::Add('css')->InputHidden(),
             Item::Add('js')->InputHidden(),
+            Item::Add('seo')->InputHidden(),
             Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->ValueDefault(function () {
                 return Carbon::now();
             })->Title('Published At'),
@@ -42,7 +43,13 @@ class PageBuilder extends Component
                 return auth()->user()->id;
             }),
 
-        ]);
+        ])->BeforeQuery(function ($query) {
+            return $query->with('seo');
+        })
+            ->BeforeSave(function ($model) {
+                $model->author_id = auth()->user()->id;
+                return $model;
+            });
     }
     public function doSaveBuilder()
     {
