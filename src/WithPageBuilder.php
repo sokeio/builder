@@ -37,7 +37,10 @@ trait WithPageBuilder
     }
     public function getLinkView()
     {
+
+        if( $this->form->slug)
         return route('page-builder.slug', ['slug' => $this->form->slug]);
+        return "";
     }
     protected function getTabs()
     {
