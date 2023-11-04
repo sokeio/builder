@@ -62,7 +62,6 @@ class BuilderPageServiceProvider extends ServiceProvider
                             if ($data->id == setting('page_homepage_id')) {
                                 return redirect('/');
                             }
-                            do_action('BYTE_BUILDER_SLUG', $data);
                             page_title($data->name, true);
                             return view('builderpage::homepage', [
                                 'content' => pagebuilder_render($data),
