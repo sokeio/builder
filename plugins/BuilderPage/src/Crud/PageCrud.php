@@ -75,6 +75,12 @@ class PageCrud extends CrudManager
     {
         return ItemManager::Table()
             ->Model($this->GetModel())
+            ->BeforeQuery(function ($query) {
+                if (checkRole('builder_demo')) {
+                    $query->where('author_id', auth()->user()->id);
+                }
+                return $query->with('seo');
+            })
             // ->EditInTable()
             ->Title('Page Manager')
             ->Filter()

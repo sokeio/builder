@@ -19,12 +19,7 @@ class PageBuilder extends Component
     }
     protected function ItemManager()
     {
-        return ItemManager::Form()->BeforeQuery(function ($query) {
-            if (checkRole('builder_demo')) {
-                $query->where('author_id', auth()->user()->id);
-            }
-            return $query->with('seo');
-        })->Model(PageBuilderModel::class)->Item([
+        return ItemManager::Form()->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
             Item::Add('slug')->Column(Item::Col12)->Title(function () {
                 if (env('BYTE_SUB_DOMAIN')) {
