@@ -89,9 +89,12 @@ class BuilderPageServiceProvider extends ServiceProvider
             $data = PageBuilder::query()->where('id', setting('page_homepage_id'))->first();
             if ($data) {
                 page_title($data->name, true);
-                return view('builderpage::homepage', [
-                    'content' => pagebuilder_render($data),
-                ]);
+                return  [
+                    'view' => 'builderpage::homepage',
+                    'params' => [
+                        'content' => pagebuilder_render($data),
+                    ]
+                ];
             }
             return [
                 'view' => 'builderpage::homepage',
