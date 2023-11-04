@@ -79,7 +79,6 @@ class PageCrud extends CrudManager
                 if (checkPermission('admin.use_only_author')) {
                     $query->where('author_id', auth()->user()->id);
                 }
-                return $query->with('seo');
             })
             // ->EditInTable()
             ->Title('Page Manager')
@@ -125,6 +124,9 @@ class PageCrud extends CrudManager
     {
         return ItemManager::Form()
             ->Model($this->GetModel())
+            ->BeforeQuery(function ($query) {
+                return $query->with('seo');
+            })
             ->BeforeSave(function ($model) {
                 $model->author_id = auth()->user()->id;
                 return $model;
