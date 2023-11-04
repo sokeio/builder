@@ -76,7 +76,6 @@ class PageCrud extends CrudManager
         return ItemManager::Table()
             ->Model($this->GetModel())
             ->BeforeQuery(function ($query) {
-                echo '12345----';
                 if (checkPermission('admin.use_only_author')) {
                     $query->where('author_id', auth()->user()->id);
                 }
