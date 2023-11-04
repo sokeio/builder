@@ -28,7 +28,7 @@ if (!function_exists('pagebuilder_render')) {
             })->addBreadcrumbs(function (BreadcrumbListSchema $breadcrumbListSchema) {
                 $breadcrumbListSchema->appendBreadcrumbs([]);
             });
-            return $data;
+            return $dataSeo;
         })->for($data);
         return $data->content;
     }
