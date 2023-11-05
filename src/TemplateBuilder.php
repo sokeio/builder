@@ -99,7 +99,7 @@ class TemplateBuilder implements Arrayable
         $templatePath = base_path('resources/template-builders');
         if (File::exists($templatePath)) {
             $files =  collect(File::allFiles($templatePath))->map(function ($item) {
-                return $item->getPathname();
+                return TemplateBuilder::Create($item->getPathname());
             });
             $arr = [...$arr, ...$files];
         }
