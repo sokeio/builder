@@ -3,6 +3,7 @@
     <div class="manager-body template-page-manager"
         x-data='{
     templates: [],
+    itemCataShow: [],
     searchText:"",
     async loadTemplate(){
         this.templates= await this.$wire.getTemplates();
@@ -35,11 +36,12 @@
         <div class="mt-2">
             <template x-for="(itemCata,index) in getCatagorys()">
                 <div class="card rounded-1 mb-2 p-0 border-blue">
-                    <h4 class="card-title m-0 rounded-0 p-1 text-bg-primary text-uppercase text-center"
+                    <button @click=" itemCataShow[itemCata] = ! itemCataShow[itemCata] "
+                        class=" card-title m-0 rounded-0 p-1 text-bg-primary text-uppercase text-center"
                         x-html="itemCata">
                         Featured
-                    </h4>
-                    <div class="card-body p-1">
+                    </button>
+                    <div class="card-body p-1" x-show="itemCataShow[itemCata]">
                         <template x-for="item in getTemplates(itemCata)">
                             <template x-if="item?.template_name">
                                 <div class="item-box mb-1 border" draggable="true"
