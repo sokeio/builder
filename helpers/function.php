@@ -27,6 +27,9 @@ if (!function_exists('pagebuilder_render')) {
             $dataSeo->image = $data->image ? url($data->image) : null;
             $dataSeo->datePublished = $data->published_at;
             $dataSeo->dateModified = $data->updated_at;
+            if ($seo = $data->seo->first()) {
+                $seo->fillForSeo($dataSeo);
+            }
             $dataSeo->schema = SchemaCollection::initialize()->addArticle(function (ArticleSchema $articleSchema) use ($data) {
             })->addBreadcrumbs(function (BreadcrumbListSchema $breadcrumbListSchema) {
                 $breadcrumbListSchema->appendBreadcrumbs([]);
