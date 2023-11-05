@@ -42,34 +42,32 @@ export default (editor, opts = {}) => {
       editor.runCommand("open-shortcode-dialog", model);
       return;
     }
-    let button = document.createElement("div");
-    button.style = "text-align: center;";
-    button.classList.add("div-builder-component-plus");
-    button.innerHTML =
-      "<button class='button-component-plus btn btn-sm btn-primary'>+</button>";
-    model.view.el.append(button);
-    model.view.el
-      .querySelector(".button-component-plus")
-      .addEventListener("click", () => {
-        let callback = "eventAddComponent" + new Date().getTime();
+    const commandToAdd = "open-template-dialog";
+    const commandIcon = "fa fa-clock";
 
-        let modal = window.ByteManager.openModal(
+    // get the selected componnet and its default toolbar
+    const selectedComponent = editor.getSelected();
+    const defaultToolbar = selectedComponent.get("toolbar");
+
+    // check if this command already exists on this component toolbar
+    const commandExists = defaultToolbar.some(
+      (item) => item.command === commandToAdd
+    );
+
+    // if it doesn't already exist, add it
+    if (!commandExists) {
+      console.log(defaultToolbar);
+      selectedComponent.set({
+        toolbar: [
           {
-            $url: options.urlTemplateManager,
-            $title: options.titleTemplateManager,
-            $size: "modal-xl modal-fullscreen-lg-down",
+            label:
+              '<svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M64 80c-8.8 0-16 7.2-16 16V416c0 8.8 7.2 16 16 16H384c8.8 0 16-7.2 16-16V96c0-8.8-7.2-16-16-16H64zM0 96C0 60.7 28.7 32 64 32H384c35.3 0 64 28.7 64 64V416c0 35.3-28.7 64-64 64H64c-35.3 0-64-28.7-64-64V96zM200 344V280H136c-13.3 0-24-10.7-24-24s10.7-24 24-24h64V168c0-13.3 10.7-24 24-24s24 10.7 24 24v64h64c13.3 0 24 10.7 24 24s-10.7 24-24 24H248v64c0 13.3-10.7 24-24 24s-24-10.7-24-24z"/></svg>',
+            command: commandToAdd,
           },
-          { callbackEvent: callback }
-        );
-        window[callback] = function (template) {
-          var newComponent = editor.DomComponents.addComponent(template);
-          // Append the new component as a child of the selected component
-          model.components().add(newComponent);
-          modal.hide();
-          // Render the changes
-          // editor.render();
-        };
+          ...defaultToolbar,
+        ],
       });
+    }
   });
 
   editor.on("component:deselected", function (model) {
