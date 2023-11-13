@@ -1,4 +1,14 @@
 <?php return array (
+  'byteplatform/admin' => 
+  array (
+    'providers' => 
+    array (
+      0 => 'BytePlatform\\Admin\\AdminServiceProvider',
+    ),
+    'aliases' => 
+    array (
+    ),
+  ),
   'byteplatform/builder' => 
   array (
     'providers' => 
