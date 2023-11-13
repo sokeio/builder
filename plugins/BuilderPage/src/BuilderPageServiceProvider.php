@@ -2,8 +2,8 @@
 
 namespace BytePlugin\BuilderPage;
 
-use BytePlatform\Facades\Menu;
-use BytePlatform\Facades\SettingForm;
+use BytePlatform\Admin\Facades\Menu;
+use BytePlatform\Admin\Facades\SettingForm;
 use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;

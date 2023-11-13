@@ -3,7 +3,7 @@
 namespace BytePlatform\Builder;
 
 use BytePlatform\Facades\Theme;
-use BytePlatform\Concerns\WithFormData;
+use BytePlatform\Admin\Concerns\WithFormData;
 
 trait WithPageBuilder
 {

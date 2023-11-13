@@ -14,8 +14,8 @@ export default (editor, opts = {}) => {
     window[callback] = function (template) {
       var newComponent = editor.DomComponents.addComponent(template);
       // Append the new component as a child of the selected component
-      model.components().add(newComponent);
       modal.hide();
+      model.components().add(newComponent);
       model.trigger("change:content");
       editor.trigger("component:update");
       // model.trigger("change");

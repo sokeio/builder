@@ -2,10 +2,10 @@
 
 namespace BytePlugin\BuilderPage\Crud;
 
-use BytePlatform\Button;
-use BytePlatform\CrudManager;
+use BytePlatform\Admin\Button;
+use BytePlatform\Admin\CrudManager;
 use BytePlatform\Item;
-use BytePlatform\ItemManager;
+use BytePlatform\Admin\ItemManager;
 use BytePlugin\BuilderPage\Models\PageBuilder;
 
 class PageCrud extends CrudManager

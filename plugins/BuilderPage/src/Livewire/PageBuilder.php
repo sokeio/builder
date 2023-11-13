@@ -6,7 +6,7 @@ use BytePlatform\Builder\WithPageBuilder;
 use BytePlatform\Component;
 use BytePlatform\Facades\Platform;
 use BytePlatform\Item;
-use BytePlatform\ItemManager;
+use BytePlatform\Admin\ItemManager;
 use BytePlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
 use Carbon\Carbon;
 
