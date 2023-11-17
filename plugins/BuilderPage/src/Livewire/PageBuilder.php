@@ -4,7 +4,6 @@ namespace BytePlugin\BuilderPage\Livewire;
 
 use BytePlatform\Builder\WithPageBuilder;
 use BytePlatform\Component;
-use BytePlatform\Facades\Platform;
 use BytePlatform\Item;
 use BytePlatform\Admin\ItemManager;
 use BytePlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
@@ -39,7 +38,9 @@ class PageBuilder extends Component
             Item::Add('published_at')->Column(Item::Col12)->Type('flatpickr')->ValueDefault(function () {
                 return Carbon::now();
             })->Title('Published At'),
-            Item::Add('status')->Title('Status')->DataOptionStatus()->Column(Item::Col12),
+            Item::Add('status')->Title('Status')->DataOptionStatus()->Column(Item::Col12)->ValueDefault(function () {
+                return 1;
+            }),
             Item::Add('content')->Column(Item::Col12)->InputHidden(),
             Item::Add('author_id')->Column(Item::Col12)->InputHidden()->ValueDefault(function () {
                 return auth()->user()->id;

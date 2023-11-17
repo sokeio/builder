@@ -4,6 +4,7 @@ namespace BytePlugin\BuilderPage;
 
 use BytePlatform\Admin\Facades\Menu;
 use BytePlatform\Admin\Facades\SettingForm;
+use BytePlatform\Admin\ItemManager;
 use BytePlatform\Item;
 use Illuminate\Support\ServiceProvider;
 use BytePlatform\Laravel\ServicePackage;
@@ -114,9 +115,9 @@ class BuilderPageServiceProvider extends ServiceProvider
                 Sitemap::addItem($item->getUrl());
             }
         });
-        SettingForm::Register(function (\BytePlatform\ItemManager $form) {
+        SettingForm::Register(function (ItemManager $form) {
             $form->Item([
-                Item::Add('page_homepage_id')->Type('select')->Title('Homepage')->Attribute(function () {
+                Item::Add('page_homepage_id')->Type('select')->Column(Item::Col12)->Title('Homepage')->Attribute(function () {
                     return 'style="max-width:200px;"';
                 })->DataOption(function () {
                     return  PageBuilder::query()->get()->map(function ($item) {
