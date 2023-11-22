@@ -1,9 +1,9 @@
 <?php
 
-namespace BytePlatform\Builder\Models;
+namespace Sokeio\Builder\Models;
 
 
-class TemplateCategory extends \BytePlatform\Model
+class TemplateCategory extends \Sokeio\Model
 {
     public  $table = 'template_categorys';
     protected $casts = [

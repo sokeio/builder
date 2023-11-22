@@ -1,4 +1,4 @@
-export class BytePlugin {
+export class SokeioPlugin {
   _manager;
   getKey() {
     return "";

@@ -1,12 +1,12 @@
 <?php
 
-namespace BytePlugin\BuilderPage\Crud;
+namespace SokeioPlugin\BuilderPage\Crud;
 
-use BytePlatform\Admin\Button;
-use BytePlatform\Admin\CrudManager;
-use BytePlatform\Item;
-use BytePlatform\Admin\ItemManager;
-use BytePlugin\BuilderPage\Models\PageBuilder;
+use Sokeio\Admin\Button;
+use Sokeio\Admin\CrudManager;
+use Sokeio\Item;
+use Sokeio\Admin\ItemManager;
+use SokeioPlugin\BuilderPage\Models\PageBuilder;
 
 class PageCrud extends CrudManager
 {
@@ -142,7 +142,7 @@ class PageCrud extends CrudManager
         //         ->Model($this->GetModel())->Item([
         //             Item::Add('name')->Title('Name')->Column(Item::Col12)->Type('readonly'),
         //             Item::Add('PermissionIds')->Title('Permissions')->Column(Item::Col12)->Type('toggle-multiple')->DataOption(function () {
-        //                 return \BytePlatform\Models\Permission::all()->map(function ($item) {
+        //                 return \Sokeio\Models\Permission::all()->map(function ($item) {
         //                     return [
         //                         'value' => $item->id,
         //                         'text' => $item->name

@@ -7,6 +7,6 @@
     "keywords": [],
     "priority": 200,
     "aliases": {},
-    "namespace":"BytePlatform\\Builder",
+    "namespace":"Sokeio\\Builder",
     "requires": []
 }

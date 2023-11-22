@@ -1,11 +1,11 @@
 <?php
 
-namespace BytePlugin\BuilderPage\Models;
+namespace SokeioPlugin\BuilderPage\Models;
 
-use BytePlatform\Concerns\WithSlug;
-use BytePlatform\Seo\HasSEO;
+use Sokeio\Concerns\WithSlug;
+use Sokeio\Seo\HasSEO;
 
-class PageBuilder extends \BytePlatform\Model
+class PageBuilder extends \Sokeio\Model
 {
     use WithSlug;
     use HasSEO;

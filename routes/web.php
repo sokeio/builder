@@ -11,7 +11,7 @@
 |
 */
 
-use BytePlatform\Builder\TemplateBuilder;
+use Sokeio\Builder\TemplateBuilder;
 use Illuminate\Support\Facades\Route;
 
 Route::get('test-builder', function () {

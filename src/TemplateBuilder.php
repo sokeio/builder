@@ -1,10 +1,10 @@
 <?php
 
-namespace BytePlatform\Builder;
+namespace Sokeio\Builder;
 
-use BytePlatform\Facades\Module;
-use BytePlatform\Facades\Plugin;
-use BytePlatform\Facades\Theme;
+use Sokeio\Facades\Module;
+use Sokeio\Facades\Plugin;
+use Sokeio\Facades\Theme;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\File;
 

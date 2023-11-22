@@ -7,6 +7,6 @@
     "keywords": [],
     "priority": 200,
     "aliases": {},
-    "namespace":"BytePlugin\\BuilderPage",
+    "namespace":"SokeioPlugin\\BuilderPage",
     "requires": []
 }

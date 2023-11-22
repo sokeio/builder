@@ -1,12 +1,12 @@
 <?php
 
-use BytePlatform\Facades\Assets;
-use BytePlatform\Facades\Shortcode;
-use BytePlatform\Seo\Facades\SEO;
-use BytePlatform\Seo\SchemaCollection;
-use BytePlatform\Seo\Schemas\ArticleSchema;
-use BytePlatform\Seo\Schemas\BreadcrumbListSchema;
-use BytePlatform\Seo\SEOData;
+use Sokeio\Facades\Assets;
+use Sokeio\Facades\Shortcode;
+use Sokeio\Seo\Facades\SEO;
+use Sokeio\Seo\SchemaCollection;
+use Sokeio\Seo\Schemas\ArticleSchema;
+use Sokeio\Seo\Schemas\BreadcrumbListSchema;
+use Sokeio\Seo\SEOData;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 

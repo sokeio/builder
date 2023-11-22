@@ -62,16 +62,16 @@
             "time": "2023-01-15T23:15:59+00:00"
         },
         {
-            "name": "byteplatform/admin",
+            "name": "sokeio/admin",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BytePlatform/Admin.git",
+                "url": "https://github.com/Sokeio/Admin.git",
                 "reference": "da8d9e66a1a3cdc9869b115497c90ac17a53dfa8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/Admin/zipball/da8d9e66a1a3cdc9869b115497c90ac17a53dfa8",
+                "url": "https://api.github.com/repos/Sokeio/Admin/zipball/da8d9e66a1a3cdc9869b115497c90ac17a53dfa8",
                 "reference": "da8d9e66a1a3cdc9869b115497c90ac17a53dfa8",
                 "shasum": ""
             },
@@ -80,7 +80,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "BytePlatform\\Admin\\AdminServiceProvider"
+                        "Sokeio\\Admin\\AdminServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -91,9 +91,9 @@
                     "helpers/function.php"
                 ],
                 "psr-4": {
-                    "BytePlatform\\Admin\\": "src",
-                    "BytePlatform\\Admin\\Database\\Seeders\\": "database/seeders",
-                    "BytePlatform\\Admin\\Database\\Factories\\": "database/factories"
+                    "Sokeio\\Admin\\": "src",
+                    "Sokeio\\Admin\\Database\\Seeders\\": "database/seeders",
+                    "Sokeio\\Admin\\Database\\Factories\\": "database/factories"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -104,13 +104,13 @@
                 }
             ],
             "support": {
-                "issues": "https://github.com/BytePlatform/Admin/issues",
-                "source": "https://github.com/BytePlatform/Admin/tree/v1.0.0"
+                "issues": "https://github.com/Sokeio/Admin/issues",
+                "source": "https://github.com/Sokeio/Admin/tree/v1.0.0"
             },
             "time": "2023-11-07T18:52:51+00:00"
         },
         {
-            "name": "byteplatform/builder",
+            "name": "sokeio/builder",
             "version": "dev-main",
             "dist": {
                 "type": "path",
@@ -118,16 +118,16 @@
                 "reference": "b968ff34eb1df1dd361231b885ca8f3d6ea38e50"
             },
             "require": {
-                "byteplatform/admin": "dev-main",
-                "byteplatform/byteplatform": "dev-main",
-                "byteplatform/seo": "dev-main",
+                "sokeio/admin": "dev-main",
+                "sokeio/sokeio": "dev-main",
+                "sokeio/seo": "dev-main",
                 "php": "^8.1"
             },
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "BytePlatform\\Builder\\BuilderServiceProvider"
+                        "Sokeio\\Builder\\BuilderServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -138,9 +138,9 @@
                     "helpers/function.php"
                 ],
                 "psr-4": {
-                    "BytePlatform\\Builder\\": "src",
-                    "BytePlatform\\Builder\\Database\\Factories\\": "database/factories",
-                    "BytePlatform\\Builder\\Database\\Seeders\\": "database/seeders"
+                    "Sokeio\\Builder\\": "src",
+                    "Sokeio\\Builder\\Database\\Factories\\": "database/factories",
+                    "Sokeio\\Builder\\Database\\Seeders\\": "database/seeders"
                 }
             },
             "license": [
@@ -158,21 +158,21 @@
             }
         },
         {
-            "name": "byteplatform/byteplatform",
+            "name": "sokeio/sokeio",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BytePlatform/BytePlatform.git",
+                "url": "https://github.com/Sokeio/Sokeio.git",
                 "reference": "6123fc6b3220e7b79fc7238837d994a9656c3e04"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/BytePlatform/zipball/6123fc6b3220e7b79fc7238837d994a9656c3e04",
+                "url": "https://api.github.com/repos/Sokeio/Sokeio/zipball/6123fc6b3220e7b79fc7238837d994a9656c3e04",
                 "reference": "6123fc6b3220e7b79fc7238837d994a9656c3e04",
                 "shasum": ""
             },
             "require": {
-                "byteplatform/laravel": "^1.0.2",
+                "sokeio/laravel": "^1.0.2",
                 "livewire/livewire": "^3.1.0",
                 "staudenmeir/eloquent-eager-limit": "^1.8.3",
                 "symfony/filesystem": "^6.3.1",
@@ -183,7 +183,7 @@
             "extra": {
                 "laravel": {
                     "providers": [
-                        "BytePlatform\\ByteServiceProvider"
+                        "Sokeio\\ByteServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -194,8 +194,8 @@
                     "helpers/function.php"
                 ],
                 "psr-4": {
-                    "BytePlatform\\": "src/",
-                    "BytePlatform\\Seeders\\": "database/seeders/"
+                    "Sokeio\\": "src/",
+                    "Sokeio\\Seeders\\": "database/seeders/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -211,10 +211,10 @@
                 }
             ],
             "description": "a Laravel-based web application development package that provides support for developing modules, plugins, themes, livewire, and shortcodes.",
-            "homepage": "https://github.com/byteplatform/byteplatform",
+            "homepage": "https://github.com/sokeio/sokeio",
             "support": {
-                "issues": "https://github.com/BytePlatform/BytePlatform/issues",
-                "source": "https://github.com/BytePlatform/BytePlatform/tree/v1.0.4"
+                "issues": "https://github.com/Sokeio/Sokeio/issues",
+                "source": "https://github.com/Sokeio/Sokeio/tree/v1.0.4"
             },
             "funding": [
                 {
@@ -222,7 +222,7 @@
                     "type": "github"
                 },
                 {
-                    "url": "https://opencollective.com/byteplatform",
+                    "url": "https://opencollective.com/sokeio",
                     "type": "open_collective"
                 },
                 {
@@ -233,16 +233,16 @@
             "time": "2023-11-07T18:56:32+00:00"
         },
         {
-            "name": "byteplatform/laravel",
+            "name": "sokeio/laravel",
             "version": "v1.0.2",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BytePlatform/Laravel.git",
+                "url": "https://github.com/Sokeio/Laravel.git",
                 "reference": "5c3de88aa5f10aace56fa291166775009ad9f051"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/Laravel/zipball/5c3de88aa5f10aace56fa291166775009ad9f051",
+                "url": "https://api.github.com/repos/Sokeio/Laravel/zipball/5c3de88aa5f10aace56fa291166775009ad9f051",
                 "reference": "5c3de88aa5f10aace56fa291166775009ad9f051",
                 "shasum": ""
             },
@@ -259,7 +259,7 @@
                 "branch-alias": {
                     "dev-master": "2.x-dev"
                 },
-                "class": "BytePlatform\\Laravel\\Plugin\\MergePlugin"
+                "class": "Sokeio\\Laravel\\Plugin\\MergePlugin"
             },
             "autoload": {
                 "files": [
@@ -267,7 +267,7 @@
                     "helpers/function.php"
                 ],
                 "psr-4": {
-                    "BytePlatform\\Laravel\\": "src/"
+                    "Sokeio\\Laravel\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -284,34 +284,34 @@
             ],
             "description": "Laravel package, merge plugin, hook filter action",
             "support": {
-                "issues": "https://github.com/BytePlatform/Laravel/issues",
-                "source": "https://github.com/BytePlatform/Laravel/tree/v1.0.2"
+                "issues": "https://github.com/Sokeio/Laravel/issues",
+                "source": "https://github.com/Sokeio/Laravel/tree/v1.0.2"
             },
             "time": "2023-11-04T02:01:21+00:00"
         },
         {
-            "name": "byteplatform/seo",
+            "name": "sokeio/seo",
             "version": "dev-main",
             "source": {
                 "type": "git",
-                "url": "https://github.com/BytePlatform/seo.git",
+                "url": "https://github.com/Sokeio/seo.git",
                 "reference": "2e32baf03e911f6ffa0d907f3e94c8d4f10d8233"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/BytePlatform/seo/zipball/2e32baf03e911f6ffa0d907f3e94c8d4f10d8233",
+                "url": "https://api.github.com/repos/Sokeio/seo/zipball/2e32baf03e911f6ffa0d907f3e94c8d4f10d8233",
                 "reference": "2e32baf03e911f6ffa0d907f3e94c8d4f10d8233",
                 "shasum": ""
             },
             "require": {
-                "byteplatform/laravel": "^1.0.2"
+                "sokeio/laravel": "^1.0.2"
             },
             "default-branch": true,
             "type": "library",
             "extra": {
                 "laravel": {
                     "providers": [
-                        "BytePlatform\\Seo\\SeoServiceProvider"
+                        "Sokeio\\Seo\\SeoServiceProvider"
                     ],
                     "aliases": []
                 }
@@ -322,9 +322,9 @@
                     "helpers/function.php"
                 ],
                 "psr-4": {
-                    "BytePlatform\\Seo\\": "src",
-                    "BytePlatform\\Seo\\Database\\Seeders\\": "database/seeders",
-                    "BytePlatform\\Seo\\Database\\Factories\\": "database/factories"
+                    "Sokeio\\Seo\\": "src",
+                    "Sokeio\\Seo\\Database\\Seeders\\": "database/seeders",
+                    "Sokeio\\Seo\\Database\\Factories\\": "database/factories"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -335,8 +335,8 @@
                 }
             ],
             "support": {
-                "issues": "https://github.com/BytePlatform/seo/issues",
-                "source": "https://github.com/BytePlatform/seo/tree/main"
+                "issues": "https://github.com/Sokeio/seo/issues",
+                "source": "https://github.com/Sokeio/seo/tree/main"
             },
             "time": "2023-11-05T17:35:54+00:00"
         },

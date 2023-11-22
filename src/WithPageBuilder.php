@@ -1,9 +1,9 @@
 <?php
 
-namespace BytePlatform\Builder;
+namespace Sokeio\Builder;
 
-use BytePlatform\Facades\Theme;
-use BytePlatform\Admin\Concerns\WithFormData;
+use Sokeio\Facades\Theme;
+use Sokeio\Admin\Concerns\WithFormData;
 
 trait WithPageBuilder
 {

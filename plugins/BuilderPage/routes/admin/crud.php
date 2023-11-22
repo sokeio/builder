@@ -1,7 +1,7 @@
 <?php
 
-use BytePlugin\BuilderPage\Crud\PageCrud;
-use BytePlugin\BuilderPage\Livewire\PageBuilder;
+use SokeioPlugin\BuilderPage\Crud\PageCrud;
+use SokeioPlugin\BuilderPage\Livewire\PageBuilder;
 use Illuminate\Support\Facades\Route;
 
 Route::group(['as' => 'admin.'], function () {

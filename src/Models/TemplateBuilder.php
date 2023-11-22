@@ -1,9 +1,9 @@
 <?php
 
-namespace BytePlatform\Builder\Models;
+namespace Sokeio\Builder\Models;
 
 
-class TemplateBuilder extends \BytePlatform\Model
+class TemplateBuilder extends \Sokeio\Model
 {
     protected $casts = [
         'published_at' => 'date',

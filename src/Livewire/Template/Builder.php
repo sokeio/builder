@@ -1,12 +1,12 @@
 <?php
 
-namespace BytePlatform\Builder\Livewire\Template;
+namespace Sokeio\Builder\Livewire\Template;
 
-use BytePlatform\Admin\ItemManager;
-use BytePlatform\Builder\Models\TemplateBuilder;
-use BytePlatform\Builder\WithPageBuilder;
-use BytePlatform\Component;
-use BytePlatform\Item;
+use Sokeio\Admin\ItemManager;
+use Sokeio\Builder\Models\TemplateBuilder;
+use Sokeio\Builder\WithPageBuilder;
+use Sokeio\Component;
+use Sokeio\Item;
 
 class Builder extends Component
 {

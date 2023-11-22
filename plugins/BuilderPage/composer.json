@@ -1,5 +1,5 @@
 {
-    "name": "byteplatform/plugin-builderpage",
+    "name": "sokeio/plugin-builderpage",
     "description": "",
     "authors": [
         {
@@ -9,16 +9,16 @@
     ],
     "extra": {
         "laravel": {
-            "providers": ["BytePlugin\\BuilderPage\\BuilderPageServiceProvider"],
+            "providers": ["SokeioPlugin\\BuilderPage\\BuilderPageServiceProvider"],
             "aliases": {}
         }
     },
     "autoload": {
         "psr-4": {
-            "BytePlugin\\BuilderPage\\": "src",
-            "BytePlugin\\BuilderPage\\Widget\\": "widgets",
-            "BytePlugin\\BuilderPage\\Database\\Factories\\": "database/factories",
-            "BytePlugin\\BuilderPage\\Database\\Seeders\\": "database/seeders"
+            "SokeioPlugin\\BuilderPage\\": "src",
+            "SokeioPlugin\\BuilderPage\\Widget\\": "widgets",
+            "SokeioPlugin\\BuilderPage\\Database\\Factories\\": "database/factories",
+            "SokeioPlugin\\BuilderPage\\Database\\Seeders\\": "database/seeders"
         }
     }
 }

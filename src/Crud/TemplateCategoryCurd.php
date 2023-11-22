@@ -1,12 +1,12 @@
 <?php
 
-namespace BytePlatform\Builder\Crud;
+namespace Sokeio\Builder\Crud;
 
-use BytePlatform\Admin\Button;
-use BytePlatform\Admin\CrudManager;
-use BytePlatform\Item;
-use BytePlatform\Admin\ItemManager;
-use BytePlatform\Builder\Models\TemplateCategory;
+use Sokeio\Admin\Button;
+use Sokeio\Admin\CrudManager;
+use Sokeio\Item;
+use Sokeio\Admin\ItemManager;
+use Sokeio\Builder\Models\TemplateCategory;
 
 class TemplateCategoryCurd extends CrudManager
 {

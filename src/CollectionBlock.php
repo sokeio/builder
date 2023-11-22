@@ -1,8 +1,8 @@
 <?php
 
-namespace BytePlatform\Builder;
+namespace Sokeio\Builder;
 
-use BytePlatform\ItemCallback;
+use Sokeio\ItemCallback;
 use Illuminate\Contracts\Support\Arrayable;
 
 class CollectionBlock extends ItemCallback  implements Arrayable

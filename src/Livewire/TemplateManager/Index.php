@@ -1,9 +1,9 @@
 <?php
 
-namespace BytePlatform\Builder\Livewire\TemplateManager;
+namespace Sokeio\Builder\Livewire\TemplateManager;
 
-use BytePlatform\Builder\TemplateBuilder;
-use BytePlatform\Component;
+use Sokeio\Builder\TemplateBuilder;
+use Sokeio\Component;
 
 class Index extends Component
 {

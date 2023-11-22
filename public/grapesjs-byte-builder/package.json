@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/BytePlatform/Builder.git"
+    "url": "https://github.com/Sokeio/Builder.git"
   },
   "scripts": {
     "start": "grapesjs-cli serve",

@@ -1,10 +1,10 @@
 <?php
 
-namespace BytePlatform\Builder\Livewire;
+namespace Sokeio\Builder\Livewire;
 
-use BytePlatform\Builder\WithPageBuilder;
-use BytePlatform\Component;
-use BytePlatform\Facades\Theme;
+use Sokeio\Builder\WithPageBuilder;
+use Sokeio\Component;
+use Sokeio\Facades\Theme;
 
 class TestPage extends Component
 {

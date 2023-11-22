@@ -1,6 +1,6 @@
-# BytePlatform/Builder
+# Sokeio/Builder
 
-BytePlatform/Builder, is a project built using Laravel 10, Livewire, and GrapesJS. It provides a web-based platform for creating and managing dynamic web pages with a visual editor.
+Sokeio/Builder, is a project built using Laravel 10, Livewire, and GrapesJS. It provides a web-based platform for creating and managing dynamic web pages with a visual editor.
 
 The project leverages Laravel, a popular PHP framework, to handle the backend logic and provide a robust foundation for building web applications. Livewire, a Laravel package, is utilized for creating reactive and interactive components on the frontend without the need for writing JavaScript code.
 

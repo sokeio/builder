@@ -1,5 +1,5 @@
 {
-  "name": "byteplatform/builder",
+  "name": "sokeio/builder",
   "description": "",
   "authors": [
     {
@@ -10,14 +10,14 @@
   "license": "MIT",
   "require": {
     "php": "^8.1",
-    "byteplatform/byteplatform": "^1.0.4",
-    "byteplatform/admin": "^1.0.0",
-    "byteplatform/seo": "^1.0.0"
+    "sokeio/sokeio": "^1.0.4",
+    "sokeio/admin": "^1.0.0",
+    "sokeio/seo": "^1.0.0"
   },
   "extra": {
     "laravel": {
       "providers": [
-        "BytePlatform\\Builder\\BuilderServiceProvider"
+        "Sokeio\\Builder\\BuilderServiceProvider"
       ],
       "aliases": {}
     }
@@ -28,9 +28,9 @@
       "helpers/function.php"
     ],
     "psr-4": {
-      "BytePlatform\\Builder\\": "src",
-      "BytePlatform\\Builder\\Database\\Factories\\": "database/factories",
-      "BytePlatform\\Builder\\Database\\Seeders\\": "database/seeders"
+      "Sokeio\\Builder\\": "src",
+      "Sokeio\\Builder\\Database\\Factories\\": "database/factories",
+      "Sokeio\\Builder\\Database\\Seeders\\": "database/seeders"
     }
   }
 }

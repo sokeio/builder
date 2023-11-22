@@ -1,12 +1,12 @@
 <?php
 
-namespace BytePlugin\BuilderPage\Livewire;
+namespace SokeioPlugin\BuilderPage\Livewire;
 
-use BytePlatform\Builder\WithPageBuilder;
-use BytePlatform\Component;
-use BytePlatform\Item;
-use BytePlatform\Admin\ItemManager;
-use BytePlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
+use Sokeio\Builder\WithPageBuilder;
+use Sokeio\Component;
+use Sokeio\Item;
+use Sokeio\Admin\ItemManager;
+use SokeioPlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
 use Carbon\Carbon;
 
 class PageBuilder extends Component

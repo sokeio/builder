@@ -1,16 +1,16 @@
 <?php
 
-namespace BytePlugin\BuilderPage;
+namespace SokeioPlugin\BuilderPage;
 
-use BytePlatform\Admin\Facades\Menu;
-use BytePlatform\Admin\Facades\SettingForm;
-use BytePlatform\Admin\ItemManager;
-use BytePlatform\Item;
+use Sokeio\Admin\Facades\Menu;
+use Sokeio\Admin\Facades\SettingForm;
+use Sokeio\Admin\ItemManager;
+use Sokeio\Item;
 use Illuminate\Support\ServiceProvider;
-use BytePlatform\Laravel\ServicePackage;
-use BytePlatform\Concerns\WithServiceProvider;
-use BytePlatform\Seo\Facades\Sitemap;
-use BytePlugin\BuilderPage\Models\PageBuilder;
+use Sokeio\Laravel\ServicePackage;
+use Sokeio\Concerns\WithServiceProvider;
+use Sokeio\Seo\Facades\Sitemap;
+use SokeioPlugin\BuilderPage\Models\PageBuilder;
 use Illuminate\Support\Facades\Route;
 
 class BuilderPageServiceProvider extends ServiceProvider

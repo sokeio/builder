@@ -1,12 +1,12 @@
 <?php
 
-namespace BytePlatform\Builder;
+namespace Sokeio\Builder;
 
-use BytePlatform\Admin\Facades\Menu;
-use BytePlatform\DataInfo;
+use Sokeio\Admin\Facades\Menu;
+use Sokeio\DataInfo;
 use Illuminate\Support\ServiceProvider;
-use BytePlatform\Laravel\ServicePackage;
-use BytePlatform\Concerns\WithServiceProvider;
+use Sokeio\Laravel\ServicePackage;
+use Sokeio\Concerns\WithServiceProvider;
 use Illuminate\Support\Facades\File;
 
 class BuilderServiceProvider extends ServiceProvider
