@@ -2,7 +2,7 @@ import { SokeioPlugin } from "../core/plugin";
 
 export class LiveWireGrapesJSModule extends SokeioPlugin {
   getKey() {
-    return "BYTE_LIVEWIRE_GRAPESJS_MODULE";
+    return "SOKEIO_LIVEWIRE_GRAPESJS_MODULE";
   }
   booting() {
     if (window.Livewire) {

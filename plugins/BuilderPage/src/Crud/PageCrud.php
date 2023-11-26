@@ -22,7 +22,7 @@ class PageCrud extends CrudManager
             })->DisableEdit(),
             Item::Add('name')->Column(Item::Col12)->Title('Name')->Required(),
             Item::Add('slug')->Title(function () {
-                if (env('BYTE_SUB_DOMAIN')) {
+                if (env('SOKEIO_SUB_DOMAIN')) {
                     return 'Subdomain';
                 }
                 return 'Slug';

@@ -39,7 +39,7 @@ class BuilderPageServiceProvider extends ServiceProvider
     {
         $this->app->booted(function () {
             Route::group(['middleware' => 'web'], function () {
-                if ($subdomain = env('BYTE_SUB_DOMAIN')) {
+                if ($subdomain = env('SOKEIO_SUB_DOMAIN')) {
                     Route::group(['domain' => '{slug}.' . $subdomain], function () {
                         Route::get('/', function ($slug) {
 
@@ -132,7 +132,7 @@ class BuilderPageServiceProvider extends ServiceProvider
             return $form;
         });
         Menu::Register(function () {
-            if (byte_is_admin()) {
+            if (sokeio_is_admin()) {
                 menu::route(['name' => 'admin.page-builder-list', 'params' => []], 'Pages', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-pagekit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M12.077 20h-5.077v-16h11v14h-5.077"></path>

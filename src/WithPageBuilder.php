@@ -44,7 +44,7 @@ trait WithPageBuilder
     }
     protected function getTabs()
     {
-        return apply_filters('BYTE_BUILDER_TABS', [
+        return apply_filters('SOKEIO_BUILDER_TABS', [
             [
                 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
@@ -107,15 +107,15 @@ trait WithPageBuilder
     public function getTemplates()
     {
         $this->skipRender();
-        return apply_filters('BYTE_BUILDER_TEMPLATES', TemplateBuilder::getTemplates());
+        return apply_filters('SOKEIO_BUILDER_TEMPLATES', TemplateBuilder::getTemplates());
     }
     public function render()
     {
         Theme::setLayout('none');
         Theme::setTitle($this->getPageTitle(), true);
         return view('builder::page', [
-            'options' => apply_filters('BYTE_BUILDER_OPTIONS', $this->getOptions()),
-            'itemManager' =>  apply_filters('BYTE_BUILDER_ITEMS', $this->getItemManager()),
+            'options' => apply_filters('SOKEIO_BUILDER_OPTIONS', $this->getOptions()),
+            'itemManager' =>  apply_filters('SOKEIO_BUILDER_ITEMS', $this->getItemManager()),
             'templates' => [],
             'linkPageList' => $this->getLinkPageList(),
             'tabs' => $this->getTabs(),

@@ -21,7 +21,7 @@ class PageBuilder extends Component
         return ItemManager::Form()->Model(PageBuilderModel::class)->Item([
             Item::Add('name')->Column(Item::Col12)->Title('Title')->Required(),
             Item::Add('slug')->Column(Item::Col12)->Title(function () {
-                if (env('BYTE_SUB_DOMAIN')) {
+                if (env('SOKEIO_SUB_DOMAIN')) {
                     return 'Subdomain';
                 }
                 return 'Slug';
