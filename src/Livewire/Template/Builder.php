@@ -6,7 +6,7 @@ use Sokeio\Admin\ItemManager;
 use Sokeio\Builder\Models\TemplateBuilder;
 use Sokeio\Builder\WithPageBuilder;
 use Sokeio\Component;
-use Sokeio\Item;
+use Sokeio\Admin\Item;
 
 class Builder extends Component
 {

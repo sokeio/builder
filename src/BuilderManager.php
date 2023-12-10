@@ -2,7 +2,7 @@
 
 namespace Sokeio\Builder;
 
-use Sokeio\ItemCallback;
+use Sokeio\Admin\ItemCallback;
 
 class BuilderManager extends ItemCallback
 {

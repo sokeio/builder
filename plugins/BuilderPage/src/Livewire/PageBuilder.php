@@ -4,7 +4,7 @@ namespace SokeioPlugin\BuilderPage\Livewire;
 
 use Sokeio\Builder\WithPageBuilder;
 use Sokeio\Component;
-use Sokeio\Item;
+use Sokeio\Admin\Item;
 use Sokeio\Admin\ItemManager;
 use SokeioPlugin\BuilderPage\Models\PageBuilder as PageBuilderModel;
 use Carbon\Carbon;

@@ -4,7 +4,7 @@ namespace SokeioPlugin\BuilderPage\Crud;
 
 use Sokeio\Admin\Button;
 use Sokeio\Admin\CrudManager;
-use Sokeio\Item;
+use Sokeio\Admin\Item;
 use Sokeio\Admin\ItemManager;
 use SokeioPlugin\BuilderPage\Models\PageBuilder;
 

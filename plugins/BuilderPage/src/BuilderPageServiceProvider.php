@@ -5,7 +5,7 @@ namespace SokeioPlugin\BuilderPage;
 use Sokeio\Admin\Facades\Menu;
 use Sokeio\Admin\Facades\SettingForm;
 use Sokeio\Admin\ItemManager;
-use Sokeio\Item;
+use Sokeio\Admin\Item;
 use Illuminate\Support\ServiceProvider;
 use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;

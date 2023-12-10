@@ -3,7 +3,7 @@
 namespace Sokeio\Builder;
 
 use Sokeio\Admin\Facades\Menu;
-use Sokeio\DataInfo;
+use Sokeio\Platform\DataInfo;
 use Illuminate\Support\ServiceProvider;
 use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;

@@ -2,7 +2,7 @@
 
 namespace Sokeio\Builder;
 
-use Sokeio\ItemCallback;
+use Sokeio\Admin\ItemCallback;
 use Illuminate\Contracts\Support\Arrayable;
 
 class ItemBlock extends ItemCallback  implements Arrayable
