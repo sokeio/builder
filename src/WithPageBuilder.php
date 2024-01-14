@@ -3,11 +3,9 @@
 namespace Sokeio\Builder;
 
 use Sokeio\Facades\Theme;
-use Sokeio\Admin\Concerns\WithFormData;
 
 trait WithPageBuilder
 {
-    use WithFormData;
     public $tabIndex = 0;
     public $builder_version = 'v1.0.3';
     protected $queryString = [
@@ -20,10 +18,6 @@ trait WithPageBuilder
     protected function getLinkPageList()
     {
         return '';
-    }
-    protected function getOptions()
-    {
-        return BuilderManager::New()->getOptions();
     }
 
     public function ConvertShortcodeToHtml($content)
