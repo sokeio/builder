@@ -11,4 +11,13 @@ class FormBuilder extends Form
         $this->skipRender();
         return shortcode_render($content);
     }
+    public function render()
+    {
+        return view($this->getView(), [
+            'title' => $this->getTitle(),
+            'layout' => $this->layout,
+            'footer' => $this->footer,
+            'formUIClass' => $this->getFormClass()
+        ]);
+    }
 }
