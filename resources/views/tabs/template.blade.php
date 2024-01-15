@@ -1,4 +1,4 @@
-<div class="byte-builder-control__content--item">
+<div class="sokeio-builder-control__content--item">
     <h3>Template Manager</h3>
     <div class="manager-body template-page-manager"
         x-data='{

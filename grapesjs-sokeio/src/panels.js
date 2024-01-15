@@ -17,16 +17,16 @@ export default (editor, opts = {}) => {
   const ful = "fullscreen";
   const prv = "preview";
   const iconStyle = 'style="display: block; max-width:22px"';
-  console.log("grapesjs-byte-builder");
+  console.log("grapesjs-sokeio-builder");
   panels.getPanels().reset([
     {
       id: "commands",
-      el: ".byte-builder-manager .commands-panel-manager",
+      el: ".sokeio-builder-manager .commands-panel-manager",
       buttons: [{}],
     },
     {
       id: "devices-c",
-      el: ".byte-builder-manager .devices-panel-manager",
+      el: ".sokeio-builder-manager .devices-panel-manager",
       buttons: [
         {
           id: cmdDeviceDesktop,
@@ -54,7 +54,7 @@ export default (editor, opts = {}) => {
     },
     {
       id: "options",
-      el: ".byte-builder-manager .options-panel-manager",
+      el: ".sokeio-builder-manager .options-panel-manager",
       buttons: [
         {
           id: swv,
@@ -116,7 +116,7 @@ export default (editor, opts = {}) => {
         {
           id: "save-builder-html",
           className: "fa fa-save",
-          command: "byte-builder-save-data",
+          command: "sokeio-builder-save-data",
           label: "<span style='margin-left: 5px;'>Publish</span>",
           attributes: {
             title: "Publish",

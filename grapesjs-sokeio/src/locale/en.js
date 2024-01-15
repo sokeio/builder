@@ -1,5 +1,5 @@
 export default {
-    'grapesjs-byte-builder': {
+    'grapesjs-sokeio-builder': {
         // 'key': 'value',
     },
 };

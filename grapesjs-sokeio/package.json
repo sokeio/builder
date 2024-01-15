@@ -1,11 +1,11 @@
 {
-  "name": "grapesjs-byte-builder",
+  "name": "grapesjs-sokeio",
   "version": "1.0.188",
   "description": "Grapesjs Shortcode",
   "main": "dist/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sokeio/Builder.git"
+    "url": "https://github.com/Sokeio/grapesjs-builder.git"
   },
   "scripts": {
     "start": "grapesjs-cli serve",

@@ -3,7 +3,7 @@ export default (editor, opts = {}) => {
   const openDialog = function (editor, sender, model) {
     let callback = "eventAddComponent" + new Date().getTime();
 
-    let modal = window.ByteManager.openModal(
+    let modal = window.SokeioManager.openModal(
       {
         $url: opts.urlTemplateManager,
         $title: opts.titleTemplateManager,

@@ -1,4 +1,4 @@
-.byte-builder-manager {
+.sokeio-builder-manager {
 
     height: 100%;
     position: relative;
@@ -17,7 +17,7 @@
         position: unset;
     }
 
-    .byte-builder-header {
+    .sokeio-builder-header {
         height: 40px;
         color: #fff;
         background-color: #02383D;
@@ -25,9 +25,9 @@
         display: flex;
         flex-direction: row;
 
-        .byte-builder-header__left {
+        .sokeio-builder-header__left {
 
-            .byte-builder-logo {
+            .sokeio-builder-logo {
                 min-width: 300px;
                 padding: 7px;
                 padding-left: 10px;
@@ -50,7 +50,7 @@
             }
         }
 
-        .byte-builder-header__center {
+        .sokeio-builder-header__center {
             text-align: center;
             flex-grow: 1 !important;
 
@@ -59,7 +59,7 @@
             }
         }
 
-        .byte-builder-header__right {
+        .sokeio-builder-header__right {
             min-width: 300px;
 
             .gjs-pn-options {
@@ -69,24 +69,24 @@
 
     }
 
-    .byte-builder-body {
+    .sokeio-builder-body {
         flex: auto;
         display: flex;
         flex-direction: row;
 
-        .byte-builder-control {
+        .sokeio-builder-control {
             border-top: 1px solid #045a88;
             height: 100%;
             background-color: #02383D;
             flex: none;
             display: flex;
 
-            .byte-builder-control__list {
+            .sokeio-builder-control__list {
                 width: 50px;
                 height: 100%;
                 border-right: 1px solid #12FEE0;
 
-                .byte-builder-control__list--item {
+                .sokeio-builder-control__list--item {
                     padding: 15px;
                     color: #fff;
                     border-bottom: 1px solid #12FEE0;
@@ -100,12 +100,12 @@
                 }
             }
 
-            .byte-builder-control__content {
+            .sokeio-builder-control__content {
                 overflow: auto;
                 flex: auto;
                 height: 100%;
 
-                .byte-builder-control__content--item {
+                .sokeio-builder-control__content--item {
                     width: 250px;
                     height: 100%;
 
@@ -153,7 +153,7 @@
             }
         }
 
-        .byte-builder-content {
+        .sokeio-builder-content {
             flex: auto;
 
             .gjs-cv-canvas {
@@ -170,7 +170,7 @@
 
         }
 
-        .byte-builder-setting {
+        .sokeio-builder-setting {
             flex: none;
             border-top: 1px solid #045a88;
 
@@ -178,15 +178,15 @@
             background-color: #02383D;
             width: 300px;
 
-            .byte-builder-setting__component {
+            .sokeio-builder-setting__component {
                 height: 100%;
 
-                .byte-builder-setting__component--tabs {
+                .sokeio-builder-setting__component--tabs {
                     border-bottom: 1px solid #12FEE0;
                     display: flex;
                     flex-direction: row;
 
-                    .byte-builder-setting__component--tab {
+                    .sokeio-builder-setting__component--tab {
                         padding: 10px;
                         flex: auto;
                         color: #fff;
@@ -206,11 +206,11 @@
 
     }
 
-    &.byte-builder-preview {
+    &.sokeio-builder-preview {
 
-        .byte-builder-header,
-        .byte-builder-setting,
-        .byte-builder-control {
+        .sokeio-builder-header,
+        .sokeio-builder-setting,
+        .sokeio-builder-control {
             display: none;
         }
     }

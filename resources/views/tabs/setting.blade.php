@@ -1,4 +1,4 @@
-<div class="byte-builder-control__content--item">
+<div class="sokeio-builder-control__content--item">
     <h3> Page Setting</h3>
     <div class="manager-body page-manager">
         {!! form_render($itemManager, $form, $dataId) !!}

@@ -72,7 +72,7 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
                 },
               },
             });
-            el.livewire____grapesjs.Commands.add("byte-builder-save-data", {
+            el.livewire____grapesjs.Commands.add("sokeio-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
                 component.$wire.doSaveBuilder();
@@ -99,20 +99,20 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
               // console.log(el.livewire____grapesjs);
               // const deviceManager = el.livewire____grapesjs.DeviceManager;
               // const deviceManagerContainer = document.querySelector(
-              //   ".byte-builder-manager .device-manager"
+              //   ".sokeio-builder-manager .device-manager"
               // );
               // deviceManagerContainer.appendChild(deviceManager.render());
             });
             el.livewire____grapesjs.on("stop:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              el.closest(".byte-builder-manager").classList.remove(
-                "byte-builder-preview"
+              el.closest(".sokeio-builder-manager").classList.remove(
+                "sokeio-builder-preview"
               );
             });
             el.livewire____grapesjs.on("run:preview", () => {
               // Xử lý khi sự kiện design xảy ra
-              el.closest(".byte-builder-manager").classList.add(
-                "byte-builder-preview"
+              el.closest(".sokeio-builder-manager").classList.add(
+                "sokeio-builder-preview"
               );
             });
           }
@@ -120,14 +120,14 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
         if (window.grapesjs) {
           grapesjsCreate();
         } else {
-          window.ByteLoadStyle(
+          window.SokeioLoadStyle(
             "https://cdn.jsdelivr.net/npm/grapesjs@0.21.6/dist/css/grapes.min.css",
             ...pluginManager.reduce(function (previous, current) {
               return [...previous, ...(current.css ?? [])];
             }, [])
           );
           window
-            .ByteLoadScript([
+            .SokeioLoadScript([
               "https://cdn.jsdelivr.net/npm/grapesjs@0.21.6/dist/grapes.min.js",
               ...pluginManager.reduce(function (previous, current) {
                 return [...previous, ...(current.js ?? [])];

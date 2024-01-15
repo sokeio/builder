@@ -9,7 +9,7 @@ To help you in this process here below you will find the necessary HTML/CSS/JS, 
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet">
 <script src="https://unpkg.com/grapesjs"></script>
-<script src="https://unpkg.com/grapesjs-byte-builder"></script>
+<script src="https://unpkg.com/grapesjs-sokeio-builder"></script>
 
 <div id="gjs"></div>
 ```
@@ -21,7 +21,7 @@ const editor = grapesjs.init({
   height: '100%',
   fromElement: true,
   storageManager: false,
-  plugins: ['grapesjs-byte-builder'],
+  plugins: ['grapesjs-sokeio-builder'],
 });
 ```
 
@@ -36,7 +36,7 @@ body, html {
 
 ## Summary
 
-* Plugin name: `grapesjs-byte-builder`
+* Plugin name: `grapesjs-sokeio-builder`
 * Components
     * `component-id-1`
     * `component-id-2`
@@ -59,11 +59,11 @@ body, html {
 ## Download
 
 * CDN
-  * `https://unpkg.com/grapesjs-byte-builder`
+  * `https://unpkg.com/grapesjs-sokeio-builder`
 * NPM
-  * `npm i grapesjs-byte-builder`
+  * `npm i grapesjs-sokeio-builder`
 * GIT
-  * `git clone https://github.com/YOUR-USERNAME/grapesjs-byte-builder.git`
+  * `git clone https://github.com/YOUR-USERNAME/grapesjs-sokeio-builder.git`
 
 
 
@@ -73,7 +73,7 @@ Directly in the browser
 ```html
 <link href="https://unpkg.com/grapesjs/dist/css/grapes.min.css" rel="stylesheet"/>
 <script src="https://unpkg.com/grapesjs"></script>
-<script src="path/to/grapesjs-byte-builder.min.js"></script>
+<script src="path/to/grapesjs-sokeio-builder.min.js"></script>
 
 <div id="gjs"></div>
 
@@ -81,9 +81,9 @@ Directly in the browser
   var editor = grapesjs.init({
       container: '#gjs',
       // ...
-      plugins: ['grapesjs-byte-builder'],
+      plugins: ['grapesjs-sokeio-builder'],
       pluginsOpts: {
-        'grapesjs-byte-builder': { /* options */ }
+        'grapesjs-sokeio-builder': { /* options */ }
       }
   });
 </script>
@@ -92,7 +92,7 @@ Directly in the browser
 Modern javascript
 ```js
 import grapesjs from 'grapesjs';
-import plugin from 'grapesjs-byte-builder';
+import plugin from 'grapesjs-sokeio-builder';
 import 'grapesjs/dist/css/grapes.min.css';
 
 const editor = grapesjs.init({
@@ -116,8 +116,8 @@ const editor = grapesjs.init({
 Clone the repository
 
 ```sh
-$ git clone https://github.com/YOUR-USERNAME/grapesjs-byte-builder.git
-$ cd grapesjs-byte-builder
+$ git clone https://github.com/YOUR-USERNAME/grapesjs-sokeio-builder.git
+$ cd grapesjs-sokeio-builder
 ```
 
 Install dependencies
