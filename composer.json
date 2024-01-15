@@ -9,10 +9,7 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^8.1",
-    "sokeio/framework": "dev-main",
-    "sokeio/admin": "dev-main",
-    "sokeio/seo": "dev-main"
+    "php": "^8.1"
   },
   "extra": {
     "laravel": {
