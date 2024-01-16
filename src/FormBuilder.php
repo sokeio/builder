@@ -2,6 +2,8 @@
 
 namespace Sokeio\Builder;
 
+use PhpParser\Node\Expr\FuncCall;
+use Sokeio\Builder\Models\BuilderPlugin;
 use Sokeio\Components\Form;
 use Sokeio\Facades\Theme;
 
@@ -24,6 +26,40 @@ class FormBuilder extends Form
         breadcrumb()->Title($this->getTitle())->Breadcrumb($this->getBreadcrumb());
         return 'builder::components.page';
     }
+    protected function getPlugins()
+    {
+        return [[
+            'name' => 'grapesjs-sokeio',
+            'js' => [url('platform/modules/CmsBuilder/grapesjs-sokeio/dist/index.js')],
+            'css' => [],
+            'options' => [
+                'urlTemplateManager' => '' // route('admin.builder.template-manager')
+            ]
+        ], ...apply_filters('SOKEIO_BUILDER_PLUGINS', [
+            [
+                'name' => 'gjs-blocks-basic',
+                'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
+                'css' => [],
+                'options' => [
+                    'flexGrid' => true
+                ]
+            ],
+            [
+                'name' => 'grapesjs-plugin-forms',
+                'js' => ['https://unpkg.com/grapesjs-plugin-forms'],
+                'css' => [],
+                'options' => []
+            ],
+            ...BuilderPlugin::query()->get()->map(function ($plugin) {
+                return [
+                    'name' => $plugin->name,
+                    'js' => json_decode($plugin->js, true),
+                    'css' => json_decode($plugin->css, true),
+                    'options' => json_decode($plugin->options, true)
+                ];
+            })
+        ])];
+    }
     public function render()
     {
         return view($this->getView(), [
@@ -39,29 +75,7 @@ class FormBuilder extends Form
                 ['title' => __('Settings'), 'template' => false, 'view' => 'builder::tabs.settings', 'icon' => ''],
             ],
             'options' => [
-                'pluginManager' => [[
-                    'name' => 'grapesjs-sokeio',
-                    'js' => [url('platform/modules/CmsBuilder/grapesjs-sokeio/dist/index.js')],
-                    'css' => [],
-                    'options' => [
-                        'urlTemplateManager' => '' // route('admin.builder.template-manager')
-                    ]
-                ], ...apply_filters('SOKEIO_BUILDER_PLUGINS', [
-                    [
-                        'name' => 'gjs-blocks-basic',
-                        'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
-                        'css' => [],
-                        'options' => [
-                            'flexGrid' => true
-                        ]
-                    ],
-                    [
-                        'name' => 'grapesjs-plugin-forms',
-                        'js' => ['https://unpkg.com/grapesjs-plugin-forms'],
-                        'css' => [],
-                        'options' => []
-                    ]
-                ])],
+                'pluginManager' => $this->getPlugins(),
                 'blockManager' => [
                     'appendTo' => '.sokeio-builder-manager .block-manager',
                 ],
