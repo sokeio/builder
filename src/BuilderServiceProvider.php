@@ -8,6 +8,7 @@ use Illuminate\Support\ServiceProvider;
 use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;
 use Illuminate\Support\Facades\File;
+use Sokeio\Admin\Menu\MenuBuilder;
 
 class BuilderServiceProvider extends ServiceProvider
 {
@@ -58,10 +59,9 @@ class BuilderServiceProvider extends ServiceProvider
         $this->bootGate();
         Menu::Register(function () {
             if (sokeio_is_admin()) {
-            //     menu::route(['name' => 'admin.builder.template', 'params' => []], 'Templates', '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-pagekit" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-            //     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-            //     <path d="M12.077 20h-5.077v-16h11v14h-5.077"></path>
-            //  </svg>', [], 'admin.page-builder-list');
+                Menu::attachMenu('system_setting_menu', function (MenuBuilder $menu) {
+                    $menu->route(['name' => 'admin.builder-plugin', 'params' => []], __('Builder Plugin'), '', [], 'admin.builder-plugin');
+                });
             }
         });
     }

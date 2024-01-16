@@ -46,7 +46,22 @@ class FormBuilder extends Form
                     'options' => [
                         'urlTemplateManager' => '' // route('admin.builder.template-manager')
                     ]
-                ]],
+                ], ...apply_filters('SOKEIO_BUILDER_PLUGINS', [
+                    [
+                        'name' => 'gjs-blocks-basic',
+                        'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
+                        'css' => [],
+                        'options' => [
+                            'flexGrid' => true
+                        ]
+                    ],
+                    [
+                        'name' => 'grapesjs-plugin-forms',
+                        'js' => ['https://unpkg.com/grapesjs-plugin-forms'],
+                        'css' => [],
+                        'options' => []
+                    ]
+                ])],
                 'blockManager' => [
                     'appendTo' => '.sokeio-builder-manager .block-manager',
                 ],
