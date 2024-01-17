@@ -10,6 +10,9 @@ use Sokeio\Components\UI;
 
 class PostBuilder extends FormBuilder
 {
+    public $categoryIds = [];
+    public $tagIds = '';
+    
     protected function getTitle()
     {
         return __('Post');
@@ -18,7 +21,49 @@ class PostBuilder extends FormBuilder
     {
         return [];
     }
+    protected function loadDataAfter($post)
+    {
+        $this->categoryIds = $post->catalogs()->get()->map(function ($item) {
+            return $item->id;
+        })->toArray();
+        $this->tagIds = json_encode($post->tags()->get()->map(function ($item) {
+            return [
+                'value' => $item->name,
+                'id' => $item->id
+            ];
+        })->toArray());
+    }
+    protected function saveAfter($post)
+    {
+        $tagIds = collect(json_decode($this->tagIds, true))->map(function ($item) {
+            if (isset($item['id'])) {
+                return $item['id'];
+            }
 
+            $tag = Tag::create([
+                'name' => is_string($item) ? $item : $item['value'],
+                'author_id' => auth()->user()->id
+            ]);
+            $tag->save();
+            return $tag->id;
+        });
+
+        $post->tags()->sync(
+            collect($tagIds)
+                ->filter(function ($item) {
+                    return $item > 0;
+                })
+                ->toArray()
+        );
+
+        $post->catalogs()->sync(
+            collect($this->categoryIds)
+                ->filter(function ($item) {
+                    return $item > 0;
+                })
+                ->toArray()
+        );
+    }
     protected function getPageList()
     {
         return route('admin.post');
