@@ -16,6 +16,15 @@ class PageBuilder extends FormBuilder
     {
         return [];
     }
+
+    protected function getPageList()
+    {
+        return route('admin.page');
+    }
+    protected function getLinkView()
+    {
+        return $this->data->slug ? route('page.slug', ['page' => $this->data->slug]) : '';
+    }
     protected function FormUI()
     {
         return UI::Prex('data', UI::Row([
@@ -26,9 +35,6 @@ class PageBuilder extends FormBuilder
                 }),
                 UI::Text('name')->Label(__('Title'))->required(),
                 UI::Text('slug')->Label(__('Slug')),
-                UI::Textarea('description')->Label(__('Description')),
-                UI::Textarea('custom_js')->Label(__('Custom Js')),
-                UI::Textarea('custom_css')->Label(__('Custom CSS')),
 
                 UI::Select('status')->Label(__('Status'))->DataSource(function () {
                     return [
@@ -57,6 +63,9 @@ class PageBuilder extends FormBuilder
                         ],
                     ];
                 }),
+                UI::Textarea('description')->Label(__('Description')),
+                UI::Textarea('custom_js')->Label(__('Custom Js')),
+                UI::Textarea('custom_css')->Label(__('Custom CSS')),
                 UI::Button(__('Save article'))->WireClick('doSave()')->ClassName('w-100 mb-2'),
             ])
         ]));

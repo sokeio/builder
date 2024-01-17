@@ -19,6 +19,7 @@ class FormBuilder extends Form
     }
     public function getTemplates()
     {
+        $this->skipRender();
         return TemplateBuilder::getTemplates();
     }
     protected function getView()
@@ -35,7 +36,7 @@ class FormBuilder extends Form
             'js' => [url('platform/modules/CmsBuilder/grapesjs-sokeio/dist/index.js')],
             'css' => [],
             'options' => [
-                'urlTemplateManager' => '' // route('admin.builder.template-manager')
+                'urlTemplateManager' => route('admin.builder.template-manager')
             ]
         ], ...apply_filters('SOKEIO_BUILDER_PLUGINS', [
             [
@@ -62,17 +63,25 @@ class FormBuilder extends Form
             })
         ])];
     }
+    protected function getPageList()
+    {
+        return '';
+    }
+    protected function getLinkView()
+    {
+        return '';
+    }
     public function render()
     {
         return view($this->getView(), [
             'title' => $this->getTitle(),
 
             'builder_version' => 'v1.0.0',
-            'linkPageList' => '/',
-            'linkView' => '/',
+            'linkPageList' => $this->getPageList(),
+            'linkView' => $this->getLinkView(),
             'tabs' => [
                 [
-                    'title' => __('Blocks'), 'template' => true, 'view' => 'builder::tabs.block',
+                    'title' => __('Blocks'), 'view' => 'builder::tabs.block',
                     'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                 stroke-linecap="round" stroke-linejoin="round">
@@ -93,7 +102,7 @@ class FormBuilder extends Form
                 <path d="M17 2v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1"></path>
             </svg>'],
                 [
-                    'title' => __('Settings'), 'template' => false, 'view' => 'builder::tabs.setting', 'data' => [
+                    'title' => __('Settings'),  'view' => 'builder::tabs.setting', 'data' => [
                         'layout' => $this->layout,
                         'footer' => $this->footer,
                     ], 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-table-options"

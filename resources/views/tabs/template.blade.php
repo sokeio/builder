@@ -33,7 +33,7 @@
 }'
         x-init="loadTemplate()">
         <input class=" form-control" x-model="searchText" placeholder="Search Template..." />
-        <div class="mt-2">
+        <div class="mt-2" wire:ignore>
             <template x-for="(itemCata,index) in getCatagorys()">
                 <div class="card rounded-1 mb-2 p-0 border-blue">
                     <button @click=" itemCataShow[itemCata] = ! itemCataShow[itemCata] "

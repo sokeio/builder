@@ -44,9 +44,9 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
               // Indicate where to init the editor. You can also pass an HTMLElement
               container: el,
               storageManager: false,
-              style: manager.dataGet(component.$wire, "form.css"),
+              style: manager.dataGet(component.$wire, "data.css"),
               // HTML string or a JSON of components
-              components: manager.dataGet(component.$wire, "form.content"),
+              components: manager.dataGet(component.$wire, "data.content"),
               ...options,
               plugins: pluginManager.map(function (item) {
                 return item.name;
@@ -75,23 +75,23 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
             el.livewire____grapesjs.Commands.add("sokeio-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
-                component.$wire.doSaveBuilder();
+                component.$wire.doSave();
               },
             });
             el.livewire____grapesjs.on("change", function () {
               manager.dataSet(
                 component.$wire,
-                "form.css",
+                "data.css",
                 el.livewire____grapesjs.getCss()
               );
               manager.dataSet(
                 component.$wire,
-                "form.content",
+                "data.content",
                 removeDivBuilderComponentPlus(el.livewire____grapesjs.getHtml())
               );
               manager.dataSet(
                 component.$wire,
-                "form.js",
+                "data.js",
                 el.livewire____grapesjs.getJs()
               );
             });

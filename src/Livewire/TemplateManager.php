@@ -1,11 +1,11 @@
 <?php
 
-namespace Sokeio\Builder\Livewire\Template;
+namespace Sokeio\Builder\Livewire;
 
 use Sokeio\Builder\TemplateBuilder;
 use Sokeio\Component;
 
-class Index extends Component
+class TemplateManager extends Component
 {
     public $callbackEvent;
     public function mount()
@@ -16,10 +16,9 @@ class Index extends Component
     {
         $this->skipRender();
         return TemplateBuilder::getTemplates();
-
     }
     public function render()
     {
-        return view('builder::template.index', []);
+        return view('builder::template-manager.index', []);
     }
 }

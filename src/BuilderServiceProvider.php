@@ -9,6 +9,8 @@ use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;
 use Illuminate\Support\Facades\File;
 use Sokeio\Admin\Menu\MenuBuilder;
+use Sokeio\Components\UI;
+use Sokeio\Facades\Platform;
 
 class BuilderServiceProvider extends ServiceProvider
 {
@@ -35,7 +37,8 @@ class BuilderServiceProvider extends ServiceProvider
     public function packageRegistered()
     {
         DataInfo::macro('getTemplateBuilder', function () {
-            if (File::exists($this->getPath('resources/template-builders')) && $files =  collect(File::allFiles($this->getPath('resources/template-builders')))->map(function ($item) {
+            $path = $this->getPath('resources/template-builders');
+            if (File::exists($path) && $files =  collect(File::allFiles($path))->map(function ($item) {
                 return $item->getPathname();
             })) {
                 return $files;
@@ -57,6 +60,38 @@ class BuilderServiceProvider extends ServiceProvider
     public function packageBooted()
     {
         $this->bootGate();
+        Platform::Ready(function () {
+            if (sokeio_is_admin()) {
+                add_filter('CMS_PAGE_BUTTONS', function ($prev) {
+                    return [
+                        UI::Button(__('Create With Builder'))->Route('admin.builder.page.new'),
+                        ...$prev,
+                    ];
+                });
+                add_filter('CMS_PAGE_TABLE_ACTIONS', function ($prev) {
+                    return [
+                        UI::Button(__('Edit With Builder'))->Cyan()->Route('admin.builder.page.edit', function ($row) {
+                            return ['dataId' => $row->id];
+                        }),
+                        ...$prev,
+                    ];
+                });
+            }
+            add_filter('CMS_POST_BUTTONS', function ($prev) {
+                return [
+                    UI::Button(__('Create With Builder'))->Route('admin.builder.post.new'),
+                    ...$prev,
+                ];
+            });
+            add_filter('CMS_POST_TABLE_ACTIONS', function ($prev) {
+                return [
+                    UI::Button(__('Edit With Builder'))->Cyan()->Route('admin.builder.post.edit', function ($row) {
+                        return ['dataId' => $row->id];
+                    }),
+                    ...$prev,
+                ];
+            });
+        });
         Menu::Register(function () {
             if (sokeio_is_admin()) {
                 Menu::attachMenu('system_setting_menu', function (MenuBuilder $menu) {

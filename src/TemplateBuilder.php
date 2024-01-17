@@ -83,14 +83,14 @@ class TemplateBuilder implements Arrayable
             }
         }
         foreach (Module::getAll() as $item) {
-            if ($item->isActive()) {
+            if ($item->isActive() || $item->isVendor()) {
                 $arr = [...$arr, ...collect($item->getTemplateBuilder())->map(function ($path) {
                     return TemplateBuilder::Create($path);
                 })];
             }
         }
         foreach (Plugin::getAll() as $item) {
-            if ($item->isActive()) {
+            if ($item->isActive() || $item->isVendor()) {
                 $arr = [...$arr, ...collect($item->getTemplateBuilder())->map(function ($path) {
                     return TemplateBuilder::Create($path);
                 })];
