@@ -8,6 +8,6 @@ use Sokeio\Builder\Livewire\PageBuilder;
 Route::group([
     'as' => 'admin.',
 ], function () {
-    Route::get('builder/new-page', PageBuilder::class);
+    Route::get('builder/create-page', PageBuilder::class);
     route_crud('builder-plugin', BuilderPluginTable::class, BuilderPluginForm::class);
 });
