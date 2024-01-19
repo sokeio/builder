@@ -1,12 +1,12 @@
 <?php
 
-namespace Sokeio\Builder\Livewire\BuilderPlugin;
+namespace Sokeio\Builder\Livewire\Plugin;
 
 use Sokeio\Builder\Models\BuilderPlugin;
 use Sokeio\Components\Table;
 use Sokeio\Components\UI;
 
-class BuilderPluginTable extends Table
+class PluginTable extends Table
 {
     protected function  getModel()
     {

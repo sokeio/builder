@@ -4,7 +4,7 @@
         item.thumbnail + "); "'
             class="template-preview"></div>
     </template>
-    <template x-if="item.thumbnail==''">
+    <template x-if="!item.thumbnail">
         <svg xmlns="http://www.w3.org/2000/svg" class="template-preview" viewBox="0 0 1300 1100" width="99%"
             height="180">
             <foreignObject width="100%" height="100%" style="pointer-events:none">
@@ -15,6 +15,9 @@
     </template>
     <template x-if="item.template_type&&item.template_type==='community'">
         <div class="ribbon bg-success text-success" x-html="item.template_type">Community</div>
+    </template>
+    <template x-if="item.template_type&&item.template_type==='database'">
+        <div class="ribbon bg-gray text-gray">Database</div>
     </template>
     <template x-if="item.template_type&&item.template_type==='free'">
         <div class="ribbon  bg-muted text-muted-fg" x-html="item.template_type">Pro</div>

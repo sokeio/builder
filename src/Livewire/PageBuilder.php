@@ -29,10 +29,11 @@ class PageBuilder extends FormBuilder
     {
         return UI::Prex('data', UI::Row([
             UI::Column12([
-                UI::Hidden('content')->ValueDefault(''),
+                UI::Hidden('content')->ValueDefault('')->required()->Label(__('Content')),
                 UI::Hidden('author_id')->ValueDefault(function () {
                     return auth()->user()->id;
                 }),
+                UI::Div(UI::Error('content')),
                 UI::Text('name')->Label(__('Title'))->required(),
                 UI::Text('slug')->Label(__('Slug')),
 

@@ -94,9 +94,10 @@ class BuilderServiceProvider extends ServiceProvider
         });
         Menu::Register(function () {
             if (sokeio_is_admin()) {
-                Menu::attachMenu('system_setting_menu', function (MenuBuilder $menu) {
-                    $menu->route(['name' => 'admin.builder-plugin', 'params' => []], __('Builder Plugin'), '', [], 'admin.builder-plugin');
-                });
+                Menu::subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
+                    $menu->route(['name' => 'admin.builder-template', 'params' => []], __('Template'), '', [], 'admin.builder-template');
+                    $menu->route(['name' => 'admin.builder-plugin', 'params' => []], __('Plugin'), '', [], 'admin.builder-plugin');
+                },1000);
             }
         });
     }

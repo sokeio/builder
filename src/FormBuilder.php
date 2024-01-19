@@ -71,6 +71,10 @@ class FormBuilder extends Form
     {
         return '';
     }
+    protected function validateFail()
+    {
+        $this->tabIndex = 2;
+    }
     public function render()
     {
         return view($this->getView(), [

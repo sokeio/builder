@@ -1,12 +1,12 @@
 <?php
 
-namespace Sokeio\Builder\Livewire\BuilderPlugin;
+namespace Sokeio\Builder\Livewire\Plugin;
 
 use Sokeio\Builder\Models\BuilderPlugin;
 use Sokeio\Components\Form;
 use Sokeio\Components\UI;
 
-class BuilderPluginForm extends Form
+class PluginForm extends Form
 {
     protected function  getModel()
     {

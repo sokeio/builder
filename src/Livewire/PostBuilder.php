@@ -12,7 +12,7 @@ class PostBuilder extends FormBuilder
 {
     public $categoryIds = [];
     public $tagIds = '';
-    
+
     protected function getTitle()
     {
         return __('Post');
@@ -81,10 +81,13 @@ class PostBuilder extends FormBuilder
     protected function FormUI()
     {
         return UI::Prex('data', [
-            UI::Hidden('author_id')->ValueDefault(auth()->user()->id),
-            UI::Hidden('content')->Label(__('Content'))->required(),
             UI::Row([
                 UI::Column12([
+                    UI::Hidden('content')->ValueDefault('')->required()->Label(__('Content')),
+                    UI::Hidden('author_id')->ValueDefault(function () {
+                        return auth()->user()->id;
+                    }),
+                    UI::Div(UI::Error('content')),
                     UI::Text('name')->Label(__('Title'))->required(),
                     UI::Text('slug')->Label(__('Slug')),
                     UI::Select('status')->Label(__('Status'))->DataSource(function () {

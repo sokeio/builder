@@ -7,6 +7,7 @@ use Sokeio\Facades\Plugin;
 use Sokeio\Facades\Theme;
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Facades\File;
+use Sokeio\Builder\Models\BuilderTemplate;
 
 class TemplateBuilder implements Arrayable
 {
@@ -20,7 +21,15 @@ class TemplateBuilder implements Arrayable
     public $thumbnail = '';
     public $description = '';
     public $content = '';
-    private function __construct($path)
+    private function __construct($value, $is_path = true)
+    {
+        if ($is_path) {
+            $this->makeByPath($value);
+        } else {
+            $this->makeByModel($value);
+        }
+    }
+    private function makeByPath($path)
     {
         $this->path = $path;
         $this->content = file_get_contents($this->path);
@@ -53,6 +62,19 @@ class TemplateBuilder implements Arrayable
         $pattern = '/<!--(.*?)-->/s';
         $this->content = preg_replace($pattern, '', $this->content);
     }
+    private function makeByModel($model)
+    {
+        //'name', 'description', 'content', 'author_id', 'status', 'js', 'css', 'topic', 'category', 'only_me', 'thumbnail', 'email'
+        $this->template_name = $model->name;
+        $this->template_type = 'database';
+        $this->author = $model->author->id;
+        $this->category = $model->category;
+        $this->email = $model->email;
+        $this->topic = $model->topic;
+        $this->thumbnail = $model->thumbnail;
+        $this->description = $model->description;
+        $this->content = $model->content;
+    }
     public function toArray()
     {
         return [
@@ -68,9 +90,9 @@ class TemplateBuilder implements Arrayable
             'content' => $this->content,
         ];
     }
-    public static function Create($path)
+    public static function Create($path, $is_path = true)
     {
-        return new TemplateBuilder($path);
+        return new TemplateBuilder($path, $is_path);
     }
     public static function getTemplates()
     {
@@ -103,6 +125,9 @@ class TemplateBuilder implements Arrayable
             });
             $arr = [...$arr, ...$files];
         }
+        $arr = [...$arr, ...BuilderTemplate::query()->where('status', 'published')->get()->map(function ($item) {
+            return TemplateBuilder::Create($item, false);
+        })];
         return $arr;
     }
 }
