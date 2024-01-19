@@ -20,7 +20,7 @@ class PluginForm extends Form
     protected function FormUI()
     {
         return UI::Prex('data', [
-            UI::Text('name')->Label(__('Name')),
+            UI::Text('name')->Label(__('Name'))->required(),
             UI::Textarea('js')->Label(__('JS'))->ValueDefault('[]'),
             UI::Textarea('css')->Label(__('CSS'))->ValueDefault('[]'),
             UI::Textarea('options')->Label(__('Options'))->ValueDefault('[]'),
