@@ -21,10 +21,10 @@ class PluginForm extends Form
     {
         return UI::Prex('data', [
             UI::Text('name')->Label(__('Name'))->required(),
-            UI::Textarea('js')->Label(__('JS'))->ValueDefault('[]'),
-            UI::Textarea('css')->Label(__('CSS'))->ValueDefault('[]'),
-            UI::Textarea('options')->Label(__('Options'))->ValueDefault('[]'),
-            UI::Checkbox('is_active')->Label(__('Active'))->Title(__('Active'))->ValueDefault(1)
+            UI::Textarea('js')->Label(__('JS'))->ValueDefault('[]')->required()->regex('/^\[\]$/'),
+            UI::Textarea('css')->Label(__('CSS'))->ValueDefault('[]')->required()->regex('/^\[\]$/'),
+            UI::Textarea('options')->Label(__('Options'))->ValueDefault('[]')->required()->regex('/^\[\]$/'),
+            UI::Checkbox('is_active')->Label(__('Active'))->Title(__('Active'))->ValueDefault(1)->required()->regex('/^\[\]$/')
         ])->ClassName('p-2');
     }
 }
