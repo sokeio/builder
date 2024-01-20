@@ -16,7 +16,6 @@ class PluginForm extends Form
     {
         return __('Builder Plugin');
     }
-    ///'name', 'js', 'css', 'options', 'is_active'
     protected function FormUI()
     {
         return UI::Prex('data', [

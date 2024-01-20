@@ -23,7 +23,7 @@ class TemplateTable extends Table
     protected function getButtons()
     {
         return [
-            UI::Button(__('Create'))->Route($this->getRoute() . '.add')
+            UI::Button(__('Create With Builder'))->Route($this->getRoute() . '.add')
         ];
     }
 
@@ -31,7 +31,7 @@ class TemplateTable extends Table
     protected function getTableActions()
     {
         return [
-            UI::ButtonEdit(__('Edit'))->Route($this->getRoute() . '.edit', function ($row) {
+            UI::ButtonEdit(__('Edit With Builder'))->Route($this->getRoute() . '.edit', function ($row) {
                 return [
                     'dataId' => $row->id
                 ];
