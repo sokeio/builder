@@ -2,15 +2,15 @@
 
 namespace Sokeio\Builder;
 
-use Sokeio\Admin\Facades\Menu;
-use Sokeio\Platform\DataInfo;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\ServiceProvider;
 use Sokeio\Laravel\ServicePackage;
 use Sokeio\Concerns\WithServiceProvider;
-use Illuminate\Support\Facades\File;
-use Sokeio\Admin\Menu\MenuBuilder;
-use Sokeio\Components\UI;
+use Sokeio\Facades\Menu;
 use Sokeio\Facades\Platform;
+use Sokeio\Platform\DataInfo;
+use Sokeio\Menu\MenuBuilder;
+use Sokeio\Components\UI;
 
 class BuilderServiceProvider extends ServiceProvider
 {
@@ -94,10 +94,10 @@ class BuilderServiceProvider extends ServiceProvider
         });
         Menu::Register(function () {
             if (sokeio_is_admin()) {
-                Menu::subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
+                menu_admin()->subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
                     $menu->route(['name' => 'admin.builder-template', 'params' => []], __('Template'), '', [], 'admin.builder-template');
                     $menu->route(['name' => 'admin.builder-plugin', 'params' => []], __('Plugin'), '', [], 'admin.builder-plugin');
-                },1000);
+                }, 1000);
             }
         });
     }

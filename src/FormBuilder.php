@@ -3,9 +3,9 @@
 namespace Sokeio\Builder;
 
 use Livewire\Attributes\Url;
-use PhpParser\Node\Expr\FuncCall;
 use Sokeio\Builder\Models\BuilderPlugin;
 use Sokeio\Components\Form;
+use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
 
 class FormBuilder extends Form
@@ -24,7 +24,7 @@ class FormBuilder extends Form
     }
     protected function getView()
     {
-        Theme::setTitle($this->getTitle());
+        Assets::setTitle($this->getTitle());
         Theme::setLayout('none');
         breadcrumb()->Title($this->getTitle())->Breadcrumb($this->getBreadcrumb());
         return 'builder::components.builder';
@@ -53,7 +53,7 @@ class FormBuilder extends Form
                 'css' => [],
                 'options' => []
             ],
-            ...BuilderPlugin::query()->get()->map(function ($plugin) {
+            ...BuilderPlugin::query()->where('is_active', 1)->get()->map(function ($plugin) {
                 return [
                     'name' => $plugin->name,
                     'js' => json_decode($plugin->js, true),
