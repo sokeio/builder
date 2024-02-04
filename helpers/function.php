@@ -1,7 +1,6 @@
 <?php
 
 use Sokeio\Facades\Assets;
-use Sokeio\Facades\Shortcode;
 use Sokeio\Seo\Facades\SEO;
 use Sokeio\Seo\SchemaCollection;
 use Sokeio\Seo\Schemas\ArticleSchema;
@@ -9,6 +8,7 @@ use Sokeio\Seo\Schemas\BreadcrumbListSchema;
 use Sokeio\Seo\SEOData;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use Sokeio\Cms\Facades\Shortcode;
 
 if (!function_exists('pagebuilder_render')) {
     function pagebuilder_render(Model $data)
