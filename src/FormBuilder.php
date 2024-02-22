@@ -4,6 +4,7 @@ namespace Sokeio\Builder;
 
 use Livewire\Attributes\Url;
 use Sokeio\Builder\Models\BuilderPlugin;
+use Sokeio\Cms\Facades\Shortcode;
 use Sokeio\Components\Form;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
@@ -14,6 +15,7 @@ class FormBuilder extends Form
     public $tabIndex = 0;
     public function ConvertShortcodeToHtml($content)
     {
+        Shortcode::enable();
         $this->skipRender();
         return shortcode_render($content);
     }

@@ -1,6 +1,6 @@
 export default (editor, opts = {}) => {
   const domc = editor.DomComponents;
-  var shortcodeRegex = /\[([\w-:]+)((?:\s+\w+\s*=\s*"[^"]*")*)\](.*?)\[\/\1\]/s;
+  var shortcodeRegex = /\[([\w-:]+)((?:\s+\w+\s*=\s*"[^"]*")*)(\](.*?)\[\/\1\]|\s*\/\])/s;
 
   domc.addType("shortcode", {
     isComponent: (el) =>
