@@ -1,11 +1,12 @@
+import { regexShortcode } from "../consts";
+
 export default (editor, opts = {}) => {
   const command = editor.Commands;
   const openDialog = function (editor, sender, model) {
-    var shortcodeRegex =
-      /\[([\w-:]+)((?:\s+\w+\s*=\s*"[^"]*")*)\](.*?)\[\/\1\]/s;
+    
     if (window.openShortcodeSetting) {
       let div = document.createElement("div");
-      div.innerHTML = shortcodeRegex.test(model.get("content"))
+      div.innerHTML = regexShortcode.test(model.get("content"))
         ? model.get("content")
         : decodeURIComponent(model.view.el.getAttribute("data-shortcode"));
       let shortcodeObj = window.getShortcodeObjectFromText(div.innerText);

@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-sokeio",
-  "version": "1.0.3",
+  "version": "1.0.52",
   "description": "Grapesjs Shortcode",
   "main": "dist/index.js",
   "repository": {
@@ -10,7 +10,9 @@
   "scripts": {
     "start": "grapesjs-cli serve",
     "build": "grapesjs-cli build",
-    "bump": "npm version patch -m 'Bump v%s'"
+    "bump": "npm version patch -m 'Bump v%s'",
+    "cp": "cp -R dist/* ../public/grapesjs-sokeio/dist/",
+    "dev": "yarn build && yarn cp"
   },
   "keywords": [
     "grapesjs",

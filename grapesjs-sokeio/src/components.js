@@ -1,12 +1,37 @@
-export default (editor, opts = {}) => {
-  const domc = editor.DomComponents;
-  var shortcodeRegex = /\[([\w-:]+)((?:\s+\w+\s*=\s*"[^"]*")*)(\](.*?)\[\/\1\]|\s*\/\])/s;
+import { regexShortcode } from "./consts";
 
+export default (editor, opts = {}) => {
+  const domc = editor.Components;
+  const cm = editor.Commands;
+  const pfx = editor.Config.stylePrefix;
+  const { useRenderShortcode } = opts;
+  // editor.on("run:preview", (data) => {
+  //   console.log("run preview", isPreview(), data);
+  //   document.querySelector(
+  //     ".sokeio-builder-header__right .options-panel-manager"
+  //   ).innerHTML = "";
+  //   editor.stopCommand("sw-visibility");
+  //   editor.render();
+  //   setTimeout(() => {
+  //     editor.getModel().stopDefault();
+  //     const editorEl = editor.editorView.el;
+  //     console.log({ editor });
+  //     if (editorEl.querySelector(`${pfx}off-prv`)) return;
+  //     const helper = document.createElement("span");
+  //     helper.className = `${pfx}off-prv fa fa-eye-slash`;
+  //     editorEl.appendChild(helper);
+  //     helper.onclick = () => editor.stopCommand("preview");
+  //   }, 100);
+  // });
+  // editor.on("stop:preview", () => {
+  //   console.log(["stop preview", isPreview()]);
+  //   editor.refres();
+  // });
   domc.addType("shortcode", {
     isComponent: (el) =>
       el.tagName === "DIV" &&
       el.childElementCount == 0 &&
-      shortcodeRegex.test(el.innerHTML),
+      regexShortcode.test(el.innerHTML),
     model: {
       defaults: {
         tagName: "",
@@ -21,25 +46,31 @@ export default (editor, opts = {}) => {
     view: {
       async onRender({ model }) {
         let html = this.el.innerHTML;
-        if (shortcodeRegex.test(html) || shortcodeRegex.test(model.content)) {
+        if (!useRenderShortcode) return;
+        if (regexShortcode.test(html) || regexShortcode.test(model.content)) {
           let $wireId = Alpine.closestRoot(
             editor.editorView.$el[0]
           )?.getAttribute("wire:id");
           if ($wireId) {
             let shortcode = this.el.innerHTML;
-            if (shortcodeRegex.test(model.content)) {
+            if (regexShortcode.test(model.content)) {
               shortcode = model.content;
             }
             let content = await Livewire.find($wireId).ConvertShortcodeToHtml(
               shortcode
             );
-            this.el.innerHTML = `<div data-gjs-type="shortcode">${content}</div>`;
-            this.el.setAttribute(
-              "data-shortcode",
-              encodeURIComponent(
-                '<div data-gjs-type="shortcode">' + html + "</div>"
-              )
-            );
+            if (this.el.getAttribute("data-gjs-type") === "shortcode") {
+              this.el.innerHTML = `${content}`;
+              this.el.setAttribute("data-shortcode", encodeURIComponent(html));
+            } else {
+              this.el.innerHTML = `<div data-gjs-type="shortcode">${content}</div>`;
+              this.el.setAttribute(
+                "data-shortcode",
+                encodeURIComponent(
+                  '<div data-gjs-type="shortcode">' + html + "</div>"
+                )
+              );
+            }
           }
         }
       },

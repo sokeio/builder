@@ -20,6 +20,7 @@ export default (editor, opts = {}) => {
     useCustomTheme: true,
     titleTemplateManager: "Template Manager",
     urlTemplateManager: "",
+    useRenderShortcode: false,
     ...opts,
   };
   // Add panels
