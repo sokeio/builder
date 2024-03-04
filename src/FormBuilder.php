@@ -35,7 +35,7 @@ class FormBuilder extends Form
     {
         return [[
             'name' => 'grapesjs-sokeio',
-            'js' => [url('platform/modules/CmsBuilder/grapesjs-sokeio/dist/index.js')],
+            'js' => [url('platform/modules/builder/grapesjs-sokeio/dist/index.js')],
             'css' => [],
             'options' => [
                 'urlTemplateManager' => route('admin.builder.template-manager')
