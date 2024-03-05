@@ -29,9 +29,9 @@ export default (editor, opts = {}) => {
   // });
   domc.addType("shortcode", {
     isComponent: (el) =>
-      el.tagName === "DIV" &&
+      // el.tagName === "DIV" &&
       el.childElementCount == 0 &&
-      regexShortcode.test(el.innerHTML),
+      regexShortcode.test(el.innerText),
     model: {
       defaults: {
         tagName: "",
@@ -84,6 +84,7 @@ export default (editor, opts = {}) => {
           "min-height": "50px",
           padding: "20px",
           border: "1px dashed #ccc",
+          "background-color": "rgba(0,0,0,0.1)",
           // Các thuộc tính style khác tùy ý
         },
       });

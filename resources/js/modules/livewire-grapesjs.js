@@ -37,7 +37,24 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
         if (options?.pluginManager) {
           options = { ...options, pluginManager: undefined };
         }
+        const highlightShortcodes = (content) => {
+          var openingTag = '<span class="shortcode-highlight">';
+          var closingTag = "</span>";
+          var highlightedContent = content.replace(
+            /\[(\/?[^\]]+)\]/g,
+            function (match, shortcode) {
+              if (shortcode.startsWith("/")) {
+                return "[" + shortcode + "]" + closingTag;
+              } else if (shortcode.endsWith("/")) {
+                return openingTag + "[" + shortcode + "]" + closingTag;
+              } else {
+                return openingTag + "[" + shortcode + "]";
+              }
+            }
+          );
 
+          return highlightedContent;
+        };
         const grapesjsCreate = () => {
           if (!el.livewire____grapesjs) {
             el.livewire____grapesjs = grapesjs.init({
@@ -96,6 +113,10 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
               );
             });
             el.livewire____grapesjs.on("load", function () {
+              const content = highlightShortcodes(manager.dataGet(component.$wire, "data.content"));
+              console.log({ content });
+              el.livewire____grapesjs.setHtml(content);
+              el.livewire____grapesjs.render();
               // console.log(el.livewire____grapesjs);
               // const deviceManager = el.livewire____grapesjs.DeviceManager;
               // const deviceManagerContainer = document.querySelector(
