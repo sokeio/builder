@@ -39,10 +39,6 @@ export default (editor, opts = {}) => {
     });
 
   editor.on("component:selected", function (model) {
-    if (model && model.get("type") === "shortcode") {
-      editor.runCommand("open-shortcode-dialog", model);
-      return;
-    }
     const commandToAdd = "open-template-dialog";
     const commandIcon = "fa fa-clock";
 

@@ -4,6 +4,7 @@ export default (editor, opts = {}) => {
   const command = editor.Commands;
   const openDialog = function (editor, sender, model) {
     if (window.openShortcodeSetting) {
+      // sender && sender.set("active", 0); // turn off the button
       let div = document.createElement("div");
       div.innerHTML = regexShortcode.test(model.get("content"))
         ? model.get("content")

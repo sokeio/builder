@@ -165,18 +165,20 @@ class FormBuilder extends Form
                         'https://cdn.jsdelivr.net/npm/@tabler/core@latest/dist/css/tabler.min.css',
                         'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css'
                     ],
-                    'frameStyle' => `
-    
+                    'frameStyle' => '
                     body { background-color: #fff }
                     * ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.1) }
                     * ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.2) }
                     * ::-webkit-scrollbar { width: 10px }
                     *[data-gjs-type="shortcode"] {
-                        min-height: 50px;
-                        padding: 10px;
+                        padding: 4px;
                         border: 1px dashed #ccc;
+                        background: #ddd;
                     }
-                  `
+                    *[data-gjs-type="shortcode"]:hover{
+                        background: #61f1f1;
+                    }
+                  '
                 ],
                 'height' => '100%',
                 'assetManager' => false,

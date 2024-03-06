@@ -30,8 +30,7 @@ export default (editor, opts = {}) => {
   domc.addType("shortcode", {
     isComponent: (el) =>
       // el.tagName === "DIV" &&
-      el.childElementCount == 0 &&
-      regexShortcode.test(el.innerText),
+      el.childElementCount == 0 && regexShortcode.test(el.innerText),
     model: {
       defaults: {
         tagName: "",
@@ -44,6 +43,12 @@ export default (editor, opts = {}) => {
     },
 
     view: {
+      events: {
+        click: "handleClick",
+      },
+      handleClick: function (e) {
+        editor.runCommand("open-shortcode-dialog", this.model);
+      },
       async onRender({ model }) {
         let html = this.el.innerHTML;
         if (!useRenderShortcode) return;
