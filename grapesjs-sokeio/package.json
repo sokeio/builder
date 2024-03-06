@@ -1,6 +1,6 @@
 {
   "name": "grapesjs-sokeio",
-  "version": "1.0.56",
+  "version": "1.0.63",
   "description": "Grapesjs Shortcode",
   "main": "dist/index.js",
   "repository": {
