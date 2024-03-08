@@ -31,9 +31,6 @@ class BuilderServiceProvider extends ServiceProvider
             ->hasTranslations()
             ->runsMigrations();
     }
-    public function extending()
-    {
-    }
     public function packageRegistered()
     {
         DataInfo::macro('getTemplateBuilder', function () {
@@ -45,7 +42,6 @@ class BuilderServiceProvider extends ServiceProvider
             }
             return [];
         });
-        $this->extending();
     }
     private function bootGate()
     {
@@ -60,15 +56,27 @@ class BuilderServiceProvider extends ServiceProvider
     public function packageBooted()
     {
         $this->bootGate();
-        Platform::Ready(function () {
-            Menu::Register(function () {
-                if (sokeio_is_admin()) {
-                    menu_admin()->subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
-                        $menu->route(['name' => 'admin.builder-template', 'params' => []], __('Template'), '', [], 'admin.builder-template');
-                        $menu->route(['name' => 'admin.builder-plugin', 'params' => []], __('Plugin'), '', [], 'admin.builder-plugin');
+        Platform::ready(function () {
+            if (sokeioIsAdmin()) {
+                Menu::Register(function () {
+                    menuAdmin()->subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
+                        $menu->route(
+                            ['name' => 'admin.builder-template', 'params' => []],
+                            __('Template'),
+                            '',
+                            [],
+                            'admin.builder-template'
+                        );
+                        $menu->route(
+                            ['name' => 'admin.builder-plugin', 'params' => []],
+                            __('Plugin'),
+                            '',
+                            [],
+                            'admin.builder-plugin'
+                        );
                     }, 1000);
-                }
-            });
+                });
+            }
         });
     }
 }
