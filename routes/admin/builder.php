@@ -11,6 +11,6 @@ Route::group([
     'as' => 'admin.',
 ], function () {
     Route::post('template-manager', TemplateManager::class)->name('builder.template-manager');
-    route_crud('builder-plugin', PluginTable::class, PluginForm::class);
-    route_crud('builder-template', TemplateTable::class, TemplateForm::class, true);
+    routeCrud('builder-plugin', PluginTable::class, PluginForm::class);
+    routeCrud('builder-template', TemplateTable::class, TemplateForm::class, true);
 });

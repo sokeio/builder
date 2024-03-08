@@ -90,7 +90,7 @@ class TemplateBuilder implements Arrayable
             'content' => $this->content,
         ];
     }
-    public static function Create($path, $is_path = true)
+    public static function create($path, $is_path = true)
     {
         return new TemplateBuilder($path, $is_path);
     }
@@ -100,33 +100,33 @@ class TemplateBuilder implements Arrayable
         foreach (Theme::getAll() as $item) {
             if ($item->isActive()) {
                 $arr = [...$arr, ...collect($item->getTemplateBuilder())->map(function ($path) {
-                    return TemplateBuilder::Create($path);
+                    return TemplateBuilder::create($path);
                 })];
             }
         }
         foreach (Module::getAll() as $item) {
             if ($item->isActive() || $item->isVendor()) {
                 $arr = [...$arr, ...collect($item->getTemplateBuilder())->map(function ($path) {
-                    return TemplateBuilder::Create($path);
+                    return TemplateBuilder::create($path);
                 })];
             }
         }
         foreach (Plugin::getAll() as $item) {
             if ($item->isActive() || $item->isVendor()) {
                 $arr = [...$arr, ...collect($item->getTemplateBuilder())->map(function ($path) {
-                    return TemplateBuilder::Create($path);
+                    return TemplateBuilder::create($path);
                 })];
             }
         }
         $templatePath = base_path('resources/template-builders');
         if (File::exists($templatePath)) {
             $files =  collect(File::allFiles($templatePath))->map(function ($item) {
-                return TemplateBuilder::Create($item->getPathname());
+                return TemplateBuilder::create($item->getPathname());
             });
             $arr = [...$arr, ...$files];
         }
         $arr = [...$arr, ...BuilderTemplate::query()->where('status', 'published')->get()->map(function ($item) {
-            return TemplateBuilder::Create($item, false);
+            return TemplateBuilder::create($item, false);
         })];
         return $arr;
     }

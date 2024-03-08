@@ -27,17 +27,17 @@ class PluginTable extends Table
     protected function getColumns()
     {
         return [
-            UI::Text('name')->Label(__('Name')),
-            UI::Textarea('js')->Label(__('JS'))->ValueDefault('[]'),
-            UI::Textarea('css')->Label(__('CSS'))->ValueDefault('[]'),
-            UI::Textarea('options')->Label(__('Options'))->ValueDefault('[]'),
-            UI::Button('is_active')->Label(__('Active'))->Title(__('Active'))->NoSort()->WireClick(function ($item) {
+            UI::text('name')->label(__('Name')),
+            UI::textarea('js')->label(__('JS'))->valueDefault('[]'),
+            UI::textarea('css')->label(__('CSS'))->valueDefault('[]'),
+            UI::textarea('options')->label(__('Options'))->valueDefault('[]'),
+            UI::button('is_active')->label(__('Active'))->Title(__('Active'))->NoSort()->wireClick(function ($item) {
                 if ($item->getDataItem()->is_active === true) {
                     $item->Title(__('Active'));
-                    $item->Primary();
+                    $item->primary();
                 } else {
                     $item->Title(__('Block'));
-                    $item->Warning();
+                    $item->warning();
                 }
                 return 'doChangeStatus(' . $item->getDataItem()->id . ',' . ($item->getDataItem()->status === true ? 0 : 1) . ')';
             })

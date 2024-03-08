@@ -16,14 +16,14 @@ class PluginForm extends Form
     {
         return __('Builder Plugin');
     }
-    protected function FormUI()
+    protected function formUI()
     {
-        return UI::Prex('data', [
-            UI::Text('name')->Label(__('Name'))->required(),
-            UI::Textarea('js')->Label(__('JS'))->ValueDefault('[]')->required()->regexArray(),
-            UI::Textarea('css')->Label(__('CSS'))->ValueDefault('[]')->required()->regexArray(),
-            UI::Textarea('options')->Label(__('Options'))->ValueDefault('[]')->required()->regexArray(),
-            UI::Checkbox('is_active')->Label(__('Active'))->Title(__('Active'))->ValueDefault(1)->required()
-        ])->ClassName('p-2');
+        return UI::prex('data', [
+            UI::text('name')->label(__('Name'))->required(),
+            UI::textarea('js')->label(__('JS'))->valueDefault('[]')->required()->regexArray(),
+            UI::textarea('css')->label(__('CSS'))->valueDefault('[]')->required()->regexArray(),
+            UI::textarea('options')->label(__('Options'))->valueDefault('[]')->required()->regexArray(),
+            UI::checkBox('is_active')->label(__('Active'))->Title(__('Active'))->valueDefault(1)->required()
+        ])->className('p-2');
     }
 }

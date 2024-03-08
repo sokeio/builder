@@ -4,7 +4,7 @@ namespace Sokeio\Builder;
 
 use Livewire\Attributes\Url;
 use Sokeio\Builder\Models\BuilderPlugin;
-use Sokeio\Cms\Facades\Shortcode;
+use Sokeio\Facades\Shortcode;
 use Sokeio\Components\Form;
 use Sokeio\Facades\Assets;
 use Sokeio\Facades\Theme;
@@ -17,7 +17,7 @@ class FormBuilder extends Form
     {
         Shortcode::enable();
         $this->skipRender();
-        return shortcode_render($content);
+        return shortcodeRender($content);
     }
     public function getTemplates()
     {
@@ -71,7 +71,7 @@ class FormBuilder extends Form
     }
     protected function getLinkView()
     {
-        return '';
+        return 'link-view';
     }
     protected function validateFail()
     {
@@ -88,7 +88,8 @@ class FormBuilder extends Form
             'tabs' => [
                 [
                     'title' => __('Blocks'), 'view' => 'builder::tabs.block',
-                    'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-apps" width="24"
+                    'icon' => '<svg xmlns="http://www.w3.org/2000/svg"
+                     class="icon icon-tabler icon-tabler-apps" width="24"
                 height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
                 stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
@@ -99,19 +100,25 @@ class FormBuilder extends Form
                 <path d="M17 4l0 6"></path>
             </svg>'
                 ],
-                ['title' => __('Templates'), 'template' => true, 'view' => 'builder::tabs.template', 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-carousel-vertical"
+                [
+                    'title' => __('Templates'), 'template' => true,
+                    'view' => 'builder::tabs.template',
+                    'icon' => '<svg xmlns="http://www.w3.org/2000/svg"
+                     class="icon icon-tabler icon-tabler-carousel-vertical"
                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                 <path d="M19 8v8a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1v-8a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1z"></path>
                 <path d="M7 22v-1a1 1 0 0 1 1 -1h8a1 1 0 0 1 1 1v1"></path>
                 <path d="M17 2v1a1 1 0 0 1 -1 1h-8a1 1 0 0 1 -1 -1v-1"></path>
-            </svg>'],
+            </svg>'
+                ],
                 [
                     'title' => __('Settings'),  'view' => 'builder::tabs.setting', 'data' => [
                         'layout' => $this->layout,
                         'footer' => $this->footer,
-                    ], 'icon' => '<svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-table-options"
+                    ], 'icon' => '<svg xmlns="http://www.w3.org/2000/svg"
+                     class="icon icon-tabler icon-tabler-table-options"
                 width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor"
                 fill="none" stroke-linecap="round" stroke-linejoin="round">
                 <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
