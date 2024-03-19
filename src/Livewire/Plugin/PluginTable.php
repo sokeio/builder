@@ -31,12 +31,12 @@ class PluginTable extends Table
             UI::textarea('js')->label(__('JS'))->valueDefault('[]'),
             UI::textarea('css')->label(__('CSS'))->valueDefault('[]'),
             UI::textarea('options')->label(__('Options'))->valueDefault('[]'),
-            UI::button('is_active')->label(__('Active'))->Title(__('Active'))->NoSort()->wireClick(function ($item) {
+            UI::button('is_active')->label(__('Active'))->title(__('Active'))->NoSort()->wireClick(function ($item) {
                 if ($item->getDataItem()->is_active === true) {
-                    $item->Title(__('Active'));
+                    $item->title(__('Active'));
                     $item->primary();
                 } else {
-                    $item->Title(__('Block'));
+                    $item->title(__('Block'));
                     $item->warning();
                 }
                 return 'doChangeStatus(' . $item->getDataItem()->id . ',' . ($item->getDataItem()->status === true ? 0 : 1) . ')';

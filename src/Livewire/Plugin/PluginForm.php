@@ -23,7 +23,7 @@ class PluginForm extends Form
             UI::textarea('js')->label(__('JS'))->valueDefault('[]')->required()->regexArray(),
             UI::textarea('css')->label(__('CSS'))->valueDefault('[]')->required()->regexArray(),
             UI::textarea('options')->label(__('Options'))->valueDefault('[]')->required()->regexArray(),
-            UI::checkBox('is_active')->label(__('Active'))->Title(__('Active'))->valueDefault(1)->required()
+            UI::checkBox('is_active')->label(__('Active'))->title(__('Active'))->valueDefault(1)->required()
         ])->className('p-2');
     }
 }

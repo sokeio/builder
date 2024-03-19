@@ -33,7 +33,7 @@ class TemplateForm extends FormBuilder
             UI::text('category')->label(__('Category'))->valueDefault('common')->required(),
             UI::text('topic')->label(__('Topic'))->required(),
             UI::textarea('description')->label(__('Description'))->valueDefault(''),
-            UI::checkBox('only_me')->label(__('Only me'))->Title(__('Only me use this template'))->valueDefault(0),
+            UI::checkBox('only_me')->label(__('Only me'))->title(__('Only me use this template'))->valueDefault(0),
             UI::text('email')->label(__('Email')),
             UI::select('status')->label(__('Status'))->dataSource(function () {
                 return [

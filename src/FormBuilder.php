@@ -28,7 +28,7 @@ class FormBuilder extends Form
     {
         Assets::setTitle($this->getTitle());
         Theme::setLayout('none');
-        breadcrumb()->Title($this->getTitle())->Breadcrumb($this->getBreadcrumb());
+        breadcrumb()->title($this->getTitle())->breadcrumb($this->getBreadcrumb());
         return 'builder::components.builder';
     }
     protected function getPlugins()
