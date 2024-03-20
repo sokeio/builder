@@ -40,7 +40,7 @@ class FormBuilder extends Form
             'options' => [
                 'urlTemplateManager' => route('admin.builder.template-manager')
             ]
-        ], ...apply_filters('SOKEIO_BUILDER_PLUGINS', [
+        ], ...applyFilters('SOKEIO_BUILDER_PLUGINS', [
             [
                 'name' => 'gjs-blocks-basic',
                 'js' => ['https://unpkg.com/grapesjs-blocks-basic'],
