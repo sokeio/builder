@@ -1,4 +1,4 @@
-<div class="modal-body p-0"
+<div @if ($isPage) class="page-body mt-2" @else class="modal-body p-0" @endif
     x-data='{
         templateCurrent:null,
         catagoryCurrent:"",
@@ -8,7 +8,11 @@
             this.templates= await this.$wire.getTemplates();
         },
         async getTemplateHtml(){
+            @if(!$isPage)
             return this.templateCurrent?.content??"";
+            @else
+            return await $wire.viewTemplate(this.templateCurrent?.content??"");
+            @endif
         },
         getTemplates(){
             let self=this;
@@ -20,7 +24,7 @@
                     item.topic?.indexOf(self.searchText)>-1||
                     item.email?.indexOf(self.searchText)>-1||
                     item.description?.indexOf(self.searchText)>-1||
-                    item.template_name?.indexOf(self.searchText)>-1
+                    item.templateName?.indexOf(self.searchText)>-1
 
                 );
               });
@@ -41,7 +45,14 @@
         }
 }'
     x-init="loadTemplate()">
-    <div>
+    <div @if ($isPage) class=" container-fluid" @endif>
+        @if ($isPage)
+            <div class="bg-white border p-2 rounded-2">
+                <h3 class="p-2 m-0">@lang('Template Viewer')</h3>
+
+                <div class="border my-2" style="max-height:400px; overflow:auto" x-html="await getTemplateHtml()">
+                </div>
+        @endif
         <div class="row g-0">
             <div class="col">
                 <ul class="nav nav-tabs">
@@ -59,10 +70,10 @@
                         </li>
                     </template>
                     <li class="nav-item p-1 w-auto">
-                       
-                            <input class=" form-control form-control-sm p-1" x-model="searchText"
+
+                        <input class=" form-control form-control-sm p-1" x-model="searchText"
                             placeholder="Search Template..." />
-                      
+
                     </li>
                 </ul>
             </div>
@@ -70,7 +81,7 @@
 
         <div style="min-height: 400px;max-height:70vh; overflow:auto;">
             <div class="row g-0">
-                <template x-for="item in getTemplates()" x-if="item?.template_name">
+                <template x-for="item in getTemplates()" x-if="item?.templateName">
                     <div class="col-3  p-1">
                         <div class="border border-pink rounded-1" :class="item == templateCurrent ? 'border-2' : ''"
                             @click="chooseTemplate(item)">
@@ -81,9 +92,14 @@
             </div>
         </div>
     </div>
-    <div class=" p-2 text-center  border-top-wide">
-        <button :disabled="!templateCurrent" class=" btn btn-primary rounded-1"
-            @click="{{ $callbackEvent }}(await getTemplateHtml())">Choose
-            Template</button>
-    </div>
+    @if (!$isPage)
+        <div class=" p-2 text-center  border-top-wide">
+            <button :disabled="!templateCurrent" class=" btn btn-primary rounded-1"
+                @click="{{ $callbackEvent }}(await getTemplateHtml())">Choose
+                Template</button>
+        </div>
+    @endif
+    @if ($isPage)
+</div>
+@endif
 </div>

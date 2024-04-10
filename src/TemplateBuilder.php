@@ -12,8 +12,8 @@ use Sokeio\Builder\Models\BuilderTemplate;
 class TemplateBuilder implements Arrayable
 {
     public $path = '';
-    public $template_name = '';
-    public $template_type = '';
+    public $templateName = '';
+    public $templateType = '';
     public $author = '';
     public $category = '';
     public $topic = '';
@@ -47,8 +47,8 @@ class TemplateBuilder implements Arrayable
                     $metadataArray[trim($key)] = trim($value);
                 }
             }
-            $this->template_name = isset($metadataArray['template name']) ? $metadataArray['template name'] : '';
-            $this->template_type = isset($metadataArray['template type']) ? $metadataArray['template type'] : 'free';
+            $this->templateName = isset($metadataArray['template name']) ? $metadataArray['template name'] : '';
+            $this->templateType = isset($metadataArray['template type']) ? $metadataArray['template type'] : 'free';
             $this->author =  isset($metadataArray['anthor']) ? $metadataArray['anthor'] : '';
             $this->category =  isset($metadataArray['category']) ? $metadataArray['category'] : '';
             $this->email =  isset($metadataArray['email']) ? $metadataArray['email'] : '';
@@ -65,8 +65,8 @@ class TemplateBuilder implements Arrayable
     private function makeByModel($model)
     {
         //'name', 'description', 'content', 'author_id', 'status', 'js', 'css', 'topic', 'category', 'only_me', 'thumbnail', 'email'
-        $this->template_name = $model->name;
-        $this->template_type = 'database';
+        $this->templateName = $model->name;
+        $this->templateType = 'database';
         $this->author = $model->author->id;
         $this->category = $model->category;
         $this->email = $model->email;
@@ -79,8 +79,8 @@ class TemplateBuilder implements Arrayable
     {
         return [
             'path' => $this->path,
-            'template_name' => $this->template_name,
-            'template_type' => $this->template_type,
+            'templateName' => $this->templateName,
+            'templateType' => $this->templateType,
             'author' => $this->author,
             'category' => $this->category,
             'topic' => $this->topic,

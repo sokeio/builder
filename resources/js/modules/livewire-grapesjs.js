@@ -82,8 +82,9 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
                 custom: {
                   open(props) {
                     window.showFileManager(function (file) {
-                      console.log(file[0]["url"]);
-                      props.select(file[0]["url"]);
+                      if(file&&file[0]&&file[0]["url"]){
+                        props.select(file[0]["url"]);
+                      }
                       props.close();
                     });
                   },

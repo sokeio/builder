@@ -1,4 +1,4 @@
-<div class=" position-relative" :title="item.template_name">
+<div class=" position-relative" :title="item.templateName">
     <template x-if="item.thumbnail">
         <div :style='"background-repeat: no-repeat; background-size: cover;height: 180px;background-position: center;width: 99%; background-image: url(" +
         item.thumbnail + "); "'
@@ -13,16 +13,16 @@
             </foreignObject>
         </svg>
     </template>
-    <template x-if="item.template_type&&item.template_type==='community'">
-        <div class="ribbon bg-success text-success" x-html="item.template_type">Community</div>
+    <template x-if="item.templateType&&item.templateType==='community'">
+        <div class="ribbon bg-success text-success" x-html="item.templateType">Community</div>
     </template>
-    <template x-if="item.template_type&&item.template_type==='database'">
+    <template x-if="item.templateType&&item.templateType==='database'">
         <div class="ribbon bg-gray text-gray">Database</div>
     </template>
-    <template x-if="item.template_type&&item.template_type==='free'">
-        <div class="ribbon  bg-muted text-muted-fg" x-html="item.template_type">Pro</div>
+    <template x-if="item.templateType&&item.templateType==='free'">
+        <div class="ribbon  bg-muted text-muted-fg" x-html="item.templateType">Pro</div>
     </template>
-    <template x-if="item.template_type&&item.template_type=='pro'">
-        <div class="ribbon bg-warning" x-html="item.template_type">Pro</div>
+    <template x-if="item.templateType&&item.templateType=='pro'">
+        <div class="ribbon bg-warning" x-html="item.templateType">Pro</div>
     </template>
 </div>

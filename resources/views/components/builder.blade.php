@@ -1,7 +1,7 @@
 <div class="sokeio-builder-manager">
     <div class="sokeio-builder-header">
         <div class="sokeio-builder-header__left">
-            <div class="sokeio-builder-logo">Sokeio builder <span>{{ $builder_version }}</span>
+            <div class="sokeio-builder-logo">Sokeio Builder <span>{{ $builder_version }}</span>
                 <a href="{{ $linkPageList }}" class="text-white ms-4">Back</a>
                 @if ($linkView)
                     <a href="{{ $linkView }}" class="text-white ms-4" target="_blank">View</a>

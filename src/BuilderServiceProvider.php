@@ -59,20 +59,27 @@ class BuilderServiceProvider extends ServiceProvider
         Platform::ready(function () {
             if (sokeioIsAdmin()) {
                 Menu::Register(function () {
-                    menuAdmin()->subMenu(__('Builder Manager'), '', function (MenuBuilder $menu) {
+                    menuAdmin()->subMenu(__('EZBuilder'), '', function (MenuBuilder $menu) {
                         $menu->route(
                             ['name' => 'admin.builder-template', 'params' => []],
-                            __('Template'),
+                            __('Template Builder'),
                             '',
                             [],
                             'admin.builder-template'
                         );
                         $menu->route(
                             ['name' => 'admin.builder-plugin', 'params' => []],
-                            __('Plugin'),
+                            __('Plugin Settings'),
                             '',
                             [],
                             'admin.builder-plugin'
+                        );
+                        $menu->route(
+                            ['name' => 'admin.builder.template-view', 'params' => []],
+                            __('Template Viewer'),
+                            '',
+                            [],
+                            'admin.builder.template-view'
                         );
                     }, 1000);
                 });

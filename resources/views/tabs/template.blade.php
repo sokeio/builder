@@ -18,7 +18,7 @@
                 item.topic?.indexOf(self.searchText)>-1||
                 item.email?.indexOf(self.searchText)>-1||
                 item.description?.indexOf(self.searchText)>-1||
-                item.template_name?.indexOf(self.searchText)>-1
+                item.templateName?.indexOf(self.searchText)>-1
             );
           });
         return rs??[];
@@ -43,7 +43,7 @@
                     </button>
                     <div class="card-body p-1" x-show="itemCataShow[itemCata]">
                         <template x-for="item in getTemplates(itemCata)">
-                            <template x-if="item?.template_name">
+                            <template x-if="item?.templateName">
                                 <div class="item-box mb-1 border" draggable="true"
                                     x-on:dragstart.self="
         event.dataTransfer.effectAllowed = 'move';

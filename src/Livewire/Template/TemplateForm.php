@@ -20,6 +20,13 @@ class TemplateForm extends FormBuilder
     {
         return route('admin.builder-template');
     }
+    protected function getLinkView()
+    {
+        if ($this->dataId) {
+            return route('admin.builder.template-preview', ['dataId' => $this->dataId]);
+        }
+        return null;
+    }
     ///'name', 'js', 'css', 'options', 'is_active'
     protected function formUI()
     {
@@ -30,7 +37,13 @@ class TemplateForm extends FormBuilder
             UI::hidden('content')->valueDefault(''),
             UI::text('name')->label(__('Name'))->required(),
             UI::image('thumbnail')->label(__('Thumbnail'))->valueDefault(''),
-            UI::text('category')->label(__('Category'))->valueDefault('common')->required(),
+            UI::text('category')->label(__('Category'))->valueDefault('common')
+                ->required()
+                ->afterUI(
+                    UI::button('<i class="fa fa-eye"></i>')
+                        ->xClick('showTemplate=!showTemplate')
+                )
+                ->afterTemplate('<div><button @click="setValue(\'abc1234\',)">Test </button></div>'),
             UI::text('topic')->label(__('Topic'))->required(),
             UI::textarea('description')->label(__('Description'))->valueDefault(''),
             UI::checkBox('only_me')->label(__('Only me'))->title(__('Only me use this template'))->valueDefault(0),
