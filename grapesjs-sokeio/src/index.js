@@ -53,7 +53,6 @@ export default (editor, opts = {}) => {
 
     // if it doesn't already exist, add it
     if (!commandExists) {
-      console.log(defaultToolbar);
       selectedComponent.set({
         toolbar: [
           {
@@ -80,12 +79,4 @@ export default (editor, opts = {}) => {
       editor.runCommand("open-shortcode-dialog", model);
     }
   });
-  // TODO Remove
-  // editor.on('load', () =>
-  //   editor.addComponents(
-  //       `<div style="margin:100px; padding:25px;">
-  //           Content loaded from the plugin
-  //       </div>`,
-  //       { at: 0 }
-  //   ))
 };

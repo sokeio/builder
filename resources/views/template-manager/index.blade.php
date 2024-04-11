@@ -8,11 +8,9 @@
             this.templates= await this.$wire.getTemplates();
         },
         async getTemplateHtml(){
-            @if(!$isPage)
-            return this.templateCurrent?.content??"";
+            @if (!$isPage) return this.templateCurrent?.content??"";
             @else
-            return await $wire.viewTemplate(this.templateCurrent?.content??"");
-            @endif
+            return await $wire.viewTemplate(this.templateCurrent?.content??""); @endif
         },
         getTemplates(){
             let self=this;
@@ -81,13 +79,15 @@
 
         <div style="min-height: 400px;max-height:70vh; overflow:auto;">
             <div class="row g-0">
-                <template x-for="item in getTemplates()" x-if="item?.templateName">
-                    <div class="col-3  p-1">
-                        <div class="border border-pink rounded-1" :class="item == templateCurrent ? 'border-2' : ''"
-                            @click="chooseTemplate(item)">
-                            @include('builder::template-manager.item')
+                <template x-for="item in getTemplates()">
+                    <template x-if="item?.templateName">
+                        <div class="col-3  p-1">
+                            <div class="border border-pink rounded-1" :class="item == templateCurrent ? 'border-2' : ''"
+                                @click="chooseTemplate(item)">
+                                @include('builder::template-manager.item')
+                            </div>
                         </div>
-                    </div>
+                    </template>
                 </template>
             </div>
         </div>

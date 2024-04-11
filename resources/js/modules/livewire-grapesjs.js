@@ -28,7 +28,7 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
       };
       window.Livewire.directive("grapesjs", ({ el, directive, component }) => {
         // Only fire this handler on the "root" directive.
-        if (directive.modifiers.length > 0 || el.livewire____grapesjs) {
+        if (directive.modifiers.length > 0 || el.$wire_grapesjs) {
           return;
         }
         let options = {};
@@ -60,8 +60,8 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
           return highlightedContent;
         };
         const grapesjsCreate = () => {
-          if (!el.livewire____grapesjs) {
-            el.livewire____grapesjs = grapesjs.init({
+          if (!el.$wire_grapesjs) {
+            el.$wire_grapesjs = grapesjs.init({
               // Indicate where to init the editor. You can also pass an HTMLElement
               container: el,
               storageManager: false,
@@ -94,50 +94,50 @@ export class LiveWireGrapesJSModule extends SokeioPlugin {
                 },
               },
             });
-            el.livewire____grapesjs.Commands.add("sokeio-builder-save-data", {
+            el.$wire_grapesjs.Commands.add("sokeio-builder-save-data", {
               run: async function (editor, sender) {
                 sender && sender.set("active", 0); // turn off the button
                 component.$wire.doSave();
               },
             });
-            el.livewire____grapesjs.on("change", function () {
+            el.$wire_grapesjs.on("change", function () {
               manager.dataSet(
                 component.$wire,
                 "data.css",
-                el.livewire____grapesjs.getCss()
+                el.$wire_grapesjs.getCss()
               );
               manager.dataSet(
                 component.$wire,
                 "data.content",
-                removeDivBuilderComponentPlus(el.livewire____grapesjs.getHtml())
+                removeDivBuilderComponentPlus(el.$wire_grapesjs.getHtml())
               );
               manager.dataSet(
                 component.$wire,
                 "data.js",
-                el.livewire____grapesjs.getJs()
+                el.$wire_grapesjs.getJs()
               );
             });
-            el.livewire____grapesjs.on("load", function () {
+            el.$wire_grapesjs.on("load", function () {
               const content = highlightShortcodes(
                 manager.dataGet(component.$wire, "data.content")
               );
               // document.querySelector('.sokeio-builder-header__right').innerHTML='';
-              el.livewire____grapesjs.setComponents(content);
-              // el.livewire____grapesjs.render();
-              // console.log(el.livewire____grapesjs);
-              // const deviceManager = el.livewire____grapesjs.DeviceManager;
+              el.$wire_grapesjs.setComponents(content);
+              // el.$wire_grapesjs.render();
+              // console.log(el.$wire_grapesjs);
+              // const deviceManager = el.$wire_grapesjs.DeviceManager;
               // const deviceManagerContainer = document.querySelector(
               //   ".sokeio-builder-manager .device-manager"
               // );
               // deviceManagerContainer.appendChild(deviceManager.render());
             });
-            el.livewire____grapesjs.on("stop:preview", () => {
+            el.$wire_grapesjs.on("stop:preview", () => {
               // Xử lý khi sự kiện design xảy ra
               el.closest(".sokeio-builder-manager").classList.remove(
                 "sokeio-builder-preview"
               );
             });
-            el.livewire____grapesjs.on("run:preview", () => {
+            el.$wire_grapesjs.on("run:preview", () => {
               // Xử lý khi sự kiện design xảy ra
               el.closest(".sokeio-builder-manager").classList.add(
                 "sokeio-builder-preview"

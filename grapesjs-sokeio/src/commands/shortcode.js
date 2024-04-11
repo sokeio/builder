@@ -4,13 +4,13 @@ export default (editor, opts = {}) => {
   const command = editor.Commands;
   const openDialog = function (editor, sender, model) {
     if (window.openShortcodeSetting) {
-      // sender && sender.set("active", 0); // turn off the button
       let div = document.createElement("div");
       div.innerHTML = regexShortcode.test(model.get("content"))
         ? model.get("content")
         : decodeURIComponent(model.view.el.getAttribute("data-shortcode"));
-      if (div.innerHTML.trim() == "null") div.innerHTML = "";
-      console.log(model.view.el.innerText);
+      if (div.innerHTML.trim() == "null") {
+        div.innerHTML = "";
+      }
       if (
         !div.innerHTML.trim().length &&
         regexShortcode.test(model.view.el.innerText)
