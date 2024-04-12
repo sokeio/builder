@@ -47,9 +47,6 @@
         @if ($isPage)
             <div class="bg-white border p-2 rounded-2">
                 <h3 class="p-2 m-0">@lang('Template Viewer')</h3>
-
-                <div class="border my-2" style="max-height:400px; overflow:auto" x-html="await getTemplateHtml()">
-                </div>
         @endif
         <div class="row g-0">
             <div class="col">
@@ -100,6 +97,9 @@
         </div>
     @endif
     @if ($isPage)
+        <h1> Preview:</h1>
+        <div class="border my-2" style="max-height:400px; overflow:auto" x-html="await getTemplateHtml()">
+        </div>
 </div>
 @endif
 </div>
