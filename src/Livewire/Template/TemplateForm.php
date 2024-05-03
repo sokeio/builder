@@ -52,11 +52,11 @@ class TemplateForm extends FormBuilder
                 return [
                     [
                         'id' => 'draft',
-                        'name' => __('Draft')
+                        'title' => __('Draft')
                     ],
                     [
                         'id' => 'published',
-                        'name' => __('Published')
+                        'title' => __('Published')
                     ]
                 ];
             })->valueDefault('published'),
